@@ -32,12 +32,11 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JSplitPane;
+import javax.swing.JTabbedPane;
 import javax.swing.KeyStroke;
 
-import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLException;
-import com.jogamp.opengl.GLProfile;
+import com.jogamp.opengl.awt.GLJPanel;
 import com.jogamp.opengl.util.FPSAnimator;
 import com.marginallyclever.communications.ConnectionManager;
 import com.marginallyclever.communications.NetworkConnection;
@@ -97,17 +96,16 @@ public final class Makelangelo
 	private JMenuItem buttonForums, buttonAbout;
 
 	// main window layout
+	private JTabbedPane tabs = new JTabbedPane();
+	
 	private Splitter splitLeftRight;
-	private Splitter splitUpDown;
 
 	// OpenGL window
-	private DrawPanel drawPanel;
+	private PreviewPanel previewPanel;
 	// Context sensitive menu
 	private MakelangeloRobotPanel robotPanel;
 	// Bottom of window
 	private LogPanel logPanel;
-
-	private FPSAnimator animator;
 
 	// Drag & drop support
 	private MakelangeloTransferHandler myTransferHandler;
@@ -183,11 +181,11 @@ public final class Makelangelo
 		Object subject = e.getSource();
 
 		if (subject == buttonZoomIn)
-			drawPanel.zoomIn();
+			previewPanel.zoomIn();
 		if (subject == buttonZoomOut)
-			drawPanel.zoomOut();
+			previewPanel.zoomOut();
 		if (subject == buttonZoomToFit)
-			drawPanel.zoomToFitPaper();
+			previewPanel.zoomToFitPaper();
 		if( subject == buttonForums) {
 			try {
 				java.awt.Desktop.getDesktop().browse(URI.create(this.FORUM_URL));
@@ -358,23 +356,17 @@ public final class Makelangelo
 
 		contentPane = new JPanel(new BorderLayout());
 		contentPane.setOpaque(true);
-
-		Log.message("  get GL capabilities...");
-		try {
-			GLProfile glProfile = GLProfile.getDefault();
-			GLCapabilities caps = new GLCapabilities(glProfile);
-			// caps.setSampleBuffers(true);
-			// caps.setHardwareAccelerated(true);
-			// caps.setNumSamples(4);
-			Log.message("  create draw panel...");
-			drawPanel = new DrawPanel(caps);
+		
+		Log.message("  create preview panel...");
+		try { 
+			previewPanel = new PreviewPanel();
 		} catch(GLException e) {
 			Log.error("I failed the very first call to OpenGL.  Are your native libraries missing?");
 			System.exit(1);
 		}
 		
 		Log.message("  set robot...");
-		drawPanel.setRobot(robot);
+		previewPanel.setRobot(robot);
 
 		Log.message("  assign panel to robot...");
 		robotPanel = robot.createControlPanel(this);
@@ -382,10 +374,17 @@ public final class Makelangelo
 		Log.message("  create log panel...");
 		logPanel = new LogPanel(robot);
 
+		JTabbedPane tabs = new JTabbedPane();
+		tabs.add("Design",new GLJPanel());
+		tabs.add("Preview",previewPanel);
+		tabs.add("Run",robotPanel);
+		tabs.add("Expert Mode",logPanel);
+		contentPane.add(tabs);
+/*
 		// major layout
 		Log.message("  vertical split...");
 		splitLeftRight = new Splitter(JSplitPane.HORIZONTAL_SPLIT);
-		splitLeftRight.add(drawPanel);
+		splitLeftRight.add(drawPanel.getPanel());
 		splitLeftRight.add(robotPanel);
 
 		Log.message("  horizontal split...");
@@ -402,7 +401,7 @@ public final class Makelangelo
 		// Dimension minimumSize = new Dimension(100, 100);
 		// splitLeftRight.setMinimumSize(minimumSize);
 		// logPanel.setMinimumSize(minimumSize);
-
+*/
 		return contentPane;
 	}
 
@@ -427,16 +426,13 @@ public final class Makelangelo
 		Log.message("  make visible...");
 		mainFrame.setVisible(true);
 
-		drawPanel.zoomToFitPaper();
+		previewPanel.zoomToFitPaper();
 
 		Log.message("  adding drag & drop support...");
 		mainFrame.setTransferHandler(myTransferHandler);
 
 		// start animation system
 		Log.message("  starting animator...");
-		animator = new FPSAnimator(1);
-		animator.add(drawPanel);
-		animator.start();
 	}
 
 	private void adjustWindowSize() {
@@ -471,8 +467,8 @@ public final class Makelangelo
 
 	@Override
 	public void portConfirmed(MakelangeloRobot r) {
-		if (drawPanel != null)
-			drawPanel.repaint();
+		if (previewPanel != null)
+			previewPanel.repaint();
 	}
 
 	@Override
@@ -497,14 +493,14 @@ public final class Makelangelo
 
 	@Override
 	public void disconnected(MakelangeloRobot r) {
-		if (drawPanel != null)
-			drawPanel.repaint();
+		if (previewPanel != null)
+			previewPanel.repaint();
 		SoundSystem.playDisconnectSound();
 	}
 
 	public void settingsChangedEvent(MakelangeloRobotSettings settings) {
-		if (drawPanel != null)
-			drawPanel.repaint();
+		if (previewPanel != null)
+			previewPanel.repaint();
 	}
 
 	public NetworkConnection requestNewConnection() {
@@ -521,7 +517,7 @@ public final class Makelangelo
 				Translator.get("ConfirmQuitTitle"), JOptionPane.YES_NO_OPTION);
 
 		if (result == JOptionPane.YES_OPTION) {
-			drawPanel.setRobot(null);
+			previewPanel.setRobot(null);
 			mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			saveWindowRealEstate();
 			robot.getSettings().saveConfig();
@@ -534,7 +530,6 @@ public final class Makelangelo
 			// exiting
 			new Thread(new Runnable() {
 				public void run() {
-					animator.stop();
 					mainFrame.dispose();
 				}
 			}).start();

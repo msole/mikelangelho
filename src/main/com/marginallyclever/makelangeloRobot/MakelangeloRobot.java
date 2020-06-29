@@ -907,6 +907,10 @@ public class MakelangeloRobot implements NetworkConnectionListener {
 	}
 
 	public void render(GL2 gl2) {
+		render(gl2,0,100);
+	}
+	
+	public void render(GL2 gl2,double startPercent,double endPercent) {
 		float[] lineWidthBuf = new float[1];
 		gl2.glGetFloatv(GL2.GL_LINE_WIDTH, lineWidthBuf, 0);
 		float lineWidth = lineWidthBuf[0];
@@ -934,8 +938,8 @@ public class MakelangeloRobot implements NetworkConnectionListener {
 				double oy = settings.getHomeY();
 				Movement previousMove = turtle.new Movement(ox, oy, Turtle.MoveType.TRAVEL);
 
-				int first = 0;
-				int last = turtle.history.size();
+				int first = (int)Math.max(turtle.history.size()*startPercent,0);
+				int last  = (int)Math.min(turtle.history.size()*endPercent,turtle.history.size());
 				int showCount = 0;
 
 				float newDiameter = 2 * 100 * penDiameter / lineWidth;
@@ -958,14 +962,19 @@ public class MakelangeloRobot implements NetworkConnectionListener {
 						case TRAVEL:
 							if (!isUp) {
 								isUp = true;
-								gl2.glColor4d((double) penUpColor.getRed() / 255.0, (double) penUpColor.getGreen() / 255.0,
-										(double) penUpColor.getBlue() / 255.0, showPenUp ? 1 : 0);
 								if (showCount >= first && showCount < last) {
 									gl2.glVertex2d(previousMove.x, previousMove.y);
+								}
+								gl2.glColor4d(
+										(double) penUpColor.getRed() / 255.0,
+										(double) penUpColor.getGreen() / 255.0,
+										(double) penUpColor.getBlue() / 255.0,
+										showPenUp ? 1 : 0);
+								if (showCount >= first && showCount < last) {
 									gl2.glVertex2d(m.x, m.y);
 								}
-								showCount++;
 							}
+							showCount++;
 							previousMove = m;
 							break;
 						case DRAW:
@@ -973,8 +982,10 @@ public class MakelangeloRobot implements NetworkConnectionListener {
 								if (showCount >= first && showCount < last) {
 									gl2.glVertex2d(previousMove.x, previousMove.y);
 								}
-								gl2.glColor4d((double) penDownColor.getRed() / 255.0,
-										(double) penDownColor.getGreen() / 255.0, (double) penDownColor.getBlue() / 255.0,
+								gl2.glColor4d(
+										(double) penDownColor.getRed() / 255.0,
+										(double) penDownColor.getGreen() / 255.0,
+										(double) penDownColor.getBlue() / 255.0,
 										1);
 								if (showCount >= first && showCount < last) {
 									gl2.glVertex2d(previousMove.x, previousMove.y);

@@ -51,4 +51,11 @@ public class GFXPreferences {
 		Preferences prefs = PreferencesHelper.getPreferenceNode(PreferencesHelper.MakelangeloPreferenceKey.GRAPHICS);
 		return prefs.getBoolean("show pen up",false);
 	}
+	
+	static public void setShowPenUp(boolean b) {
+		if(showPenUpCheckbox != null) showPenUpCheckbox.setSelected(b);
+		
+		Preferences prefs = PreferencesHelper.getPreferenceNode(PreferencesHelper.MakelangeloPreferenceKey.GRAPHICS);
+		prefs.putBoolean("show pen up",b);
+	}
 }

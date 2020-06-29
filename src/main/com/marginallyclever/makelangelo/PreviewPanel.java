@@ -1,27 +1,37 @@
 package com.marginallyclever.makelangelo;
 
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.util.prefs.Preferences;
 
+import javax.swing.JCheckBox;
+import javax.swing.JPanel;
+import javax.swing.JSlider;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.event.MouseInputListener;
 
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
-import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLEventListener;
 import com.jogamp.opengl.GLPipelineFactory;
 import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.awt.GLJPanel;
 import com.jogamp.opengl.glu.GLU;
+import com.marginallyclever.makelangelo.preferences.GFXPreferences;
 import com.marginallyclever.makelangeloRobot.MakelangeloRobot;
 import com.marginallyclever.util.PreferencesHelper;
 
 // Custom drawing panel written as an inner class to access the instance variables.
-public class DrawPanel extends GLJPanel implements MouseListener, MouseInputListener, MouseWheelListener, GLEventListener {
+public class PreviewPanel extends JPanel implements MouseListener, MouseInputListener, MouseWheelListener, GLEventListener {
 	private static final float CAMERA_ZFAR = 1000.0f;
 	private static final float CAMERA_ZNEAR = 10.0f;
 
@@ -43,19 +53,51 @@ public class DrawPanel extends GLJPanel implements MouseListener, MouseInputList
 	private int windowWidth = 0;
 	private int windowHeight = 0;
 
+	private GLJPanel glPanel;
 	private GLU glu;
+
+	private JPanel optionsPanel;
+	private JCheckBox showPenUp;
+	private JSlider showProgress;
 	
 	protected MakelangeloRobot robot;
 
 	private Preferences prefs = PreferencesHelper.getPreferenceNode(PreferencesHelper.MakelangeloPreferenceKey.GRAPHICS);
 	
 
-	public DrawPanel(GLCapabilities caps) {
-		super(caps);
-		addMouseMotionListener(this);
-		addMouseListener(this);
-		addGLEventListener(this);
-		addMouseWheelListener(this);
+	public PreviewPanel() {
+		super();
+		
+		glPanel = new GLJPanel();
+		
+		showPenUp = new JCheckBox("Show pen up moves");
+		showProgress = new JSlider(0,10000,10000);
+		optionsPanel = new JPanel(new BorderLayout());
+		optionsPanel.add(showPenUp,BorderLayout.LINE_START);
+		optionsPanel.add(showProgress,BorderLayout.CENTER);
+		
+		this.setLayout(new BorderLayout());
+		this.add(glPanel,BorderLayout.CENTER);
+		this.add(optionsPanel,BorderLayout.PAGE_END);
+		
+		showPenUp.addItemListener(new ItemListener() {
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				GFXPreferences.setShowPenUp(showPenUp.isSelected());
+				glPanel.repaint();
+			}
+		});
+		showProgress.addChangeListener(new ChangeListener() {
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				glPanel.repaint();
+			}
+		});
+		
+		glPanel.addMouseMotionListener(this);
+		glPanel.addMouseListener(this);
+		glPanel.addGLEventListener(this);
+		glPanel.addMouseWheelListener(this);
 	}
 
 	void setRobot(MakelangeloRobot r) {
@@ -216,6 +258,11 @@ public class DrawPanel extends GLJPanel implements MouseListener, MouseInputList
 		repaint();
 	}
 
+	public void repaint() {
+		super.repaint();
+		if(glPanel!=null) glPanel.repaint();
+	}
+	
 	/**
 	 * scale the picture of the robot to fake a zoom.
 	 */
@@ -252,7 +299,7 @@ public class DrawPanel extends GLJPanel implements MouseListener, MouseInputList
 	}
 
 	/**
-	 * clear the panel
+	 * Clear the panel
 	 *
 	 * @param gl2
 	 */
@@ -263,8 +310,8 @@ public class DrawPanel extends GLJPanel implements MouseListener, MouseInputList
 		// Special handling for the case where the GLJPanel is translucent
 		// and wants to be composited with other Java 2D content
 		if (GLProfile.isAWTAvailable()
-				&& !isOpaque()
-				&& shouldPreserveColorBufferIfTranslucent()) {
+				&& !glPanel.isOpaque()
+				&& glPanel.shouldPreserveColorBufferIfTranslucent()) {
 			gl2.glClear(GL2.GL_DEPTH_BUFFER_BIT);
 		} else {
 			gl2.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
@@ -291,7 +338,10 @@ public class DrawPanel extends GLJPanel implements MouseListener, MouseInputList
 
 		if (robot != null) {
 			gl2.glLineWidth((float)cameraZoom);
-			robot.render(gl2);
+			double max = showProgress.getMaximum();
+			double min = showProgress.getMinimum();
+			double end = (showProgress.getValue()-min)/(max-min);
+			robot.render(gl2,0,end);
 		}
 
 		gl2.glPopMatrix();
