@@ -37,7 +37,6 @@ import javax.swing.KeyStroke;
 
 import com.jogamp.opengl.GLException;
 import com.jogamp.opengl.awt.GLJPanel;
-import com.jogamp.opengl.util.FPSAnimator;
 import com.marginallyclever.communications.ConnectionManager;
 import com.marginallyclever.communications.NetworkConnection;
 import com.marginallyclever.makelangelo.log.Log;
@@ -96,10 +95,8 @@ public final class Makelangelo
 	private JMenuItem buttonForums, buttonAbout;
 
 	// main window layout
-	private JTabbedPane tabs = new JTabbedPane();
+	private JTabbedPane tabs;
 	
-	private Splitter splitLeftRight;
-
 	// OpenGL window
 	private PreviewPanel previewPanel;
 	// Context sensitive menu
@@ -374,7 +371,7 @@ public final class Makelangelo
 		Log.message("  create log panel...");
 		logPanel = new LogPanel(robot);
 
-		JTabbedPane tabs = new JTabbedPane();
+		tabs = new JTabbedPane();
 		tabs.add("Design",new GLJPanel());
 		tabs.add("Preview",previewPanel);
 		tabs.add("Run",robotPanel);
