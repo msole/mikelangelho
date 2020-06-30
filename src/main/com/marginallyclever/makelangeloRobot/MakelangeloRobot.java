@@ -251,7 +251,7 @@ public class MakelangeloRobot implements NetworkConnectionListener {
 		}
 
 		// new robots have UID=0
-		if (newUID == 0) {
+		if (newUID <= 0) {
 			newUID = getNewRobotUID();
 		}
 
@@ -317,11 +317,11 @@ public class MakelangeloRobot implements NetworkConnectionListener {
 	private long getNewRobotUID() {
 		long newUID = 0;
 
-		boolean pleaseGetAGUID = !CommandLineOptions.hasOption("-noguid");
-		if (!pleaseGetAGUID)
+		if (CommandLineOptions.hasOption("-noguid")) {
 			return 0;
+		}
 
-		Log.message("obtaining UID from server.");
+		Log.message("get UID from server.");
 		try {
 			// Send request
 			URL url = new URL("https://www.marginallyclever.com/drawbot_getuid.php");
