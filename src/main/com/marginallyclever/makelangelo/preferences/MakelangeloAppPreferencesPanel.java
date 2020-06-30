@@ -26,7 +26,7 @@ import com.marginallyclever.makelangelo.Translator;
 import com.marginallyclever.makelangelo.log.Log;
 import com.marginallyclever.util.PreferencesHelper;
 
-public class MakelangeloAppPreferences {
+public class MakelangeloAppPreferencesPanel {
 	transient private Makelangelo app;
 	
 	transient private JPanel panel; 
@@ -34,7 +34,7 @@ public class MakelangeloAppPreferences {
 	transient private JButton buttonImport;
 	transient private JButton buttonReset;
 	
-	public MakelangeloAppPreferences(Makelangelo arg0) {
+	public MakelangeloAppPreferencesPanel(Makelangelo arg0) {
 		super();
 		
 		app=arg0;

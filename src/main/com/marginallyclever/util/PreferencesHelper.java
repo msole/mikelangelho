@@ -131,7 +131,6 @@ public final class PreferencesHelper {
 		METRICS,
 		@Deprecated
 		LEGACY_MAKELANGELO_ROOT,
-		//MAKELANGELO_ROOT
 	}
 
 	/**

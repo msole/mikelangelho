@@ -35,13 +35,11 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.KeyStroke;
 
-import com.jogamp.opengl.GLException;
-import com.jogamp.opengl.awt.GLJPanel;
 import com.marginallyclever.communications.ConnectionManager;
 import com.marginallyclever.communications.NetworkConnection;
 import com.marginallyclever.makelangelo.log.Log;
 import com.marginallyclever.makelangelo.log.LogPanel;
-import com.marginallyclever.makelangelo.preferences.MakelangeloAppPreferences;
+import com.marginallyclever.makelangelo.preferences.MakelangeloAppPreferencesPanel;
 import com.marginallyclever.makelangelo.preferences.MetricsPreferences;
 import com.marginallyclever.makelangeloRobot.MakelangeloRobot;
 import com.marginallyclever.makelangeloRobot.MakelangeloRobotListener;
@@ -76,8 +74,7 @@ public final class Makelangelo
 	private static int DEFAULT_WINDOW_HEIGHT = 1020;
 
 	private Preferences preferences;
-
-	private MakelangeloAppPreferences appPreferences;
+	private MakelangeloAppPreferencesPanel appPreferencesPanel;
 	private ConnectionManager connectionManager;
 	private MakelangeloRobot robot;
 
@@ -99,6 +96,7 @@ public final class Makelangelo
 	
 	// OpenGL window
 	private PreviewPanel previewPanel;
+	private DesignPanel designPanel;
 	// Context sensitive menu
 	private MakelangeloRobotPanel robotPanel;
 	// Bottom of window
@@ -129,13 +127,7 @@ public final class Makelangelo
 		Log.message("starting preferences...");
 		preferences = PreferencesHelper.getPreferenceNode(PreferencesHelper.MakelangeloPreferenceKey.LEGACY_MAKELANGELO_ROOT);
 		VERSION = PropertiesFileHelper.getMakelangeloVersionPropertyValue();
-		appPreferences = new MakelangeloAppPreferences(this);
-
-		Log.message("starting robot...");
-		// create a robot and listen to it for important news
-		robot = new MakelangeloRobot();
-		robot.addListener(this);
-		robot.getSettings().addListener(this);
+		appPreferencesPanel = new MakelangeloAppPreferencesPanel(this);
 
 		Log.message("starting transfer handler...");
 		// drag & drop support
@@ -144,6 +136,12 @@ public final class Makelangelo
 		Log.message("starting connection manager...");
 		// network connections
 		connectionManager = new ConnectionManager();
+
+		Log.message("starting robot...");
+		// create a robot and listen to it for important news
+		robot = new MakelangeloRobot();
+		robot.addListener(this);
+		robot.getSettings().addListener(this);
 	}
 	
 	public void run() {
@@ -161,17 +159,70 @@ public final class Makelangelo
 	protected void checkSharingPermission() {
 		Log.message("checking sharing permissions...");
 		
-		final String SHARING_CHECK_STRING = "Last version sharing checked";
-		
-		String v = preferences.get(SHARING_CHECK_STRING,"0");
+
+		String v = MetricsPreferences.getLastVersionSeen();
 		int comparison = VERSION.compareTo(v);
 		if(comparison!=0) {
-			preferences.put(SHARING_CHECK_STRING,VERSION);
+			MetricsPreferences.setLastVersionSeen(VERSION);
 			int dialogResult = JOptionPane.showConfirmDialog(mainFrame, Translator.get("collectAnonymousMetricsOnUpdate"),"Sharing Is Caring",JOptionPane.YES_NO_OPTION);
 			MetricsPreferences.setAllowedToShare(dialogResult == JOptionPane.YES_OPTION);
 		}
 	}
-	
+
+	/**
+	 * Parse https://github.com/MarginallyClever/Makelangelo/releases/latest
+	 * redirect notice to find the latest release tag.
+	 */
+	public void checkForUpdate(boolean announceIfFailure) {
+		Log.message("checking for updates...");
+		try {
+			URL github = new URL("https://github.com/MarginallyClever/Makelangelo-Software/releases/latest");
+			HttpURLConnection conn = (HttpURLConnection) github.openConnection();
+			conn.setInstanceFollowRedirects(false); // you still need to handle
+													// redirect manully.
+			HttpURLConnection.setFollowRedirects(false);
+			BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+			String inputLine = in.readLine();
+			if (inputLine == null) {
+				throw new Exception("Could not read from update server.");
+			}
+
+			// parse the URL in the text-only redirect
+			String matchStart = "<a href=\"";
+			String matchEnd = "\">";
+			int start = inputLine.indexOf(matchStart);
+			int end = inputLine.indexOf(matchEnd);
+			if (start != -1 && end != -1) {
+				String line2 = inputLine.substring(start + matchStart.length(), end);
+				// parse the last part of the redirect URL, which contains the
+				// release tag (which is the VERSION)
+				line2 = line2.substring(line2.lastIndexOf("/") + 1);
+
+				Log.message("latest release: " + line2 + "; this version: " + VERSION);
+				// Log.message(inputLine.compareTo(VERSION));
+
+				int comp = line2.compareTo(VERSION);
+				String results;
+				if (comp > 0) {
+					results = Translator.get("UpdateNotice");
+					// TODO downloadUpdate(), flashNewFirmwareToRobot();
+				} else if (comp < 0)
+					results = "This version is from the future?!";
+				else
+					results = Translator.get("UpToDate");
+
+				JOptionPane.showMessageDialog(mainFrame, results);
+			}
+			in.close();
+		} catch (Exception e) {
+			if (announceIfFailure) {
+				JOptionPane.showMessageDialog(null, Translator.get("UpdateCheckFailed"));
+			}
+			e.printStackTrace();
+		}
+	}
+
 	// The user has done something. respond to it.
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -182,7 +233,7 @@ public final class Makelangelo
 		if (subject == buttonZoomOut)
 			previewPanel.zoomOut();
 		if (subject == buttonZoomToFit)
-			previewPanel.zoomToFitPaper();
+			previewPanel.zoomToFit();
 		if( subject == buttonForums) {
 			try {
 				java.awt.Desktop.getDesktop().browse(URI.create(this.FORUM_URL));
@@ -193,7 +244,7 @@ public final class Makelangelo
 		if (subject == buttonAbout)
 			(new DialogAbout()).display(this.mainFrame,this.VERSION);
 		if (subject == buttonAdjustPreferences) {
-			appPreferences.run();
+			appPreferencesPanel.run();
 		}
 		if (subject == buttonCheckForUpdate)
 			checkForUpdate(false);
@@ -275,74 +326,20 @@ public final class Makelangelo
 		return menuBar;
 	}
 
-	/**
-	 * Parse https://github.com/MarginallyClever/Makelangelo/releases/latest
-	 * redirect notice to find the latest release tag.
-	 */
-	public void checkForUpdate(boolean announceIfFailure) {
-		Log.message("checking for updates...");
+	// See http://www.dreamincode.net/forums/topic/190944-creating-an-updater-in-java/
+	/*
+	private void downloadUpdate() {
+		String[] run = {"java","-jar","updater/update.jar"};
 		try {
-			URL github = new URL("https://github.com/MarginallyClever/Makelangelo-Software/releases/latest");
-			HttpURLConnection conn = (HttpURLConnection) github.openConnection();
-			conn.setInstanceFollowRedirects(false); // you still need to handle
-													// redirect manully.
-			HttpURLConnection.setFollowRedirects(false);
-			BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-			String inputLine = in.readLine();
-			if (inputLine == null) {
-				throw new Exception("Could not read from update server.");
-			}
-
-			// parse the URL in the text-only redirect
-			String matchStart = "<a href=\"";
-			String matchEnd = "\">";
-			int start = inputLine.indexOf(matchStart);
-			int end = inputLine.indexOf(matchEnd);
-			if (start != -1 && end != -1) {
-				String line2 = inputLine.substring(start + matchStart.length(), end);
-				// parse the last part of the redirect URL, which contains the
-				// release tag (which is the VERSION)
-				line2 = line2.substring(line2.lastIndexOf("/") + 1);
-
-				Log.message("latest release: " + line2 + "; this version: " + VERSION);
-				// Log.message(inputLine.compareTo(VERSION));
-
-				int comp = line2.compareTo(VERSION);
-				String results;
-				if (comp > 0) {
-					results = Translator.get("UpdateNotice");
-					// TODO downloadUpdate(), flashNewFirmwareToRobot();
-				} else if (comp < 0)
-					results = "This version is from the future?!";
-				else
-					results = Translator.get("UpToDate");
-
-				JOptionPane.showMessageDialog(mainFrame, results);
-			}
-			in.close();
-		} catch (Exception e) {
-			if (announceIfFailure) {
-				JOptionPane.showMessageDialog(null, Translator.get("UpdateCheckFailed"));
-			}
-			e.printStackTrace();
+			Runtime.getRuntime().exec(run);
+		} catch (Exception ex) {
+			ex.printStackTrace();
 		}
+		System.exit(0);
 	}
+	*/
 
-	/**
-	 * See
-	 * http://www.dreamincode.net/forums/topic/190944-creating-an-updater-in-
-	 * java/
-	 *//*
-		 * private void downloadUpdate() { String[] run =
-		 * {"java","-jar","updater/update.jar"}; try {
-		 * Runtime.getRuntime().exec(run); } catch (Exception ex) {
-		 * ex.printStackTrace(); } System.exit(0); }
-		 */
-
-	/**
-	 * Rebuild the contents of the menu based on current program state
-	 */
+	// Rebuild the contents of the menu based on current program state
 	public void updateMenuBar() {
 		if (robotPanel != null)
 			robotPanel.updateButtonAccess();
@@ -355,12 +352,8 @@ public final class Makelangelo
 		contentPane.setOpaque(true);
 		
 		Log.message("  create preview panel...");
-		try { 
-			previewPanel = new PreviewPanel();
-		} catch(GLException e) {
-			Log.error("I failed the very first call to OpenGL.  Are your native libraries missing?");
-			System.exit(1);
-		}
+		previewPanel = new PreviewPanel();
+		designPanel = new DesignPanel();
 		
 		Log.message("  set robot...");
 		previewPanel.setRobot(robot);
@@ -371,25 +364,14 @@ public final class Makelangelo
 		Log.message("  create log panel...");
 		logPanel = new LogPanel(robot);
 
+		// major layout
 		tabs = new JTabbedPane();
-		tabs.add("Design",new GLJPanel());
+		tabs.add("Design",designPanel);
 		tabs.add("Preview",previewPanel);
 		tabs.add("Run",robotPanel);
 		tabs.add("Expert Mode",logPanel);
 		contentPane.add(tabs);
 /*
-		// major layout
-		Log.message("  vertical split...");
-		splitLeftRight = new Splitter(JSplitPane.HORIZONTAL_SPLIT);
-		splitLeftRight.add(drawPanel.getPanel());
-		splitLeftRight.add(robotPanel);
-
-		Log.message("  horizontal split...");
-		splitUpDown = new Splitter(JSplitPane.VERTICAL_SPLIT);
-		splitUpDown.add(splitLeftRight);
-		splitUpDown.add(logPanel);
-
-		contentPane.add(splitUpDown, BorderLayout.CENTER);
 
 		Log.message("  tweak...");
 		splitUpDown.setResizeWeight(0.9);
@@ -423,7 +405,7 @@ public final class Makelangelo
 		Log.message("  make visible...");
 		mainFrame.setVisible(true);
 
-		previewPanel.zoomToFitPaper();
+		previewPanel.zoomToFit();
 
 		Log.message("  adding drag & drop support...");
 		mainFrame.setTransferHandler(myTransferHandler);
@@ -435,8 +417,9 @@ public final class Makelangelo
 	private void adjustWindowSize() {
 		Log.message("adjust window size...");
 		
-		int width = preferences.getInt("Default window width", DEFAULT_WINDOW_WIDTH);
-		int height = preferences.getInt("Default window height", DEFAULT_WINDOW_HEIGHT);
+		Preferences graphicsPrefs = PreferencesHelper.getPreferenceNode(PreferencesHelper.MakelangeloPreferenceKey.GRAPHICS);
+		int width = graphicsPrefs.getInt("Default window width", DEFAULT_WINDOW_WIDTH);
+		int height = graphicsPrefs.getInt("Default window height", DEFAULT_WINDOW_HEIGHT);
 
 		// Get default screen size
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -445,8 +428,8 @@ public final class Makelangelo
 		if (width > screenSize.width || height > screenSize.height) {
 			width = screenSize.width;
 			height = screenSize.height;
-			preferences.putInt("Default window width", width);
-			preferences.putInt("Default window height", height);
+			graphicsPrefs.putInt("Default window width", width);
+			graphicsPrefs.putInt("Default window height", height);
 		}
 
 		mainFrame.setSize(width, height);
@@ -537,13 +520,15 @@ public final class Makelangelo
 	 * save window position and size
 	 */
 	private void saveWindowRealEstate() {
+		Preferences graphicsPrefs = PreferencesHelper.getPreferenceNode(PreferencesHelper.MakelangeloPreferenceKey.GRAPHICS);
+
 		Dimension size = this.mainFrame.getSize();
-		preferences.putInt("Default window width", size.width);
-		preferences.putInt("Default window height", size.height);
+		graphicsPrefs.putInt("Default window width", size.width);
+		graphicsPrefs.putInt("Default window height", size.height);
 
 		Point location = this.mainFrame.getLocation();
-		preferences.putInt("Default window location x", location.x);
-		preferences.putInt("Default window location y", location.y);
+		graphicsPrefs.putInt("Default window location x", location.x);
+		graphicsPrefs.putInt("Default window location y", location.y);
 	}
 
 	@Override

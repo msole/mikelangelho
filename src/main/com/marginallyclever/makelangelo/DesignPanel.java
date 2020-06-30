@@ -1,20 +1,13 @@
 package com.marginallyclever.makelangelo;
 
 import java.awt.BorderLayout;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
-import javax.swing.JCheckBox;
 import javax.swing.JPanel;
-import javax.swing.JSlider;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
@@ -26,10 +19,8 @@ import com.jogamp.opengl.awt.GLJPanel;
 import com.jogamp.opengl.glu.GLU;
 import com.marginallyclever.makelangelo.log.Log;
 import com.marginallyclever.makelangelo.preferences.GFXPreferences;
-import com.marginallyclever.makelangeloRobot.MakelangeloRobot;
 
-// Custom drawing panel written as an inner class to access the instance variables.
-public class PreviewPanel extends JPanel implements GLEventListener {
+public class DesignPanel extends JPanel implements GLEventListener {
 	/**
 	 * 
 	 */
@@ -57,14 +48,8 @@ public class PreviewPanel extends JPanel implements GLEventListener {
 	private GLJPanel glPanel;
 	private GLU glu;
 
-	private JPanel optionsPanel;
-	private JCheckBox showPenUp;
-	private JSlider showProgress;
-	
-	protected MakelangeloRobot robot;
-	
 
-	public PreviewPanel() {
+	public DesignPanel() {
 		super();
 
 		try { 
@@ -74,30 +59,9 @@ public class PreviewPanel extends JPanel implements GLEventListener {
 			System.exit(1);
 		}
 		
-		showPenUp = new JCheckBox("Show pen up moves");
-		showProgress = new JSlider(0,10000,10000);
-		optionsPanel = new JPanel(new BorderLayout());
-		optionsPanel.add(showPenUp,BorderLayout.LINE_START);
-		optionsPanel.add(showProgress,BorderLayout.CENTER);
-		
 		this.setLayout(new BorderLayout());
 		this.add(glPanel,BorderLayout.CENTER);
-		this.add(optionsPanel,BorderLayout.PAGE_END);
 		
-		showPenUp.addItemListener(new ItemListener() {
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				GFXPreferences.setShowPenUp(showPenUp.isSelected());
-				glPanel.repaint();
-			}
-		});
-		showProgress.addChangeListener(new ChangeListener() {
-			@Override
-			public void stateChanged(ChangeEvent e) {
-				glPanel.repaint();
-			}
-		});
-
 		glPanel.addGLEventListener(this);
 		glPanel.addMouseMotionListener(new MouseMotionAdapter() {
 			@Override
@@ -136,10 +100,6 @@ public class PreviewPanel extends JPanel implements GLEventListener {
 				}
 			}
 		});
-	}
-
-	void setRobot(MakelangeloRobot r) {
-		robot = r;
 	}
 
 	/**
@@ -214,20 +174,21 @@ public class PreviewPanel extends JPanel implements GLEventListener {
 
 	// scale the picture of the robot to fake a zoom.
 	public void zoomToFit() {
-		if (robot != null) {
-			double widthOfPaper = robot.getSettings().getPaperWidth();
-			double heightOfPaper = robot.getSettings().getPaperHeight();
-			double drawPanelWidthZoom = widthOfPaper;
-			double drawPanelHeightZoom = heightOfPaper;
+		double left=-100;
+		double right=100;
+		double top=100;
+		double bottom=-100;
+		double width = right-left;
+		double height = top-bottom;
 
-			if (windowWidth < windowHeight) {
-				cameraZoom = (drawPanelWidthZoom > drawPanelHeightZoom ? drawPanelWidthZoom : drawPanelHeightZoom);
-			} else {
-				cameraZoom = (drawPanelWidthZoom < drawPanelHeightZoom ? drawPanelWidthZoom : drawPanelHeightZoom);
-			}
+		if (windowWidth < windowHeight) {
+			cameraZoom = (width > height ? width : height);
+		} else {
+			cameraZoom = (width < height ? width : height);
 		}
-		cameraOffsetX = 0;
-		cameraOffsetY = 0;
+		
+		cameraOffsetX = (left+right)/2;
+		cameraOffsetY = (top+bottom)/2;
 		
 		repaint();
 	}
@@ -312,35 +273,6 @@ public class PreviewPanel extends JPanel implements GLEventListener {
 		
 		paintBackground(gl2);
 		paintCamera(gl2);
-
-		gl2.glPushMatrix();
-
-		if (robot != null) {
-			gl2.glLineWidth((float)cameraZoom);
-			double max = showProgress.getMaximum();
-			double min = showProgress.getMinimum();
-			double end = (showProgress.getValue()-min)/(max-min);
-			robot.render(gl2,0,end);
-		}
-
-		gl2.glPopMatrix();
+		// TODO draw whatever here
 	}
-
 }
-
-/**
- * This file is part of Makelangelo.
- * <p>
- * Makelangelo is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * <p>
- * Makelangelo is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * <p>
- * You should have received a copy of the GNU General Public License along with
- * Makelangelo. If not, see <http://www.gnu.org/licenses/>.
- */

@@ -41,9 +41,7 @@ public class GFXPreferences {
 		prefs.putBoolean("Draw all while running", drawAllWhileRunningCheckbox.isSelected());
 	}
 	
-	static public void cancel() {
-		
-	}
+	static public void cancel() {}
 	
 	static public boolean getShowPenUp() {
 		if(showPenUpCheckbox != null) return showPenUpCheckbox.isSelected();
@@ -57,5 +55,10 @@ public class GFXPreferences {
 		
 		Preferences prefs = PreferencesHelper.getPreferenceNode(PreferencesHelper.MakelangeloPreferenceKey.GRAPHICS);
 		prefs.putBoolean("show pen up",b);
+	}
+	
+	static public boolean getAntialias() {
+		Preferences prefs = PreferencesHelper.getPreferenceNode(PreferencesHelper.MakelangeloPreferenceKey.GRAPHICS);
+		return prefs.getBoolean("antialias", true);
 	}
 }
