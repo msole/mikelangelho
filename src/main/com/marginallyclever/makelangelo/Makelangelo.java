@@ -37,6 +37,7 @@ import javax.swing.KeyStroke;
 
 import com.marginallyclever.communications.ConnectionManager;
 import com.marginallyclever.communications.NetworkConnection;
+import com.marginallyclever.fbp.DesignPanel;
 import com.marginallyclever.makelangelo.log.Log;
 import com.marginallyclever.makelangelo.log.LogPanel;
 import com.marginallyclever.makelangelo.preferences.MakelangeloAppPreferencesPanel;

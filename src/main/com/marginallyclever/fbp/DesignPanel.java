@@ -1,4 +1,4 @@
-package com.marginallyclever.makelangelo;
+package com.marginallyclever.fbp;
 
 
 import java.awt.Cursor;
@@ -15,11 +15,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.UIManager;
-
-import com.marginallyclever.fbp.FBPComponent;
-import com.marginallyclever.fbp.FBPConnector;
-import com.marginallyclever.fbp.FBPLayoutManager;
-import com.marginallyclever.fbp.FBPPanel;
 
 
 public class DesignPanel extends JPanel {
