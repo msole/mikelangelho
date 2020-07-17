@@ -2,6 +2,7 @@ package com.marginallyclever.makelangelo;
 
 
 import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -50,9 +51,9 @@ public class DesignPanel extends JPanel {
 
 	protected FBPPanel addPanel() {
 		FBPPanel d = new FBPPanel();
-		panels.add(d);
+		d.setBounds(10+panels.size()*105,10+panels.size()*105,100, 100);
 		add(d);
-		d.setBounds(250+panels.size()*105,250+panels.size()*105,100, 100);		 
+		panels.add(d);	 
 
 		return d;
 	}
@@ -105,7 +106,7 @@ public class DesignPanel extends JPanel {
 	
 	public static void main(String[] argv) throws Exception {
 	    JFrame f = new JFrame();
-	    f.setSize(900, 900);
+	    f.setSize(800, 800);
 	    f.setTitle("DesignPanel test");
 	    f.setVisible(true);
 	    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -124,7 +125,7 @@ public class DesignPanel extends JPanel {
 			title.add(new JLabel("A0"));
 			a0.addFBPComponent(title);
 			
-			//a0.addFBPComponent(new FBPComponent(FBPComponent.OUTBOUND));
+			a0.addFBPComponent(new FBPComponent());
 			
 			title = new FBPComponent(new JSlider(0,50),FBPComponent.OUTBOUND);
 			a0.addFBPComponent(title);
