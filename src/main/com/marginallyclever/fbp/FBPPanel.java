@@ -1,15 +1,19 @@
 package com.marginallyclever.fbp;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Insets;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
@@ -96,11 +100,40 @@ public class FBPPanel extends JPanel {
             }
         });
     }
+
+    // sum the height of all child components.
+    // find the minimum width of the widest component.
+    // set the preferred size to the resulting values.
+    public void recalculateSize() {
+    	int count = getComponentCount();
+    	int width=0;
+    	int height=0;
+    	
+    	for(int i=0;i<count;++i) {
+    		Component c = getComponent(i);
+    		Dimension d = c.getPreferredSize();
+    		height+=d.height;
+    		if(width<d.width) width=d.width;
+    	}
+
+		Insets in = getInsets();
+		
+		Dimension d2 = getPreferredSize();
+		d2.width = width+in.right+in.left;
+		d2.height = height+in.top+in.bottom;
+		
+    	setPreferredSize(d2);
+    }
     
     public void addFBPComponent(FBPComponent arg0) {
     	add(arg0);
     	
     	components.add(arg0);
+    	
+    	recalculateSize();
+    	
+		setSize(getPreferredSize());
+		validate();
     }
     
     public void removeFBPComponent(FBPComponent arg0) {
@@ -141,9 +174,7 @@ public class FBPPanel extends JPanel {
     }
     
     @Override
-    protected void paintComponent(Graphics g) {
-        setBorder(new LineBorder(Color.BLACK,isIn?2:1));
-        
+    protected void paintComponent(Graphics g) {        
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D)g;
         if(isOpaque()) {

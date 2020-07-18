@@ -1,14 +1,14 @@
 package com.marginallyclever.fbp;
 
-import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.Point;
 import java.awt.Rectangle;
 
-import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -28,7 +28,7 @@ public class FBPComponent extends JPanel {
 	public FBPComponent(JComponent child,int t) {
 		super();
 		connectionType = t;
-		setBorder(BorderFactory.createLineBorder(Color.RED,1));
+		//setBorder(BorderFactory.createLineBorder(Color.RED,1));
         setLayout(new GridBagLayout());
         setChild(child);
 	}
@@ -37,11 +37,11 @@ public class FBPComponent extends JPanel {
 	}
 	
 	public FBPComponent() {
-		this(new JLabel(""));
+		this(new JLabel("null"),NONE);
 	}
 	
 	public FBPComponent(int t) throws Exception {
-		this(new JLabel(""),t);
+		this(new JLabel("null"),t);
 	}
 	
 	@Override
@@ -84,18 +84,23 @@ public class FBPComponent extends JPanel {
 	}
 	
 	public Component setChild(Component comp) {
-		GridBagConstraints gbc = new GridBagConstraints();
-		
-		if(getComponentCount()==1) {
-			remove(0);
-		}
+		removeAll();
 
+		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.weightx=1;
 		gbc.gridx=0;
 		gbc.gridy=0;
-		super.add(comp,gbc);
-		validate();
+		add(comp,gbc);
 		
+		Dimension d1=comp.getPreferredSize();
+		Insets in = getInsets();
+		Dimension d2 = getPreferredSize();
+		d2.width = d1.width+in.right+in.left+30;
+		d2.height = d1.height +in.top+in.bottom;
+    	setPreferredSize(d2);
+    	setMinimumSize(d2);
+    	setSize(d2);
+		validate();
 		return comp;
 	}
 }

@@ -10,10 +10,16 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 
@@ -35,20 +41,22 @@ public class DesignPanel extends JPanel {
 		addDragListeners();
 	}
 	
-	protected void addConn(FBPComponent outBound,FBPComponent inBound) throws Exception {
+	protected void addConnection(FBPComponent outBound,FBPComponent inBound) throws Exception {
 	    if(outBound.getConnectionType()!=FBPComponent.OUTBOUND) throw new Exception("Must attach connection head to outbound component.");
 	    if(inBound.getConnectionType()!=FBPComponent.INBOUND) throw new Exception("Must attach connection tail to inbound component.");
 
 	    FBPConnector c = new FBPConnector(outBound,inBound);
 	    System.out.println("Adding connection");
 	    conns.add(c);
+	    repaint();
 	}
 
 	protected FBPPanel addPanel() {
 		FBPPanel d = new FBPPanel();
-		d.setBounds(10+panels.size()*105,10+panels.size()*105,100, 100);
+		d.setLocation(10+panels.size()*105,10+panels.size()*105);
+		//d.setBounds(10+panels.size()*105,10+panels.size()*105,100, 100);
 		add(d);
-		panels.add(d);	 
+		panels.add(d);
 
 		return d;
 	}
@@ -82,7 +90,6 @@ public class DesignPanel extends JPanel {
                 	r.y += dy;
                 	d.setBounds(r);
                 }
-
             }
         });
     }
@@ -99,7 +106,31 @@ public class DesignPanel extends JPanel {
 		g.translate(p.x,p.y);
 	}
 	
+	public static void testSizes() {
+		JComponent [] c = {
+				new JLabel("A"),
+				new JButton("B"),
+				new JSlider(0,100),
+				new JComboBox<String>(new String[] {"1","2","3"}),
+				new JCheckBox("D"),
+				new JTextField("E"),
+				new JTextArea(4,20),
+		};
+		int i=0;
+		for( JComponent cc : c ) {
+			Dimension d = cc.getPreferredSize();
+			System.out.println(i+"="+d.width+","+d.height);
+			FBPComponent f = new FBPComponent(cc);
+			f.setSize(f.getPreferredSize());
+			System.out.println(i+"-2="+f.getWidth()+","+f.getHeight());
+			
+			i++;
+		}
+	}
+	
 	public static void main(String[] argv) throws Exception {
+		testSizes();
+		
 	    JFrame f = new JFrame();
 	    f.setSize(800, 800);
 	    f.setTitle("DesignPanel test");
@@ -109,7 +140,7 @@ public class DesignPanel extends JPanel {
 	    DesignPanel p = new DesignPanel();
 	    f.add(p);
 		
-		FBPPanel a0 = p.addPanel();	
+		FBPPanel a0 = p.addPanel();
 		FBPPanel a1 = p.addPanel();	
 		FBPPanel a2 = p.addPanel();	
 		FBPPanel a3 = p.addPanel();
@@ -117,11 +148,9 @@ public class DesignPanel extends JPanel {
 		
 		try {
 			FBPComponent title = new FBPComponent();
-			title.add(new JLabel("A0"));
+			title.setChild(new JLabel("A0"));
 			a0.addFBPComponent(title);
-			
 			a0.addFBPComponent(new FBPComponent());
-			
 			title = new FBPComponent(new JSlider(0,50),FBPComponent.OUTBOUND);
 			a0.addFBPComponent(title);
 			
@@ -132,12 +161,10 @@ public class DesignPanel extends JPanel {
 			a3.addFBPComponent(new FBPComponent(new JLabel("F"),FBPComponent.INBOUND));
 			a3.addFBPComponent(new FBPComponent(new JLabel("G"),FBPComponent.INBOUND));
 		    
-			p.addConn(a0.getOutbound(0),a1.getInbound(0));
-			p.addConn(a0.getOutbound(0),a2.getInbound(0));
-			p.addConn(a1.getOutbound(0),a3.getInbound(0));
-			p.addConn(a2.getOutbound(0),a3.getInbound(1));
-			
-			//p.invalidate();
+			p.addConnection(a0.getOutbound(0),a1.getInbound(0));
+			p.addConnection(a0.getOutbound(0),a2.getInbound(0));
+			p.addConnection(a1.getOutbound(0),a3.getInbound(0));
+			p.addConnection(a2.getOutbound(0),a3.getInbound(1));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
