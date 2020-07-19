@@ -37,7 +37,7 @@ import javax.swing.KeyStroke;
 
 import com.marginallyclever.communications.ConnectionManager;
 import com.marginallyclever.communications.NetworkConnection;
-import com.marginallyclever.fbp.DesignPanel;
+import com.marginallyclever.fbp.FBPPanel;
 import com.marginallyclever.makelangelo.log.Log;
 import com.marginallyclever.makelangelo.log.LogPanel;
 import com.marginallyclever.makelangelo.preferences.MakelangeloAppPreferencesPanel;
@@ -97,7 +97,7 @@ public final class Makelangelo
 	
 	// OpenGL window
 	private PreviewPanel previewPanel;
-	private DesignPanel designPanel;
+	private FBPPanel designPanel;
 	// Context sensitive menu
 	private MakelangeloRobotPanel robotPanel;
 	// Bottom of window
@@ -354,7 +354,7 @@ public final class Makelangelo
 		
 		Log.message("  create preview panel...");
 		previewPanel = new PreviewPanel();
-		designPanel = new DesignPanel();
+		designPanel = new FBPPanel();
 		
 		Log.message("  set robot...");
 		previewPanel.setRobot(robot);

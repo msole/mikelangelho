@@ -1,10 +1,8 @@
 package com.marginallyclever.fbp;
 
+import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -18,7 +16,7 @@ public class FBPComponent extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
 	public static final int NONE = 0;
 	public static final int INBOUND = 1;
 	public static final int OUTBOUND = 2;
@@ -29,9 +27,11 @@ public class FBPComponent extends JPanel {
 		super();
 		connectionType = t;
 		//setBorder(BorderFactory.createLineBorder(Color.RED,1));
-        setLayout(new GridBagLayout());
+        setLayout(new BorderLayout());
+        addArrows();
         setChild(child);
 	}
+
 	public FBPComponent(JComponent child) {
 		this(child,NONE);
 	}
@@ -42,23 +42,6 @@ public class FBPComponent extends JPanel {
 	
 	public FBPComponent(int t) throws Exception {
 		this(new JLabel("null"),t);
-	}
-	
-	@Override
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-
-		// draw connection point (if any)
-		int x=-1, y=getHeight()/2;
-
-		switch(connectionType) {
-		case NONE: return;
-		case OUTBOUND:  x=getWidth()-10;  break;
-		default: break;
-		}
-		g.translate(x, y);
-		g.drawPolygon(new int[] {0,10,0}, new int[] {-5,0,5}, 3);
-		g.translate(-x, -y);
 	}
 	
 	public int getConnectionType() {
@@ -83,24 +66,39 @@ public class FBPComponent extends JPanel {
 		return p;
 	}
 	
+	protected void addArrows() {
+        FBPArrow inbound=new FBPArrow();
+        FBPArrow outbound=new FBPArrow();
+    	add(inbound,BorderLayout.WEST);
+    	add(outbound,BorderLayout.EAST);
+        if(connectionType!=INBOUND) inbound.setEnabled(false);
+        if(connectionType!=OUTBOUND) outbound.setEnabled(false);
+	}
+	
 	public Component setChild(Component comp) {
 		removeAll();
-
-		GridBagConstraints gbc = new GridBagConstraints();
-		gbc.weightx=1;
-		gbc.gridx=0;
-		gbc.gridy=0;
-		add(comp,gbc);
+		addArrows();
+		add(comp,BorderLayout.CENTER);
 		
-		Dimension d1=comp.getPreferredSize();
+		// recalculate size
+		int count = getComponentCount();
+		int w = 0;
+		int h = 0;
+		for(int i=0; i<count; ++i) {
+			Dimension d = getComponent(i).getPreferredSize();
+			w += d.width;
+			if( h<d.height ) h=d.height;
+		}
+		// add insets
 		Insets in = getInsets();
 		Dimension d2 = getPreferredSize();
-		d2.width = d1.width+in.right+in.left+30;
-		d2.height = d1.height +in.top+in.bottom;
+		d2.width = w+in.right+in.left;
+		d2.height = h+in.top+in.bottom;
     	setPreferredSize(d2);
     	setMinimumSize(d2);
     	setSize(d2);
 		validate();
+		
 		return comp;
 	}
 }

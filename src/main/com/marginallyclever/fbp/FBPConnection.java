@@ -9,13 +9,13 @@ import java.awt.Point;
  * @author Dan Royer
  *
  */
-public class FBPConnector {
+public class FBPConnection {
 	public FBPComponent in;
 	public FBPComponent out;
 	
-	public FBPConnector() {}
+	public FBPConnection() {}
 	
-	public FBPConnector(FBPComponent inBound,FBPComponent outBound) {
+	public FBPConnection(FBPComponent inBound,FBPComponent outBound) {
 		this();
 		in = inBound;
 		out = outBound;
