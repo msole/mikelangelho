@@ -1,17 +1,17 @@
 package com.marginallyclever.fbp;
 
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.awt.Window;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -39,13 +39,15 @@ public class FBPPanel extends JPanel {
     // 2D Point representing the coordinate where mouse is, relative parent container
     protected Point anchorPoint;
     
+    protected boolean isConnecting;
+    protected FBPArrow start, end;
+    
 	public FBPPanel() {
 		super();
-		setLayout(new FBPLayoutManager());
+		setLayout(null);
 		setBackground(UIManager.getColor("InternalFrame.background"));
 		addDragListeners();
-		Window w = SwingUtilities.windowForComponent(this);
-		
+		isConnecting=false;
 	}
 	
 	protected void addConnection(FBPComponent outBound,FBPComponent inBound) throws Exception {
@@ -57,11 +59,19 @@ public class FBPPanel extends JPanel {
 	    conns.add(c);
 	    repaint();
 	}
+	
+	protected void removeConnection(FBPComponent arg0) {
+		for(FBPConnection c : conns) {
+			if(c.in==arg0 || c.out==arg0) {
+				conns.remove(c);
+				return;
+			}
+		}
+	}
 
-	protected FBPNode addPanel() {
-		FBPNode d = new FBPNode();
+	protected FBPNode addPanel(String name) {
+		FBPNode d = new FBPNode(name);
 		d.setLocation(10+panels.size()*105,10+panels.size()*105);
-		//d.setBounds(10+panels.size()*105,10+panels.size()*105,100, 100);
 		add(d);
 		panels.add(d);
 
@@ -73,6 +83,12 @@ public class FBPPanel extends JPanel {
         addMouseMotionListener(new MouseAdapter() {
             @Override
             public void mouseMoved(MouseEvent e) {
+        		//System.out.println("panel::move");
+            	if(isConnecting) {
+            		repaint();
+            		return;
+            	}
+            	
             	// remember the cursor position before a drag begins
                 anchorPoint = e.getPoint();
                 setCursor(Cursor.getDefaultCursor());
@@ -81,6 +97,13 @@ public class FBPPanel extends JPanel {
 
             @Override
             public void mouseDragged(MouseEvent e) {
+            	if(isConnecting) {
+            		//System.out.println("panel::connect");
+            		repaint();
+            		return;
+            	}
+        		//System.out.println("panel::drag");
+            	
                 setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
             	// find the relative movement (dx,dy)
                 int anchorX = anchorPoint.x;
@@ -107,42 +130,77 @@ public class FBPPanel extends JPanel {
 			}
         });
     	
-        final FBPPanel parent = this;
         addMouseListener(new MouseListener() {
 			@Override
             public void mouseClicked(MouseEvent e) {
-				System.out.println("panel::click");
-				Component c = SwingUtilities.getDeepestComponentAt(parent, e.getX(), e.getY());
-				if(c instanceof FBPArrow && c.getParent() instanceof FBPComponent) {
-					FBPComponent fc = (FBPComponent)c.getParent();
-					int t=fc.getConnectionType();
-					if(t==FBPComponent.INBOUND) System.out.println("  found inbound");
-					if(t==FBPComponent.OUTBOUND) System.out.println("  found outbound");
-				}
+				//System.out.println("panel::click");
 				redispatch(e);
             }
 
 			@Override
 			public void mousePressed(MouseEvent e) {
 				//System.out.println("panel::press");
+				if(isConnecting) return;  // should be impossible?
+				
+				start = getFBPArrowAt(e.getX(), e.getY());
+				// only start connecting if cursor is on an arrow.
+				if(start!=null) {
+					FBPComponent cStart = (FBPComponent)start.getParent();
+					// kill any connection going to the component that owns this arrow.
+					removeConnection(cStart);
+					
+					FBPNode nStart = (FBPNode)cStart.getParent();
+					System.out.println("connection started "+nStart.getMyName());
+					isConnecting=true;
+					return;
+				}
+				
 				redispatch(e);
 			}
 
 			@Override
-			public void mouseReleased(MouseEvent e) {
-				//System.out.println("panel::release");
-				redispatch(e);
+			public void mouseReleased(MouseEvent event) {
+				System.out.println("panel::release");
+				if(!isConnecting) return;  // don't care
+				isConnecting=false;
+				
+				end = getFBPArrowAt(event.getX(), event.getY());
+				if(end!=null) {
+					FBPComponent cEnd = (FBPComponent)end.getParent();
+					FBPNode nEnd = (FBPNode)cEnd.getParent();
+					System.out.println("connection finished "+nEnd.getMyName());
+					
+					FBPComponent a = (FBPComponent)start.getParent();
+					FBPComponent b = (FBPComponent)end.getParent();
+					if(a.getConnectionType() != b.getConnectionType()) {
+						// must be opposite types
+						if(a!=b) {
+							// cannot connect to self
+							try {
+								if(a.getConnectionType()==FBPComponent.INBOUND) {
+									addConnection(b,a);
+	        					} else {
+									addConnection(a,b);
+	        					}
+							} catch(Exception exception) {
+								exception.printStackTrace();
+							}
+						}
+					}
+				}
+				repaint();
+				redispatch(event);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				//System.out.println("panel::enter");
+				System.out.println("panel::enter");
 				redispatch(e);
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				//System.out.println("panel::exit");
+				System.out.println("panel::exit");
 				redispatch(e);
 			}
 			
@@ -154,6 +212,17 @@ public class FBPPanel extends JPanel {
         });
     }
 	
+    protected FBPArrow getFBPArrowAt(int x,int y) {
+		Component maybeArrow = SwingUtilities.getDeepestComponentAt(this, x, y);
+		if(maybeArrow instanceof FBPArrow && maybeArrow.isEnabled()) {
+			if(maybeArrow.getParent() instanceof FBPComponent) {
+				// definitely enabled arrow
+				return (FBPArrow)maybeArrow;
+			}
+		}
+		return null;
+    }
+    
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -164,6 +233,28 @@ public class FBPPanel extends JPanel {
 			c.paint(g);
 		}
 		g.translate(p.x,p.y);
+		
+		if(isConnecting) {
+
+			Color oldColor = g.getColor();
+			g.setColor(Color.BLUE);
+
+			try {
+				Point pa = ((FBPComponent)start.getParent()).getConnectionPoint();
+				Point pb = MouseInfo.getPointerInfo().getLocation();
+				Point pc = getLocationOnScreen();
+				g.translate(-pc.x, -pc.y);
+				g.drawLine(	pa.x, pa.y,
+					    	pb.x, pb.y);
+				g.translate(pc.x, pc.y);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			finally {
+				g.setColor(oldColor);
+			}
+		}
+		
 	}
 	
 	public static void testSizes() {
@@ -200,11 +291,11 @@ public class FBPPanel extends JPanel {
 	    FBPPanel p = new FBPPanel();
 	    f.add(p);
 		
-		FBPNode a0 = p.addPanel();
-		FBPNode a1 = p.addPanel();	
-		FBPNode a2 = p.addPanel();	
-		FBPNode a3 = p.addPanel();
-		p.addPanel();
+		FBPNode a0 = p.addPanel("A0");
+		FBPNode a1 = p.addPanel("A1");	
+		FBPNode a2 = p.addPanel("A2");	
+		FBPNode a3 = p.addPanel("A3");
+		p.addPanel("A4");
 		
 		try {
 			FBPComponent title = new FBPComponent();
@@ -229,5 +320,6 @@ public class FBPPanel extends JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		p.revalidate();
 	}
 }

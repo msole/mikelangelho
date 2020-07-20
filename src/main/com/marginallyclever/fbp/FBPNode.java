@@ -2,17 +2,13 @@ package com.marginallyclever.fbp;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Container;
-import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Insets;
-import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
@@ -33,19 +29,17 @@ public class FBPNode extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-    // 2D Point representing the coordinate where mouse is, relative parent container
-    protected Point anchorPoint;
-    // Default mouse cursor for dragging action
-    //protected Cursor draggingCursor = Cursor.getPredefinedCursor(Cursor.HAND_CURSOR);
-    // If sets <b>TRUE</b> when dragging component, it will be painted over each other (z-Buffer change)
-    protected boolean overbearing = false;
 
     protected ArrayList<FBPComponent> components = new ArrayList<FBPComponent>();
+    protected boolean denyDrag;
+    protected String myName;
     
-    
-    public FBPNode() {
+    protected FBPNode() {
     	super();
+    }
+    
+    public FBPNode(String name) {
+    	this();
     	
         addDragListeners();
         //setBackground(new Color(240,240,240));
@@ -53,71 +47,64 @@ public class FBPNode extends JPanel {
         setBackground(UIManager.getColor("Panel.background"));
         setOpaque(true);
         setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));
+        addFBPComponent(new FBPTitleBlock(name));
+        myName=name;
+    }
+    
+    public String getMyName() {
+    	return myName;
     }
     
     // Add Mouse Motion Listener with drag function
     private void addDragListeners() {
-        // This handle is a reference to THIS because in next Mouse Adapter "this" is not allowed
-        final FBPNode handle = this;
-        
         addMouseMotionListener(new MouseAdapter() {
             @Override
             public void mouseMoved(MouseEvent e) {
-            	//System.out.println("move over node");
-                anchorPoint = e.getPoint();
-                setCursor(Cursor.getDefaultCursor());
+            	//System.out.println("node::move "+myName);
+                redispatch(e);
             }
             @Override
             public void mouseDragged(MouseEvent e) {
-            	System.out.println("drag node");
-                setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                int anchorX = anchorPoint.x;
-                int anchorY = anchorPoint.y;
-
-                Point parentOnScreen = getParent().getLocationOnScreen();
-                Point mouseOnScreen = e.getLocationOnScreen();
-                Point position = new Point( mouseOnScreen.x - parentOnScreen.x - anchorX, 
-                							mouseOnScreen.y - parentOnScreen.y - anchorY);
-                setLocation(position);
-
-                // Change Z-Buffer if it is "overbearing"
-                if (overbearing) {
-                    getParent().setComponentZOrder(handle, 0);
-                    repaint();
-                }
-                getParent().repaint();
+            	//System.out.println("node::drag "+myName);
+                redispatch(e);
             }
+			
+			protected void redispatch(MouseEvent e) {
+		        Component source = (Component) e.getSource();
+		        MouseEvent parentEvent = SwingUtilities.convertMouseEvent(source, e, source.getParent());
+		        source.getParent().dispatchEvent(parentEvent);
+			}
         });
     	
         addMouseListener(new MouseListener() {
 			@Override
             public void mouseClicked(MouseEvent e) {
-				System.out.println("node::click");
+				//System.out.println("node::click");
 				redispatch(e);
             }
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				System.out.println("node::press");
+				//System.out.println("node::press");
 				redispatch(e);
 			}
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				System.out.println("node::release");
+				//System.out.println("node::release");
 				redispatch(e);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				System.out.println("node::enter");
-				redispatch(e);
+				//redispatch(e);
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
 				System.out.println("node::exit");
-				redispatch(e);
+				//redispatch(e);
 			}
 			
 			protected void redispatch(MouseEvent e) {
