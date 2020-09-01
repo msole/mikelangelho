@@ -962,17 +962,15 @@ public class MakelangeloRobot implements NetworkConnectionListener {
 						case TRAVEL:
 							if (!isUp) {
 								isUp = true;
-								// at the end of a line sequence.  mark it
-								if (inShow) {
-									gl2.glVertex2d(previousMove.x, previousMove.y);
-								}
 								gl2.glColor4d(
 										(double) penUpColor.getRed() / 255.0,
 										(double) penUpColor.getGreen() / 255.0,
 										(double) penUpColor.getBlue() / 255.0,
 										showPenUp ? 1 : 0);
 								if (inShow) {
-									gl2.glVertex2d(m.x, m.y);
+									// at the end of a line sequence.  mark it
+									gl2.glVertex2d(previousMove.x, previousMove.y);
+									//gl2.glVertex2d(m.x, m.y);
 								}
 							}
 							showCount++;
