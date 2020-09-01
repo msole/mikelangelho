@@ -957,11 +957,13 @@ public class MakelangeloRobot implements NetworkConnectionListener {
 						if(m==null) {
 							throw new NullPointerException();
 						}
+						boolean inShow = (showCount >= first && showCount < last);
 						switch (m.type) {
 						case TRAVEL:
 							if (!isUp) {
 								isUp = true;
-								if (showCount >= first && showCount < last) {
+								// at the end of a line sequence.  mark it
+								if (inShow) {
 									gl2.glVertex2d(previousMove.x, previousMove.y);
 								}
 								gl2.glColor4d(
@@ -969,7 +971,7 @@ public class MakelangeloRobot implements NetworkConnectionListener {
 										(double) penUpColor.getGreen() / 255.0,
 										(double) penUpColor.getBlue() / 255.0,
 										showPenUp ? 1 : 0);
-								if (showCount >= first && showCount < last) {
+								if (inShow) {
 									gl2.glVertex2d(m.x, m.y);
 								}
 							}
@@ -978,20 +980,24 @@ public class MakelangeloRobot implements NetworkConnectionListener {
 							break;
 						case DRAW:
 							if (isUp) {
-								if (showCount >= first && showCount < last) {
+								// pen was travelling, is now going down.
+								isUp = false;
+								if (inShow) {
+									// draw travel to the start of the line.
 									gl2.glVertex2d(previousMove.x, previousMove.y);
 								}
+								// set the pen down color.
 								gl2.glColor4d(
 										(double) penDownColor.getRed() / 255.0,
 										(double) penDownColor.getGreen() / 255.0,
 										(double) penDownColor.getBlue() / 255.0,
 										1);
-								if (showCount >= first && showCount < last) {
+								if (inShow) {
+									// draw the start of the line.
 									gl2.glVertex2d(previousMove.x, previousMove.y);
 								}
-								isUp = false;
 							}
-							if (showCount >= first && showCount < last) {
+							if (inShow) {
 								gl2.glVertex2d(m.x, m.y);
 							}
 							showCount++;
