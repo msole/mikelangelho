@@ -22,6 +22,7 @@ public class Generator_SierpinskiTriangle extends TurtleGenerator {
 	public Generator_SierpinskiTriangle() {
 		super();
 		inputs.add(inputOrder);
+		inputOrder.setDescription(Translator.get("Generator_SierpinskiTriangle.inputOrder.tooltip"));
 	}
 	
 	@Override

@@ -16,15 +16,18 @@ public class Edit_TransformTurtle extends TurtleGenerator {
 	// source of {@link Turtle}
 	public NodeConnectorTurtle inputTurtle = new NodeConnectorTurtle(Translator.get("Edit_TransformTurtle.inputTurtle"),new Turtle()); 
 	// degrees to rotate ccw
-	public NodeConnectorAngle inputAngle = new NodeConnectorAngle(Translator.get("NodeConnectorAngle.inputAngle"),0.0);
+	public NodeConnectorAngle inputAngle = new NodeConnectorAngle(Translator.get("Edit_TransformTurtle.inputAngle"),0.0);
 	// amount to scale in all directions.  1.0 remains unchanged.
-	public NodeConnectorDouble inputScale = new NodeConnectorDouble(Translator.get("NodeConnectorAngle.inputScale"),1.0);
+	public NodeConnectorDouble inputScale = new NodeConnectorDouble(Translator.get("Edit_TransformTurtle.inputScale"),1.0);
 	
 	public Edit_TransformTurtle() {
 		super();
 		inputs.add(inputTurtle);
 		inputs.add(inputAngle);
 		inputs.add(inputScale);
+		inputTurtle.setDescription(Translator.get("Edit_TransformTurtle.inputTurtle.tooltip"));
+		inputAngle.setDescription(Translator.get("NodeConnectorAngle.inputAngle.tooltip"));
+		inputScale.setDescription(Translator.get("NodeConnectorAngle.inputScale.tooltip"));
 	}
 	
 	@Override

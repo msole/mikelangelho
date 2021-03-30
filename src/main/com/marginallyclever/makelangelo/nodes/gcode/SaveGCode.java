@@ -28,6 +28,7 @@ public class SaveGCode extends Node implements SaveFile {
 	public SaveGCode() {
 		super();
 		inputs.add(inputFile);
+		inputFile.setDescription(Translator.get("LoadGCode.inputFile.tooltip"));
 	}
 	
 	@Override

@@ -18,6 +18,7 @@ public class Generator_GraphPaper extends TurtleGenerator {
 	public Generator_GraphPaper() {
 		super();
 		inputs.add(inputSpacingMm);
+		inputSpacingMm.setDescription(Translator.get("Generator_GraphPaper.inputSpacingMm.tooltip"));
 	}
 
 	@Override

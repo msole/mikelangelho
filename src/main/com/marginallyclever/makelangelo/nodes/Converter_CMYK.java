@@ -36,6 +36,10 @@ public class Converter_CMYK extends ImageConverter {
 		outputs.add(outputTurtleC);
 		outputs.add(outputTurtleM);
 		outputs.add(outputTurtle);
+		inputStepSize.setDescription(Translator.get("Converter_CMYK.inputStepSize.tooltip"));
+		outputTurtleC.setDescription(Translator.get("Converter_CMYK.outputTurtleC.tooltip"));
+		outputTurtleM.setDescription(Translator.get("Converter_CMYK.outputTurtleM.tooltip"));
+		outputTurtleY.setDescription(Translator.get("Converter_CMYK.outputTurtleY.tooltip"));
 	}
 	
 	@Override

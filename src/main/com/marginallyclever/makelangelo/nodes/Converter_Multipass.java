@@ -22,6 +22,8 @@ public class Converter_Multipass extends ImageConverter {
 		super();
 		inputs.add(inputAngle);
 		inputs.add(inputPasses);
+		inputAngle.setDescription(Translator.get("Converter_Multipass.inputAngle.tooltip"));
+		inputPasses.setDescription(Translator.get("Converter_Multipass.inputPasses.tooltip"));
 	}
 	
 	@Override

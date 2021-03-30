@@ -23,6 +23,7 @@ public class Generator_KochCurve extends TurtleGenerator {
 	public Generator_KochCurve() {
 		super();
 		inputs.add(inputOrder);
+		inputOrder.setDescription(Translator.get("Generator_KochCurve.inputOrder.tooltip"));
 	}
 	
 	@Override

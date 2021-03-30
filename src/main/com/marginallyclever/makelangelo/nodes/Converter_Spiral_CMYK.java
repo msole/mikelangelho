@@ -32,6 +32,11 @@ public class Converter_Spiral_CMYK extends ImageConverter {
 		outputs.add(outputTurtleC);
 		outputs.add(outputTurtleM);
 		outputs.add(outputTurtle);
+		
+		convertToCorners.setDescription(Translator.get("Converter_Spiral_CMYK.toCorners.tooltip"));
+		outputTurtleC.setDescription(Translator.get("Converter_CMYK.outputTurtleC.tooltip"));
+		outputTurtleM.setDescription(Translator.get("Converter_CMYK.outputTurtleM.tooltip"));
+		outputTurtleY.setDescription(Translator.get("Converter_CMYK.outputTurtleY.tooltip"));
 	}
 	
 	@Override

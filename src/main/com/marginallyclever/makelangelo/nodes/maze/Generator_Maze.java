@@ -24,6 +24,8 @@ public class Generator_Maze extends TurtleGenerator {
 		super();
 		inputs.add(inputRows);
 		inputs.add(inputCols);
+		inputRows.setDescription(Translator.get("Generator_Maze.inputRows.tooltip"));
+		inputCols.setDescription(Translator.get("Generator_Maze.inputCols.tooltip"));
 	}
 
 	@Override

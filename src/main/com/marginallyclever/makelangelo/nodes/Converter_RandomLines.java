@@ -14,7 +14,7 @@ import com.marginallyclever.core.turtle.Turtle;
  */
 public class Converter_RandomLines extends ImageConverter {
 	// number of graduated passes. >=1
-	private NodeConnectorInteger inputLines = new NodeConnectorInteger("Converter_Multipass.inputLines",2500);
+	private NodeConnectorInteger inputLines = new NodeConnectorInteger("Converter_RandomLines.inputLines",2500);
 	// the cutoff value when weighting the line against the source image.
 	protected NodeConnectorBoundedInt inputCutoff = new NodeConnectorBoundedInt("ImageConverter.inputCutoff",255,0,127);
 	
@@ -22,6 +22,8 @@ public class Converter_RandomLines extends ImageConverter {
 		super();
 		inputs.add(inputLines);
 		inputs.add(inputCutoff);
+		inputLines.setDescription(Translator.get("Converter_RandomLines.inputLines.tooltip"));
+		inputCutoff.setDescription(Translator.get("ImageConverter.inputCutoff.tooltip"));
 	}
 	
 	@Override

@@ -18,6 +18,7 @@ public class Converter_Spiral extends ImageConverter {
 	public Converter_Spiral() {
 		super();
 		inputs.add(convertToCorners);
+		convertToCorners.setDescription(Translator.get("Converter_Spiral.toCorners.tooltip"));
 	}
 	
 	@Override

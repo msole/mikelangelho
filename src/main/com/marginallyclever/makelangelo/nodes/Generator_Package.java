@@ -23,6 +23,9 @@ public class Generator_Package extends TurtleGenerator {
 		inputs.add(inputBoxWidth);
 		inputs.add(inputBoxLength);
 		inputs.add(inputBoxHeight);
+		inputBoxWidth		.setDescription(Translator.get("Generator_Package.inputBoxWidth.tooltip"));
+		inputBoxLength		.setDescription(Translator.get("Generator_Package.inputBoxLength.tooltip"));
+		inputBoxHeight		.setDescription(Translator.get("Generator_Package.inputBoxHeight.tooltip"));
 	}
 	
 	@Override

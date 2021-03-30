@@ -44,4 +44,6 @@ public abstract class Select implements FocusListener {
 			p.propertyChange(evt);
 		}
 	}
+
+	public abstract void setToolTipText(String description);
 }

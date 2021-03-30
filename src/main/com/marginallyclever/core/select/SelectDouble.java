@@ -116,4 +116,9 @@ public class SelectDouble extends Select {
 	public String getText() {
 		return field.getText();
 	}
+
+	@Override
+	public void setToolTipText(String description) {
+		field.setToolTipText(description);
+	}
 }

@@ -31,6 +31,10 @@ public class Converter_Pulse extends ImageConverter {
 		inputs.add(inputDirection);
 		inputs.add(inputLowPass);
 		inputs.add(inputHighPass);
+		inputHeight.setDescription(Translator.get("Converter_Pulse.inputHeight.tooltip"));
+		inputDirection.setDescription(Translator.get("Converter_Pulse.inputDirection.tooltip"));
+		inputLowPass.setDescription(Translator.get("ImageConverter.inputLowPass.tooltip"));
+		inputHighPass.setDescription(Translator.get("ImageConverter.inputHighPass.tooltip"));
 	}
 	
 	@Override

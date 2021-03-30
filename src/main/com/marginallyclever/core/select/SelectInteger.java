@@ -115,4 +115,9 @@ public class SelectInteger extends Select {
 	public void setValue(int arg0) {
 		field.setText(Integer.toString(arg0));
 	}
+
+	@Override
+	public void setToolTipText(String description) {
+		field.setToolTipText(description);
+	}
 }

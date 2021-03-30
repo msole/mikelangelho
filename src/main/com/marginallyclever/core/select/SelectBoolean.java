@@ -51,4 +51,9 @@ public class SelectBoolean extends Select {
 			field.doClick();
 		}
 	}
+
+	@Override
+	public void setToolTipText(String description) {
+		field.setToolTipText(description);
+	}
 }

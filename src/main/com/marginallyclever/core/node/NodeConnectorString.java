@@ -21,9 +21,8 @@ public class NodeConnectorString extends NodeConnector<String> {
 
 	@Override
 	public Select getSelect() {
-		SelectString s = new SelectString(this.getName(),this.getValue());
+		SelectString s = new SelectString(getName(),getValue());
 		s.addPropertyChangeListener(new PropertyChangeListener() {
-			
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
 				setValue((String)evt.getNewValue());

@@ -30,30 +30,27 @@ import org.kabeja.parser.ParserBuilder;
 import com.marginallyclever.core.ColorRGB;
 import com.marginallyclever.core.Translator;
 import com.marginallyclever.core.log.Log;
-import com.marginallyclever.core.node.Node;
 import com.marginallyclever.core.node.NodeConnectorExistingFile;
 import com.marginallyclever.core.turtle.Turtle;
-import com.marginallyclever.makelangelo.nodeConnector.NodeConnectorTurtle;
 import com.marginallyclever.makelangelo.nodes.LoadFile;
+import com.marginallyclever.makelangelo.nodes.TurtleGenerator;
 
 /**
  * Reads in DXF file and converts it to a Turtle.
  * @author Dan Royer
  * @since 7.25.0
  */
-public class LoadDXF extends Node implements LoadFile {
+public class LoadDXF extends TurtleGenerator implements LoadFile {
 	private static FileNameExtensionFilter filter = new FileNameExtensionFilter(Translator.get("LoadDXF.filter"), "dxf");
-	private NodeConnectorExistingFile inputFile = new NodeConnectorExistingFile("LoadDXF.inputFile",filter,""); 
-	// results
-	private NodeConnectorTurtle outputTurtle = new NodeConnectorTurtle("ImageConverter.outputTurtle");
-
+	private NodeConnectorExistingFile inputFile = new NodeConnectorExistingFile("LoadDXF.inputFile",filter,"");
+	
 	private double previousX,previousY;
 	private double imageCenterX,imageCenterY;
 	
 	public LoadDXF() {
 		super();
 		inputs.add(inputFile);
-		outputs.add(outputTurtle);
+		inputFile.setDescription(Translator.get("LoadDXF.inputFile.tooltip"));
 	}
 	
 	@Override

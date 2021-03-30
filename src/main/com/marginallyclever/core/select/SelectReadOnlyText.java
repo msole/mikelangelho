@@ -46,4 +46,9 @@ public class SelectReadOnlyText extends Select {
 	private String getPlainLink(String s) {
 	    return s.substring(s.indexOf(A_HREF) + A_HREF.length(), s.indexOf(HREF_CLOSED));
 	}
+
+	@Override
+	public void setToolTipText(String description) {
+		label.setToolTipText(description);
+	}
 }

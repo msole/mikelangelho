@@ -52,4 +52,9 @@ public class SelectOneOfMany extends Select {
 	public void setSelectedIndex(int index) {
 		field.setSelectedIndex(index);
 	}
+
+	@Override
+	public void setToolTipText(String description) {
+		field.setToolTipText(description);
+	}
 }

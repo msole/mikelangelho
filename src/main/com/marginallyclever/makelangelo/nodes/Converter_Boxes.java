@@ -14,7 +14,7 @@ import com.marginallyclever.core.turtle.Turtle;
  */
 public class Converter_Boxes extends ImageConverter {
 	// how big should the largest box be?
-	private NodeConnectorBoundedInt inputMaxBoxSize = new NodeConnectorBoundedInt("Generator_Dragon.inputMaxBoxSize",10,1,4);
+	private NodeConnectorBoundedInt inputMaxBoxSize = new NodeConnectorBoundedInt("Converter_Boxes.inputMaxBoxSize",10,1,4);
 	// the cutoff value when weighting the line against the source image.
 	protected NodeConnectorBoundedInt inputCutoff = new NodeConnectorBoundedInt("ImageConverter.inputCutoff",255,0,127);
 	// only consider intensity above the low pass value.
@@ -29,6 +29,10 @@ public class Converter_Boxes extends ImageConverter {
 		inputs.add(inputCutoff);
 		inputs.add(inputLowPass);
 		inputs.add(inputHighPass);
+		inputMaxBoxSize.setDescription(Translator.get("Converter_Boxes.inputMaxBoxSize.tooltip"));
+		inputCutoff.setDescription(Translator.get("ImageConverter.inputCutoff.tooltip"));
+		inputLowPass.setDescription(Translator.get("ImageConverter.inputLowPass.tooltip"));
+		inputHighPass.setDescription(Translator.get("ImageConverter.inputHighPass.tooltip"));
 	}
 	
 	@Override

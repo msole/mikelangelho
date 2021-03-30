@@ -24,6 +24,7 @@ public class Generator_Dragon extends TurtleGenerator {
 	public Generator_Dragon() {
 		super();
 		inputs.add(inputOrder);
+		inputOrder.setDescription(Translator.get("Generator_Dragon.inputOrder.tooltip"));
 	}
 	
 	@Override

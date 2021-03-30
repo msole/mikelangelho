@@ -64,4 +64,9 @@ public class SelectString extends Select {
 	public void setText(String string) {
 		field.setText(string);
 	}
+
+	@Override
+	public void setToolTipText(String description) {
+		field.setToolTipText(description);
+	}
 }

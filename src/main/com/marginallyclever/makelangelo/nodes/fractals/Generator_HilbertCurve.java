@@ -22,6 +22,7 @@ public class Generator_HilbertCurve extends TurtleGenerator {
 	public Generator_HilbertCurve() {
 		super();
 		inputs.add(inputOrder);
+		inputOrder.setDescription(Translator.get("Generator_HilbertCurve.inputOrder.tooltip"));
 	}
 
 	@Override

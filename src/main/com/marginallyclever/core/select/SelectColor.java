@@ -74,4 +74,9 @@ public class SelectColor extends Select {
 		field.setBackground(new Color(c.red,c.green,c.blue));
 		notifyPropertyChangeListeners(new PropertyChangeEvent(this,"color",null,null));
 	}
+
+	@Override
+	public void setToolTipText(String description) {
+		field.setToolTipText(description);
+	}
 }

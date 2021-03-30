@@ -57,6 +57,8 @@ public class Generator_Text extends TurtleGenerator {
 		super();
 		inputs.add(inputMessage);
 		inputs.add(inputFontPointSize);
+		inputMessage.setDescription(Translator.get("Generator_Text.inputMessage.tooltip"));
+		inputFontPointSize.setDescription(Translator.get("Generator_Text.inputFontPointSize.tooltip"));
 		
 		// build list of fonts
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();

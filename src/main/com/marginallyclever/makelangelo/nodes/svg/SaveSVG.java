@@ -34,6 +34,7 @@ public class SaveSVG extends Node implements SaveFile {
 	public SaveSVG() {
 		super();
 		inputs.add(inputFile);
+		inputFile.setDescription(Translator.get("LoadSVG.inputFile.tooltip"));
 	}
 	
 	@Override

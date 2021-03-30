@@ -35,6 +35,11 @@ public class Generator_Spirograph extends TurtleGenerator {
 		inputs.add(inputMajorRadius);
 		inputs.add(inputNumSamples);
 		inputs.add(inputIsEpitrochoid);
+		inputPScale			.setDescription(Translator.get("Generator_Spirograph.inputPScale.tooltip"));
+		inputMinorRadius	.setDescription(Translator.get("Generator_Spirograph.inputMinorRadius.tooltip"));
+		inputMajorRadius	.setDescription(Translator.get("Generator_Spirograph.inputMajorRadius.tooltip"));
+		inputNumSamples		.setDescription(Translator.get("Generator_Spirograph.inputNumSamples.tooltip"));
+		inputIsEpitrochoid	.setDescription(Translator.get("Generator_Spirograph.inputIsEpitrochoid.tooltip"));
 	}
 	
 	@Override

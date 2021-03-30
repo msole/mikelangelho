@@ -36,6 +36,10 @@ public class Converter_Sandy extends ImageConverter {
 		inputs.add(inputDirection);
 		inputs.add(inputLowPass);
 		inputs.add(inputHighPass);
+		inputBlockScale.setDescription(Translator.get("Converter_Sandy.inputBlockScale.tooltip"));
+		inputDirection.setDescription(Translator.get("Converter_Sandy.inputDirection.tooltip"));
+		inputLowPass.setDescription(Translator.get("ImageConverter.inputLowPass.tooltip"));
+		inputHighPass.setDescription(Translator.get("ImageConverter.inputHighPass.tooltip"));
 	}
 		
 	@Override

@@ -55,7 +55,7 @@ public class NodePanel extends SelectPanel {
 		for(NodeConnector<?> nc : myNode.inputs ) {
 			//System.out.println("  input "+nc.getName());
 			Select s = nc.getSelect();
-			s.getPanel().setToolTipText(nc.getDescription());
+			s.setToolTipText(nc.getDescription());
 			add(s);
 		}
 		
@@ -86,8 +86,8 @@ public class NodePanel extends SelectPanel {
 		frame.setLayout(new BorderLayout());
 		JPanel comboBoxPane = new JPanel();
 		JPanel cards = new JPanel(new CardLayout());
+		frame.add(comboBoxPane, BorderLayout.PAGE_START);
 		frame.add(cards, BorderLayout.CENTER);
-		frame.add(comboBoxPane, BorderLayout.PAGE_END);
 
 		// build combo box
 		ArrayList<String> names = new ArrayList<String>();

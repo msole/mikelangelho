@@ -25,6 +25,7 @@ public class Generator_FibonacciSpiral extends TurtleGenerator {
 	public Generator_FibonacciSpiral() {
 		super();
 		inputs.add(inputOrder);
+		inputOrder.setDescription(Translator.get("Generator_FibonacciSpiral.inputOrder.tooltip"));
 	}
 	
 	@Override

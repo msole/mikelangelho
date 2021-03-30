@@ -59,4 +59,9 @@ public class SelectSlider extends Select {
 	public void setValue(int v) {
 		field.setValue(v);
 	}
+
+	@Override
+	public void setToolTipText(String description) {
+		field.setToolTipText(description);
+	}
 }

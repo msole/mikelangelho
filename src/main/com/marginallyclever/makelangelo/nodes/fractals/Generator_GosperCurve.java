@@ -23,6 +23,7 @@ public class Generator_GosperCurve extends TurtleGenerator {
 	public Generator_GosperCurve() {
 		super();
 		inputs.add(inputOrder);
+		inputOrder.setDescription(Translator.get("Generator_GosperCurve.inputOrder.tooltip"));
 	}
 
 	@Override

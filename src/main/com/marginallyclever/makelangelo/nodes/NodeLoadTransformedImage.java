@@ -17,6 +17,7 @@ public class NodeLoadTransformedImage extends Node {
 		inputFile = new NodeConnectorExistingFile("NodeLoadImage.inputFile",filter,"");
 		
 		inputs.add(inputFile);
+		inputFile.setDescription(Translator.get("NodeLoadImage.inputFile.tooltip"));
 	}
 	
 	@Override

@@ -79,4 +79,9 @@ public class SelectTextArea extends Select {
 	public void setText(String str) {
 		field.setText(str);
 	}
+
+	@Override
+	public void setToolTipText(String description) {
+		field.setToolTipText(description);
+	}
 }

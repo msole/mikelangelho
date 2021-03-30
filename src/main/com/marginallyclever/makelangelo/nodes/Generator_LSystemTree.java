@@ -36,12 +36,18 @@ public class Generator_LSystemTree extends TurtleGenerator {
 	
 	public Generator_LSystemTree() {
 		super();
-		inputs.add(inputSeed);
-		inputs.add(inputOrder);
-		inputs.add(inputBranches);
-		inputs.add(inputNoise);
-		inputs.add(inputAngleSpan);
-		inputs.add(inputOrderScale);
+		inputs.add(inputSeed		);
+		inputs.add(inputOrder		);
+		inputs.add(inputBranches	);
+		inputs.add(inputNoise		);
+		inputs.add(inputAngleSpan	);
+		inputs.add(inputOrderScale	);
+		inputSeed		.setDescription(Translator.get("Generator_LSystemTree.inputSeed.tooltip"));
+		inputOrder		.setDescription(Translator.get("Generator_LSystemTree.inputOrder.tooltip"));
+		inputBranches	.setDescription(Translator.get("Generator_LSystemTree.inputBranches.tooltip"));
+		inputNoise		.setDescription(Translator.get("Generator_LSystemTree.inputNoise.tooltip"));
+		inputAngleSpan	.setDescription(Translator.get("Generator_LSystemTree.inputAngleSpan.tooltip"));
+		inputOrderScale	.setDescription(Translator.get("Generator_LSystemTree.inputOrderScale.tooltip"));
 	}
 
 	@Override

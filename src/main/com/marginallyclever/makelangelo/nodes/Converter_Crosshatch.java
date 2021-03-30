@@ -15,6 +15,13 @@ public class Converter_Crosshatch extends ImageConverter {
 	// detail of scan.  lower number is more detail.  >0
 	private NodeConnectorDouble inputStepSize = new NodeConnectorDouble("Converter_Crosshatch.inputStepSize",2.0);
 	
+	public Converter_Crosshatch() {
+		super();
+		inputs.add(inputStepSize);
+
+		inputStepSize.setDescription(Translator.get("Converter_Crosshatch.inputStepSize.tooltip"));
+	}
+	
 	@Override
 	public String getName() {
 		return Translator.get("Converter_Crosshatch.name");

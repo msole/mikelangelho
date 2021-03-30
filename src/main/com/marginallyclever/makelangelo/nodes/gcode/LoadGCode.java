@@ -25,6 +25,7 @@ public class LoadGCode extends TurtleGenerator implements LoadFile {
 	public LoadGCode() {
 		super();
 		inputs.add(inputFile);
+		inputFile.setDescription(Translator.get("LoadGCode.inputFile.tooltip"));
 	}
 
 	@Override

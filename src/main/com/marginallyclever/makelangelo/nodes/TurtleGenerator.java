@@ -1,5 +1,6 @@
 package com.marginallyclever.makelangelo.nodes;
 
+import com.marginallyclever.core.Translator;
 import com.marginallyclever.core.node.Node;
 import com.marginallyclever.core.node.NodeConnectorDouble;
 import com.marginallyclever.makelangelo.nodeConnector.NodeConnectorTurtle;
@@ -20,6 +21,10 @@ abstract public class TurtleGenerator extends Node {
 		inputs.add(inputWidth);
 		inputs.add(inputHeight);
 		outputs.add(outputTurtle);
+		
+		inputWidth.setDescription(Translator.get("ImageGenerator.inputFile.tooltip"));
+		inputHeight.setDescription(Translator.get("ImageGenerator.inputHeight.tooltip"));
+		outputTurtle.setDescription(Translator.get("ImageGenerator.outputTurtle.tooltip"));
 	}
 	
 	public void setWidth(double w) {

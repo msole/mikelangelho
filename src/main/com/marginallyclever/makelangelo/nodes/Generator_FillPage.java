@@ -23,6 +23,7 @@ public class Generator_FillPage extends TurtleGenerator {
 	public Generator_FillPage() {
 		super();
 		inputs.add(inputAngle);
+		inputAngle.setDescription(Translator.get("Generator_FillPage.inputAngle.tooltip"));
 	}
 
 	@Override

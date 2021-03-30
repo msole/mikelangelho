@@ -27,6 +27,14 @@ public class Converter_SpiralPulse extends ImageConverter {
 	
 	public Converter_SpiralPulse() {
 		super();
+		inputs.add(convertToCorners);
+		inputs.add(inputDensity);
+		inputs.add(inputHeight);
+		inputs.add(inputSpacing);
+		convertToCorners.setDescription(Translator.get("Converter_SpiralPulse.convertToCorners.tooltip"));
+		inputDensity.setDescription(Translator.get("Converter_SpiralPulse.inputDensity.tooltip"));
+		inputHeight.setDescription(Translator.get("Converter_SpiralPulse.inputHeight.tooltip"));
+		inputSpacing.setDescription(Translator.get("Converter_SpiralPulse.inputSpacing.tooltip"));
 	}
 	
 	@Override

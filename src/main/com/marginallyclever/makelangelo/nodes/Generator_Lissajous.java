@@ -37,6 +37,10 @@ public class Generator_Lissajous extends TurtleGenerator {
 		inputs.add(inputA);
 		inputs.add(inputB);
 		inputs.add(inputSamples);
+		inputDelta.setDescription(Translator.get("Generator_Lissajous.inputDelta.tooltip"));
+		inputA.setDescription(Translator.get("Generator_Lissajous.inputA.tooltip"));
+		inputB.setDescription(Translator.get("Generator_Lissajous.inputB.tooltip"));
+		inputSamples.setDescription(Translator.get("Generator_Lissajous.inputSamples.tooltip"));
 	}
 
 	@Override

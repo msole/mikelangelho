@@ -54,6 +54,7 @@ public class LoadSVG extends TurtleGenerator implements LoadFile {
 	public LoadSVG() {
 		super();
 		inputs.add(inputFile);
+		inputFile.setDescription(Translator.get("LoadSVG.inputFile.tooltip"));
 	}
 	
 	@Override

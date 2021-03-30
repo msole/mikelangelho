@@ -52,4 +52,9 @@ public class SelectButton extends Select {
 	public void setForeground(Color fg) {
 		button.setForeground(fg);
 	}
+
+	@Override
+	public void setToolTipText(String description) {
+		button.setToolTipText(description);
+	}
 }

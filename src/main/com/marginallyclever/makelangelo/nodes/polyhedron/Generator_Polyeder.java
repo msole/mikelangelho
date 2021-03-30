@@ -63,23 +63,19 @@ public class Generator_Polyeder extends TurtleGenerator {
 		return Translator.get("Generator_Polyeder.name");
 	}
 
-	void addModel(String name,int [] instructions)
-	{
+	void addModel(String name,int [] instructions) {
 		PolyederModel m = new PolyederModel();
 		m.name=name;
 		m.instructions=instructions;
 		models.add(m);
 	}
 
-	public String [] getModelNames()
-	{
+	public String [] getModelNames() {
 		String [] result = new String[models.size()];
-		for(int i=0;i<models.size();i++)
-		{
+		for(int i=0;i<models.size();i++) {
 			result[i]=models.get(i).name;
 		}
 		return result;
-
 	}
 
 	void geneneratePolygonStep(Turtle turtle,PolyederTransform t) {
@@ -89,8 +85,7 @@ public class Generator_Polyeder extends TurtleGenerator {
 		if(instructionPtr >= models.get(modelid).instructions.length) return;
 		int code=models.get(modelid).instructions[instructionPtr++];
 
-		if(code == 1)
-		{
+		if(code == 1) {
 			// draw a flap
 			Point2D pos=new Point2D();
 			Point2D abspos;
@@ -119,14 +114,12 @@ public class Generator_Polyeder extends TurtleGenerator {
 			turtle.penUp();
 		}
 
-		if(code >= 3 && code <= 8)
-		{
+		if(code >= 3 && code <= 8) {
 			// polygon with `code` number of points.
 			
 			t.walk(new Point2D(-size/(2*Math.tan(Math.PI/code)),0));
 			double r=size/(2*Math.sin(Math.PI/code));
-			for(i=0;i<=code;i++)
-			{
+			for(i=0;i<=code;i++) {
 				double ang=2*Math.PI*(i-0.5)/(double)code;
 				Point2D pos=new Point2D();
 				pos.x=r*Math.cos(ang);
@@ -139,8 +132,7 @@ public class Generator_Polyeder extends TurtleGenerator {
 			turtle.penUp();
 			// consider a 3 sided shape (code=3).  the very first shape will repeat this 3 times.  all others will repeat this twice.
 			// this way following with '1,0' would mean "add a flap on the first side and nothing on the second".
-			for(i=(instructionPtr>1)?1:0;i<code;i++)
-			{
+			for(i=(instructionPtr>1)?1:0;i<code;i++) {
 				Log.message("turn "+i);
 				PolyederTransform t1=t.dup();
 				t1.rotate(2*Math.PI*i/(double)code);
@@ -174,25 +166,23 @@ public class Generator_Polyeder extends TurtleGenerator {
 		return size;
 	}
 
+	public void setSize(int intValue) {
+		this.size=intValue;
+	}
+
 	public int getLastFlap() {
 		return flap;
+	}
+
+	public void setFlap(int intValue) {
+		this.flap=intValue;
 	}
 
 	public int getLastModel() {
 		return modelid;
 	}
-
-	public void setSize(int intValue) {
-		this.size=intValue;
-
-	}
-
-	public void setFlap(int intValue) {
-		this.flap=intValue;
-
-	}
+	
 	public void setModel(int intValue) {
 		this.modelid=intValue;
-
 	}
 }

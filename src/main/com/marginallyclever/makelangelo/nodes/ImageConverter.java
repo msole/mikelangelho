@@ -3,6 +3,7 @@ package com.marginallyclever.makelangelo.nodes;
 import com.marginallyclever.core.Clipper2D;
 import com.marginallyclever.core.Point2D;
 import com.marginallyclever.core.TransformedImage;
+import com.marginallyclever.core.Translator;
 import com.marginallyclever.core.node.Node;
 import com.marginallyclever.core.turtle.Turtle;
 import com.marginallyclever.makelangelo.nodeConnector.NodeConnectorTransformedImage;
@@ -27,6 +28,8 @@ public abstract class ImageConverter extends Node {
 		super();
 		inputs.add(inputImage);
 		outputs.add(outputTurtle);
+		inputImage.setDescription(Translator.get("ImageConverter.inputImage.tooltip"));
+		outputTurtle.setDescription(Translator.get("ImageConverter.outputTurtle.tooltip"));
 	}
 	
 	/**

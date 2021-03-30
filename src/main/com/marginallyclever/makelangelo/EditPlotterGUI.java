@@ -17,7 +17,8 @@ public class EditPlotterGUI extends SelectPanel {
 
 	private SelectString nickname;
 	
-	private SelectDouble machineWidth, machineHeight;
+	private SelectDouble machineWidth;
+	private SelectDouble machineHeight;
 	private SelectDouble totalBeltNeeded;
 	private SelectDouble totalServoNeeded;
 	private SelectDouble totalStepperNeeded;
@@ -40,26 +41,45 @@ public class EditPlotterGUI extends SelectPanel {
 		float w = (float)(myPlotter.getLimitRight() - myPlotter.getLimitLeft());
 		float h = (float)(myPlotter.getLimitTop() - myPlotter.getLimitBottom());
 		
-		add(nickname = new SelectString(Translator.get("MachineNickname"),myPlotter.getNickname()));
-		add(machineWidth = new SelectDouble(Translator.get("MachineWidth"),w));
-		add(machineHeight = new SelectDouble(Translator.get("MachineHeight"),h));
+		add(nickname = new SelectString(Translator.get("nickname"),myPlotter.getNickname()));
+		add(machineWidth = new SelectDouble(Translator.get("machineWidth"),w));
+		add(machineHeight = new SelectDouble(Translator.get("machineHeight"),h));
 		//machineWidth.setPreferredSize(s);
 		//machineHeight.setPreferredSize(s);
 
-		add(totalStepperNeeded = new SelectDouble(Translator.get("StepperLengthNeeded"),0));
-		add(totalBeltNeeded = new SelectDouble(Translator.get("BeltLengthNeeded"),0));
-		add(totalServoNeeded = new SelectDouble(Translator.get("ServoLengthNeeded"),0));
+		add(totalStepperNeeded = new SelectDouble(Translator.get("totalStepperNeeded"),0));
+		add(totalBeltNeeded = new SelectDouble(Translator.get("totalBeltNeeded"),0));
+		add(totalServoNeeded = new SelectDouble(Translator.get("totalServoNeeded"),0));
 
-	    add(travelFeedRate = new SelectDouble(Translator.get("penToolMaxFeedRate"),myPlotter.getTravelFeedRate()));
-	    add(drawFeedRate = new SelectDouble(Translator.get("Speed"),myPlotter.getDrawingFeedRate()));
+	    add(travelFeedRate = new SelectDouble(Translator.get("travelFeedRate"),myPlotter.getTravelFeedRate()));
+	    add(drawFeedRate = new SelectDouble(Translator.get("drawFeedRate"),myPlotter.getDrawingFeedRate()));
 
-		add(acceleration = new SelectDouble(Translator.get("AdjustAcceleration"),myPlotter.getAcceleration()));
+		add(acceleration = new SelectDouble(Translator.get("acceleration"),myPlotter.getAcceleration()));
 		add(minimumSegmentTime = new SelectInteger(Translator.get("minimumSegmentTime"),myPlotter.getMinimumSegmentTime()));
 		
-	    add(penZRate = new SelectDouble(Translator.get("penToolLiftSpeed"),myPlotter.getZFeedrate()));
-	    add(penUp = new SelectDouble(Translator.get("penToolUp"),myPlotter.getPenUpAngle()));
-	    add(penDown = new SelectDouble(Translator.get("penToolDown"),myPlotter.getPenDownAngle()));
+	    add(penZRate = new SelectDouble(Translator.get("penZRate"),myPlotter.getZFeedrate()));
+	    add(penUp = new SelectDouble(Translator.get("penUp"),myPlotter.getPenUpAngle()));
+	    add(penDown = new SelectDouble(Translator.get("penDown"),myPlotter.getPenDownAngle()));
 	    
+
+		nickname.setToolTipText(Translator.get("nickname.tooltip"));
+		machineWidth.setToolTipText(Translator.get("machineWidth.tooltip"));
+		machineHeight.setToolTipText(Translator.get("machineHeight.tooltip"));
+		
+		totalBeltNeeded.setToolTipText(Translator.get("totalBeltNeeded.tooltip"));
+		totalServoNeeded.setToolTipText(Translator.get("totalServoNeeded.tooltip"));
+		totalStepperNeeded.setToolTipText(Translator.get("totalStepperNeeded.tooltip"));
+		
+		travelFeedRate.setToolTipText(Translator.get("travelFeedRate.tooltip"));
+		drawFeedRate.setToolTipText(Translator.get("drawFeedRate.tooltip"));
+
+		acceleration.setToolTipText(Translator.get("acceleration.tooltip"));
+		minimumSegmentTime.setToolTipText(Translator.get("minimumSegmentTime.tooltip"));
+
+		penZRate.setToolTipText(Translator.get("penZRate.tooltip"));
+		penUp.setToolTipText(Translator.get("penUp.tooltip"));
+		penDown.setToolTipText(Translator.get("penDown.tooltip"));
+		
 		totalStepperNeeded.setReadOnly();
 		totalBeltNeeded.setReadOnly();
 		totalServoNeeded.setReadOnly();
