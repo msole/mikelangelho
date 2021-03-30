@@ -30,7 +30,7 @@ import java.util.ArrayList;
  */
 public class ListAllTranslations {
 	private final static String TRANSLATOR_HEAD = "Translator.get(\"";
-	private final static String TRANSLATOR_TAIL = "\")";
+	private final static String TRANSLATOR_TAIL = "\"";
 
 	private class TranslationKey {
 		public String myKey;
@@ -125,9 +125,9 @@ public class ListAllTranslations {
 		                    		srcFile = fullPath.substring(rootPath.length());
 		            	            found=true;
 		                    	}
-		                    	int first = line.indexOf(TRANSLATOR_HEAD);
-		                    	int last = line.indexOf(TRANSLATOR_TAIL, first);
-		                    	String result = line.substring(first+TRANSLATOR_HEAD.length(),last);
+		                    	int first = line.indexOf(TRANSLATOR_HEAD)+TRANSLATOR_HEAD.length();
+		                    	int last = line.indexOf(TRANSLATOR_TAIL, first+1);
+		                    	String result = line.substring(first,last);
 		                    	if(keyIsUnique(result)) {
 		                    		TranslationKey tk = new TranslationKey(result,srcFile);
 		            	            keys.add(tk);
