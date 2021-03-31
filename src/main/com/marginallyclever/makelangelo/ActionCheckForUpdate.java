@@ -88,7 +88,7 @@ public class ActionCheckForUpdate extends AbstractAction {
 				int comp = line2.compareTo(myVersion);
 				String results;
 				if (comp > 0) {
-					results = Translator.get("Makelangelo.updateNotice");
+					results = Translator.get("Makelangelo.updateNotice",line2,myVersion);
 					// TODO downloadUpdate(), updateThisApp();
 				} else if (comp < 0)
 					results = "This version is from the future?!";

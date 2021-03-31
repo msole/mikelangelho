@@ -234,7 +234,7 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 		int comparison = VERSION.compareTo(v);
 		if(comparison!=0) {
 			preferences.put(SHARING_CHECK_STRING,VERSION);
-			int dialogResult = JOptionPane.showConfirmDialog(mainFrame, Translator.get("collectAnonymousMetricsOnUpdate"),"Sharing Is Caring",JOptionPane.YES_NO_OPTION);
+			int dialogResult = JOptionPane.showConfirmDialog(mainFrame, Translator.get("Makelangelo.collectAnonymousMetricsOnUpdate"),"Sharing Is Caring",JOptionPane.YES_NO_OPTION);
 			MetricsPreferences.setAllowedToShare(dialogResult == JOptionPane.YES_OPTION);
 		}
 	}
@@ -265,7 +265,7 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 	
 	private void addMenuFile() {
 		Log.message("  file...");
-		JMenu menu = new JMenu(Translator.get("MenuMakelangelo"));
+		JMenu menu = new JMenu(Translator.get("Makelangelo.FileMenu"));
 		menuBar.add(menu);
 
 		JMenuItem buttonNew = new JMenuItem(Translator.get("Makelangelo.action.new"));
@@ -296,7 +296,7 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 
 		menu.addSeparator();
 		
-		JMenuItem buttonAdjustPreferences = new JMenuItem(Translator.get("MenuPreferences"));
+		JMenuItem buttonAdjustPreferences = new JMenuItem(Translator.get("Makelangelo.MenuPreferences"));
 		buttonAdjustPreferences.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -307,7 +307,7 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 
 		menu.addSeparator();
 
-		JMenuItem buttonExit = new JMenuItem(Translator.get("MenuQuit"));
+		JMenuItem buttonExit = new JMenuItem(Translator.get("Makelangelo.MenuQuit"));
 		buttonExit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -711,7 +711,7 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 		});
 		robotsMenu.add(buttonManage);
 		
-		JMenuItem buttonDrive = new JMenuItem(Translator.get("Makelangelo.runRobot"));
+		JMenuItem buttonDrive = new JMenuItem(Translator.get("Makelangelo.drivePlotter"));
 		robotsMenu.add(buttonDrive);
 		buttonDrive.addActionListener(new ActionListener() {
 			@Override
@@ -788,7 +788,7 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 	public void createAppWindow() {
 		Log.message("Creating GUI...");
 
-		mainFrame = new JFrame(Translator.get("TitlePrefix")+" "+this.VERSION);
+		mainFrame = new JFrame(Translator.get("Makelangelo.appName",VERSION));
 		mainFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		mainFrame.addWindowListener(new WindowAdapter() {
 			@Override
@@ -861,9 +861,11 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 	}
 
 	private void onClose() {
-		int result = JOptionPane.showConfirmDialog(mainFrame, Translator.get("ConfirmQuitQuestion"),
-				Translator.get("ConfirmQuitTitle"), JOptionPane.YES_NO_OPTION);
-
+		int result = JOptionPane.showConfirmDialog(
+				mainFrame,
+				Translator.get("Makelangelo.ConfirmQuitQuestion"),
+				Translator.get("Makelangelo.ConfirmQuitTitle"),
+				JOptionPane.YES_NO_OPTION);
 		if (result == JOptionPane.YES_OPTION) {
 			previewPanel.removeListener(activePlotter);
 			mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -946,7 +948,7 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 	 * @return true if file was loaded successfully.  false if it failed.
 	 */
 	public boolean openFileOnDemand(String filename) {
-		Log.message(Translator.get("OpeningFile",filename));
+		Log.message(Translator.get("Makelangelo.OpeningFile",filename));
 
 		ServiceLoader<LoadFile> imageLoaders = ServiceLoader.load(LoadFile.class);
 		for( LoadFile loader : imageLoaders ) {
@@ -973,7 +975,7 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 			}
 		}
 		
-		JOptionPane.showMessageDialog(mainFrame, Translator.get("UnknownFileType"));
+		JOptionPane.showMessageDialog(mainFrame, Translator.get("Makelangelo.UnknownFileType"));
 		return false;
 	}
 

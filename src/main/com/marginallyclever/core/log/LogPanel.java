@@ -111,7 +111,7 @@ public class LogPanel extends JPanel implements LogListener {
 		});
 		textInputArea.add(commandLineText,c);
 		
-		commandLineSend = new JButton(Translator.get("Send"));
+		commandLineSend = new JButton(Translator.get("LogPanel.Send"));
 		commandLineSend.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -125,7 +125,7 @@ public class LogPanel extends JPanel implements LogListener {
 
 		
 		/*
-		JButton clearLog = new JButton(Translator.get("ClearLog"));
+		JButton clearLog = new JButton(Translator.get("LogPanel.ClearLog"));
 		clearLog.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

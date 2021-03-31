@@ -161,7 +161,7 @@ public class ListAllTranslations {
 		
 		PrintStream out;
 		try {
-			PrintWriter pw = new PrintWriter(new File("output.xml"));
+			PrintWriter pw = new PrintWriter(new File("english.xml"));
 			OutputStream os = new WriterOutputStream( pw, StandardCharsets.UTF_8 );
 			out = new PrintStream(os);
 		}

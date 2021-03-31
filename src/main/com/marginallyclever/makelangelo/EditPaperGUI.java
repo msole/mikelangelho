@@ -45,23 +45,23 @@ public class EditPaperGUI extends SelectPanel {
 			commonPaperNames[i+1] = Paper.commonPaperSizes[i].toString();
 		}
 		
-		add(paperSizes = new SelectOneOfMany(Translator.get("PaperSize"),commonPaperNames,0));
+		add(paperSizes = new SelectOneOfMany(Translator.get("EditPaperGUI.PaperSize"),commonPaperNames,0));
 
 		double top = myPaper.getTop();
 		double bot = myPaper.getBottom();
 		double left = myPaper.getLeft();
 		double right = myPaper.getRight();
 		double rot = myPaper.getRotation();
-		add(pw = new SelectDouble(Translator.get("PaperWidth"),(float)(right-left)));
-		add(ph = new SelectDouble(Translator.get("PaperHeight"),(float)(top-bot)));
+		add(pw = new SelectDouble(Translator.get("EditPaperGUI.PaperWidth"),(float)(right-left)));
+		add(ph = new SelectDouble(Translator.get("EditPaperGUI.PaperHeight"),(float)(top-bot)));
 		add(isLandscape = new SelectBoolean("\u21cb",false));
 		
-		add(sx = new SelectDouble("Shift X",(float)(left+right)/2.0f)); 
-		add(sy = new SelectDouble("Shift y",(float)(top+bot)/2.0f)); 
-		add(ang = new SelectDouble("Rotation",(float)rot));
+		add(sx = new SelectDouble(Translator.get("EditPaperGUI.ShiftX"),(left+right)/2.0)); 
+		add(sy = new SelectDouble(Translator.get("EditPaperGUI.Shifty"),(top+bot)/2.0)); 
+		add(ang = new SelectDouble(Translator.get("EditPaperGUI.Rotation"),rot));
 		
-		add(paperMargin = new SelectSlider(Translator.get("PaperMargin"),50,0,100 - (int) (myPaper.getMarginPercent() * 100)));
-		add(paperColor = new SelectColor(interiorPanel,Translator.get("paper color"),myPaper.getPaperColor()));
+		add(paperMargin = new SelectSlider(Translator.get("EditPaperGUI.PaperMargin"),50,0,100 - (int) (myPaper.getMarginPercent() * 100)));
+		add(paperColor = new SelectColor(interiorPanel,Translator.get("EditPaperGUI.paperColor"),myPaper.getPaperColor()));
 		
 		finish();
 		updateValues();

@@ -41,40 +41,40 @@ public class EditPlotterGUI extends SelectPanel {
 		float w = (float)(myPlotter.getLimitRight() - myPlotter.getLimitLeft());
 		float h = (float)(myPlotter.getLimitTop() - myPlotter.getLimitBottom());
 		
-		add(nickname = new SelectString(Translator.get("nickname"),myPlotter.getNickname()));
-		add(machineWidth = new SelectDouble(Translator.get("machineWidth"),w));
-		add(machineHeight = new SelectDouble(Translator.get("machineHeight"),h));
+		add(nickname = new SelectString(Translator.get("EditPlotterGUI.nickname"),myPlotter.getNickname()));
+		add(machineWidth = new SelectDouble(Translator.get("EditPlotterGUI.machineWidth"),w));
+		add(machineHeight = new SelectDouble(Translator.get("EditPlotterGUI.machineHeight"),h));
 		//machineWidth.setPreferredSize(s);
 		//machineHeight.setPreferredSize(s);
 
-		add(totalStepperNeeded = new SelectDouble(Translator.get("totalStepperNeeded"),0));
-		add(totalBeltNeeded = new SelectDouble(Translator.get("totalBeltNeeded"),0));
-		add(totalServoNeeded = new SelectDouble(Translator.get("totalServoNeeded"),0));
+		add(totalStepperNeeded = new SelectDouble(Translator.get("EditPlotterGUI.totalStepperNeeded"),0));
+		add(totalBeltNeeded = new SelectDouble(Translator.get("EditPlotterGUI.totalBeltNeeded"),0));
+		add(totalServoNeeded = new SelectDouble(Translator.get("EditPlotterGUI.totalServoNeeded"),0));
 
-	    add(travelFeedRate = new SelectDouble(Translator.get("travelFeedRate"),myPlotter.getTravelFeedRate()));
-	    add(drawFeedRate = new SelectDouble(Translator.get("drawFeedRate"),myPlotter.getDrawingFeedRate()));
+	    add(travelFeedRate = new SelectDouble(Translator.get("EditPlotterGUI.travelFeedRate"),myPlotter.getTravelFeedRate()));
+	    add(drawFeedRate = new SelectDouble(Translator.get("EditPlotterGUI.drawFeedRate"),myPlotter.getDrawingFeedRate()));
 
-		add(acceleration = new SelectDouble(Translator.get("acceleration"),myPlotter.getAcceleration()));
-		add(minimumSegmentTime = new SelectInteger(Translator.get("minimumSegmentTime"),myPlotter.getMinimumSegmentTime()));
+		add(acceleration = new SelectDouble(Translator.get("EditPlotterGUI.acceleration"),myPlotter.getAcceleration()));
+		add(minimumSegmentTime = new SelectInteger(Translator.get("EditPlotterGUI.minimumSegmentTime"),myPlotter.getMinimumSegmentTime()));
 		
-	    add(penZRate = new SelectDouble(Translator.get("penZRate"),myPlotter.getZFeedrate()));
-	    add(penUp = new SelectDouble(Translator.get("penUp"),myPlotter.getPenUpAngle()));
-	    add(penDown = new SelectDouble(Translator.get("penDown"),myPlotter.getPenDownAngle()));
+	    add(penZRate = new SelectDouble(Translator.get("EditPlotterGUI.penZRate"),myPlotter.getZFeedrate()));
+	    add(penUp = new SelectDouble(Translator.get("EditPlotterGUI.penUp"),myPlotter.getPenUpAngle()));
+	    add(penDown = new SelectDouble(Translator.get("EditPlotterGUI.penDown"),myPlotter.getPenDownAngle()));
 	    
 
-		nickname.setToolTipText(Translator.get("nickname.tooltip"));
-		machineWidth.setToolTipText(Translator.get("machineWidth.tooltip"));
-		machineHeight.setToolTipText(Translator.get("machineHeight.tooltip"));
+		nickname.setToolTipText(Translator.get("EditPlotterGUI.nickname.tooltip"));
+		machineWidth.setToolTipText(Translator.get("EditPlotterGUI.machineWidth.tooltip"));
+		machineHeight.setToolTipText(Translator.get("EditPlotterGUI.machineHeight.tooltip"));
 		
-		totalBeltNeeded.setToolTipText(Translator.get("totalBeltNeeded.tooltip"));
-		totalServoNeeded.setToolTipText(Translator.get("totalServoNeeded.tooltip"));
-		totalStepperNeeded.setToolTipText(Translator.get("totalStepperNeeded.tooltip"));
+		totalBeltNeeded.setToolTipText(Translator.get("EditPlotterGUI.totalBeltNeeded.tooltip"));
+		totalServoNeeded.setToolTipText(Translator.get("EditPlotterGUI.totalServoNeeded.tooltip"));
+		totalStepperNeeded.setToolTipText(Translator.get("EditPlotterGUI.totalStepperNeeded.tooltip"));
 		
-		travelFeedRate.setToolTipText(Translator.get("travelFeedRate.tooltip"));
-		drawFeedRate.setToolTipText(Translator.get("drawFeedRate.tooltip"));
+		travelFeedRate.setToolTipText(Translator.get("EditPlotterGUI.travelFeedRate.tooltip"));
+		drawFeedRate.setToolTipText(Translator.get("EditPlotterGUI.drawFeedRate.tooltip"));
 
-		acceleration.setToolTipText(Translator.get("acceleration.tooltip"));
-		minimumSegmentTime.setToolTipText(Translator.get("minimumSegmentTime.tooltip"));
+		acceleration.setToolTipText(Translator.get("EditPlotterGUI.acceleration.tooltip"));
+		minimumSegmentTime.setToolTipText(Translator.get("EditPlotterGUI.minimumSegmentTime.tooltip"));
 
 		penZRate.setToolTipText(Translator.get("penZRate.tooltip"));
 		penUp.setToolTipText(Translator.get("penUp.tooltip"));

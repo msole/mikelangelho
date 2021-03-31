@@ -133,7 +133,11 @@ public class MakelangeloAppPreferences {
 
 	@SuppressWarnings("deprecation")
 	private void resetPreferences(Frame frame) {
-		int dialogResult = JOptionPane.showConfirmDialog(frame, Translator.get("MenuResetMachinePreferencesWarning"), Translator.get("MenuResetMachinePreferencesWarningHeader"), JOptionPane.YES_NO_OPTION);
+		int dialogResult = JOptionPane.showConfirmDialog(
+				frame, 
+				Translator.get("MenuResetMachinePreferencesWarning"),
+				Translator.get("MenuResetMachinePreferencesWarningHeader"),
+				JOptionPane.YES_NO_OPTION);
 		if(dialogResult == JOptionPane.YES_OPTION){
 			try {
 				Preferences prefs = PreferencesHelper.getPreferenceNode(PreferencesHelper.MakelangeloPreferenceKey.LEGACY_MAKELANGELO_ROOT);

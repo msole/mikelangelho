@@ -56,7 +56,7 @@ public class TranslatorLanguage {
 			Document dom = db.parse(inputStream);
 			load(dom);
 		} catch (SAXException | IOException e) {
-			Log.error( e.getMessage() );
+			Log.error( e.getLocalizedMessage() );
 		}
 	}
 

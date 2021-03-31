@@ -5,1139 +5,86 @@
 		<name>English</name>
 		<author>Dan Royer (dan@marginallyclever.com)</author>
 	</meta>
-
-	<string>
-		<key>BorderName</key>
-		<value>Outline paper</value>
-		<hint>Border generator</hint>
-	</string>
-
-	<string>
-		<key>LissajousName</key>
-		<value>Lissajous</value>
-		<hint>Lissajous generator</hint>
-	</string>
-	<string>
-		<key>LissajousA</key>
-		<value>A (&gt;0)</value>
-		<hint>Lissajous generator</hint>
-	</string>
-	<string>
-		<key>LissajousB</key>
-		<value>B (&gt;0)</value>
-		<hint>Lissajous generator</hint>
-	</string>
-	<string>
-		<key>LissajousDelta</key>
-		<value>Delta (0...1)</value>
-		<hint>Lissajous generator</hint>
-	</string>
-
-	<string>
-		<key>SpirographName</key>
-		<value>Spirograph</value>
-		<hint>Spirograph generator</hint>
-	</string>
-	<string>
-		<key>SpirographMajorRadius</key>
-		<value>Major radius (R)</value>
-		<hint>Spirograph generator</hint>
-	</string>
-	<string>
-		<key>SpirographMinorRadius</key>
-		<value>Minor radius (r)</value>
-		<hint>Spirograph generator</hint>
-	</string>
-	<string>
-		<key>SpirographPScale</key>
-		<value>Scale (p)</value>
-		<hint>Spirograph generator</hint>
-	</string>
-	<string>
-		<key>SpirographNumSamples</key>
-		<value>Samples (quality)</value>
-		<hint>Spirograph generator</hint>
-	</string>
-	<string>
-		<key>SpirographEpitrochoid</key>
-		<value>is epitrochoid</value>
-		<hint>Spirograph generator</hint>
-	</string>
-
-	<string>
-		<key>ConverterRandomLinesName</key>
-		<value>Random lines</value>
-		<hint>Random Lines generator</hint>
-	</string>
-	<string>
-		<key>ConverterRandomLinesCount</key>
-		<value>Number of lines</value>
-		<hint>Random Lines generator</hint>
-	</string>
-
-	<string>
-		<key>StartAtLastPenDown</key>
-		<value>Back up to last pen down</value>
-		<hint>Start At option</hint>
-	</string>
-	<string>
-		<key>StartAtAddPenDown</key>
-		<value>Add pen down command here</value>
-		<hint>Start At option</hint>
-	</string>
-	<string>
-		<key>StartAtExactly</key>
-		<value>Do nothing special</value>
-		<hint>Start At option</hint>
-	</string>
-
-
-
-	<string>
-		<key>ConfirmQuitQuestion</key>
-		<value>Are you sure you want to quit?</value>
-		<hint>confirm quit dialog question</hint>
-	</string>
-	<string>
-		<key>ConfirmQuitTitle</key>
-		<value>Exit</value>
-		<hint>confirm quit dialog title</hint>
-	</string>
-
-	<string>
-		<key>ConvertImagePaperOriginal</key>
-		<value>Original size</value>
-		<hint>Converter hint</hint>
-	</string>
-	<string>
-		<key>ConvertImagePaperFill</key>
-		<value>Fill entire paper</value>
-		<hint>Converter hint</hint>
-	</string>
-	<string>
-		<key>ConvertImagePaperFit</key>
-		<value>Fit image on paper</value>
-		<hint>Converter hint</hint>
-	</string>
-
-	<string>
-		<key>ConverterCMYKName</key>
-		<value>CMYK</value>
-		<hint>CMYK converter hint</hint>
-	</string>
-
-	<string>
-		<key>ConverterCMYKPasses</key>
-		<value>Passes</value>
-		<hint>CMYK converter hint</hint>
-	</string>
-
-	<string>
-		<key>ConverterCMYKNote</key>
-		<value><![CDATA[<html>Draws Yellow, Cyan, Magenta, and then Black.</body></html>]]></value>
-		<hint>CMYK converter hint</hint>
-	</string>
-
-	<string>
-		<key>DXFScaleOnLoad</key>
-		<value>Scale image to fit paper</value>
-		<hint>DXF load option</hint>
-	</string>
-
-	<string>
-		<key>DXFInfillOnLoad</key>
-		<value>Fill in closed areas</value>
-		<hint>DXF load option</hint>
-	</string>
-
-	<string>
-		<key>DXFOptimizeOnLoad</key>
-		<value>Improve route efficiency</value>
-		<hint>DXF load option</hint>
-	</string>
-
-
-	<string>
-		<key>TempFolderLabel</key>
-		<value>Temporary files location:</value>
-		<hint>Where to save temporary files used in gcode management.</hint>
-	</string>
-
-	<string>
-		<key>Cancel</key>
-		<value>Cancel</value>
-		<hint>used in many places</hint>
-	</string>
-	<string>
-		<key>Save</key>
-		<value>Save</value>
-		<hint>used in many places</hint>
-	</string>
-
-	<string>
-		<key>Load</key>
-		<value>Load</value>
-		<hint>used in many places</hint>
-	</string>
-	<string>
-		<key>CouldNotFind</key>
-		<value>Could not find </value>
-		<hint>as in, "could not find FILEX". keep the space at the end.</hint>
-	</string>
-
-	<string>
-		<key>MachineWidth</key>
-		<value>Machine width</value>
-		<hint>Machine settings</hint>
-	</string>
-	<string>
-		<key>MachineHeight</key>
-		<value>Machine height</value>
-		<hint>Machine settings</hint>
-	</string>
-
-	<string>
-		<key>PaperWidth</key>
-		<value>Paper width</value>
-		<hint>Paper settings panel</hint>
-	</string>
-	<string>
-		<key>PaperHeight</key>
-		<value>Paper height</value>
-		<hint>Paper settings panel</hint>
-	</string>
-	<string>
-		<key>isLandscape</key>
-		<value>Is landscape?</value>
-		<hint>Paper settings dialog</hint>
-	</string>
-
-	<string>
-		<key>ToolType</key>
-		<value>Tool type</value>
-		<hint>tool settings</hint>
-	</string>
-
-	<string>
-		<key>PaperSize</key>
-		<value>Paper Size</value>
-		<hint>machine size control panel</hint>
-	</string>
-	<string>
-		<key>AdjustPulleySize</key>
-		<value>Pulley diameter</value>
-		<hint>machine size control panel</hint>
-	</string>
-	<string>
-		<key>AdjustAcceleration</key>
-		<value>Acceleration</value>
-		<hint>machine size control panel</hint>
-	</string>
-
-	<string>
-		<key>Left</key>
-		<value>Left</value>
-		<hint>used in many places</hint>
-	</string>
-	<string>
-		<key>Right</key>
-		<value>Right</value>
-		<hint>used in many places</hint>
-	</string>
-	<string>
-		<key>Millimeters</key>
-		<value>mm</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>ConnectingTo</key>
-		<value>Connecting to </value>
-		<hint>status message. keep the space at the end.</hint>
-	</string>
-	<string>
-		<key>PortNotConfigured</key>
-		<value>Port could not be configured: </value>
-		<hint>status message. keep the space at the end.</hint>
-	</string>
-	<string>
-		<key>PortOpened</key>
-		<value>Port opened.</value>
-		<hint>status message</hint>
-	</string>
-	<string>
-		<key>TitlePrefix</key>
-		<value>Makelangelo</value>
-		<hint>window title</hint>
-	</string>
-	<string>
-		<key>TitlePostfix</key>
-		<value> connected</value>
-		<hint>window title</hint>
-	</string>
-
-	<string>
-		<key>LineSegments</key>
-		<value> line segments.</value>
-		<hint>status message</hint>
-	</string>
-	<string>
-		<key>Centimeters</key>
-		<value>cm</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>EstimatedTime</key>
-		<value>Estimated draw time: </value>
-		<hint>status message. keep the space at the end.</hint>
-	</string>
-
-	<string>
-		<key>LoadError</key>
-		<value>File could not be loaded:</value>
-		<hint>status message.</hint>
-	</string>
-
-	<string>
-		<key>SaveError</key>
-		<value>File could not be saved:</value>
-		<hint>status message.</hint>
-	</string>
-
-	<string>
-		<key>ConversionOptions</key>
-		<value>Conversion options</value>
-		<hint>dialog title</hint>
-	</string>
-
-	<string>
-		<key>Start</key>
-		<value>Start</value>
-		<hint>As in "start drawing"</hint>
-	</string>
-
-	<string>
-		<key>PaperMargin</key>
-		<value>Margin (%)</value>
-		<hint>conversion options</hint>
-	</string>
-	<string>
-		<key>Converting</key>
-		<value>Converting</value>
-		<hint>status update</hint>
-	</string>
-	<string>
-		<key>Finished</key>
-		<value>Completed</value>
-		<hint>status update</hint>
-	</string>
-	<string>
-		<key>Cancelled</key>
-		<value>Cancelled</value>
-		<hint>status update</hint>
-	</string>
-	<string>
-		<key>Failed</key>
-		<value>Failed: </value>
-		<hint>status update. keep the space at the end.</hint>
-	</string>
-
-	<string>
-		<key>ConversionStyle</key>
-		<value>Style</value>
-		<hint>conversion options</hint>
-	</string>
-	<string>
-		<key>ConversionFill</key>
-		<value>Fill</value>
-		<hint>conversion options</hint>
-	</string>
-
-	<string>
-		<key>OpeningFile</key>
-		<value>Opening </value>
-		<hint>status update. keep the space at the end.</hint>
-	</string>
-	<string>
-		<key>UnknownFileType</key>
-		<value>Unknown file type</value>
-		<hint>status update</hint>
-	</string>
-	<string>
-		<key>SetPaperSize</key>
-		<value>Please set a paper size before importing an image.</value>
-		<hint>warning message</hint>
-	</string>
-
-	<string>
-		<key>FileTypeGCode</key>
-		<value>GCODE (ngc)</value>
-		<hint>file open dialog</hint>
-	</string>
-	<string>
-		<key>FileTypeImage</key>
-		<value>Image (jpg/bmp/png/gif)</value>
-		<hint>file open dialog</hint>
-	</string>
-	<string>
-		<key>FileTypeDXF</key>
-		<value>DXF R12 for map data (dxf)</value>
-		<hint>file open dialog</hint>
-	</string>
-	<string>
-		<key>FileTypeScratch2</key>
-		<value>Scratch 2 (SB2)</value>
-		<hint>file open dialog</hint>
-	</string>
-	<string>
-		<key>FileTypeScratch3</key>
-		<value>Scratch 3 (SB3)</value>
-		<hint>file open dialog</hint>
-	</string>
-	<string>
-		<key>FileTypeSVG</key>
-		<value>Scaleable Vector Graphics 1.1 (svg)</value>
-		<hint>file open dialog</hint>
-	</string>
-
-	<string>
-		<key>pen up color</key>
-		<value>Up color</value>
-		<hint>Pen settings</hint>
-	</string>
-	<string>
-		<key>pen down color</key>
-		<value>Down color</value>
-		<hint>Pen settings</hint>
-	</string>
-
-	<string>
-		<key>MenuCommonDriveControls</key>
-		<value>Popular Driving Commands</value>
-		<hint>context sensitive menu</hint>
-	</string>
-	<string>
-		<key>RobotPanel.AxisDriveControls</key>
-		<value>Cartesian (IK)</value>
-		<hint>context sensitive menu</hint>
-	</string>
-	<string>
-		<key>RobotPanel.Animate</key>
-		<value>Animation control</value>
-		<hint>context sensitive menu</hint>
-	</string>
-
-	<string>
-		<key>MenuFileTitle</key>
-		<value>File</value>
-		<hint>menu or dialog title</hint>
-	</string>
-
-	<string>
-		<key>MenuMetricsTitle</key>
-		<value>Metrics</value>
-		<hint>menu or dialog title</hint>
-	</string>
-	<string>
-		<key>collectAnonymousMetrics</key>
-		<value><![CDATA[<html><body>I consent to sharing anonymous usage data<br>with Marginally Clever Robots, Limited.</body></html>]]></value>
-		<hint>menu or dialog title</hint>
-	</string>
-
-	<string>
-		<key>collectAnonymousMetricsOnUpdate</key>
-		<value><![CDATA[<html><body>May Marginally Clever Robots, Ltd. collect anonymous usage metrics about this app?<br><br>You can update this any time in <i>Makelangelo &gt; Preferences &gt; Metrics</i></body></html>]]></value>
-		<hint>menu or dialog title</hint>
-	</string>
-
-	<string>
-		<key>MenuSoundsTitle</key>
-		<value>Sounds</value>
-		<hint>menu or dialog title</hint>
-	</string>
-	<string>
-		<key>MenuSoundsConnect</key>
-		<value>Connect</value>
-		<hint>sound settings dialog</hint>
-	</string>
-	<string>
-		<key>MenuSoundsDisconnect</key>
-		<value>Disconnect</value>
-		<hint>sound settings dialog</hint>
-	</string>
-	<string>
-		<key>MenuSoundsFinishConvert</key>
-		<value>Finish converting</value>
-		<hint>sound settings dialog</hint>
-	</string>
-	<string>
-		<key>MenuSoundsFinishDraw</key>
-		<value>Finish drawing</value>
-		<hint>sound settings dialog</hint>
-	</string>
-
-	<string>
-		<key>MenuGraphicsTitle</key>
-		<value>Graphics</value>
-		<hint>menu or dialog title</hint>
-	</string>
-	<string>
-		<key>MenuGraphicsPenUp</key>
-		<value>Show pen up moves</value>
-		<hint>graphics settings dialog</hint>
-	</string>
-	<string>
-		<key>MenuGraphicsAntialias</key>
-		<value>Antialias lines</value>
-		<hint>graphics settings dialog</hint>
-	</string>
-	<string>
-		<key>MenuGraphicsSpeedVSQuality</key>
-		<value>Speed over quality</value>
-		<hint>graphics settings dialog</hint>
-	</string>
-	<string>
-		<key>MenuGraphicsDrawWhileRunning</key>
-		<value>Show entire image while drawing</value>
-		<hint>graphics settings dialog</hint>
-	</string>
-
-	<string>
-		<key>MenuResetMachinePreferences</key>
-		<value>Reset</value>
-		<hint>Preferences menu</hint>
-	</string>
-	<string>
-		<key>MenuLanguageTitle</key>
-		<value>Language</value>
-		<hint>menu or dialog title</hint>
-	</string>
-
-	<string>
-		<key>InvalidTool</key>
-		<value>Requested invalid tool #</value>
-		<hint>warning message</hint>
-	</string>
-	<string>
-		<key>ChangeToolTitle</key>
-		<value>Change Pen</value>
-		<hint>tool change prompt. keep the space at the end.</hint>
-	</string>
-	<string>
-		<key>ChangeToolMessage</key>
-		<value>Please change the pen to match this color.</value>
-		<hint>tool change prompt. keep the space at the start.</hint>
-	</string>
-
-	<string>
-		<key>StartAt</key>
-		<value>Start at</value>
-		<hint>menu or dialog title</hint>
-	</string>
-	<string>
-		<key>StartAtLine</key>
-		<value>Start at line #</value>
-		<hint>start at dialog</hint>
-	</string>
-
-	<string>
-		<key>Pause</key>
-		<value>Pause</value>
-		<hint>menu or dialog title</hint>
-	</string>
-	<string>
-		<key>Unpause</key>
-		<value>Unpause</value>
-		<hint>menu or dialog title</hint>
-	</string>
-
-	<string>
-		<key>SetHome</key>
-		<value>Set home</value>
-		<hint>manual driving dialog</hint>
-	</string>
-	<string>
-		<key>GoHome</key>
-		<value>Go home</value>
-		<hint>manual driving dialog</hint>
-	</string>
-	<string>
-		<key>FindHome</key>
-		<value>Find home</value>
-		<hint>manual driving dialog</hint>
-	</string>
-	<string>
-		<key>GoPaperBorder</key>
-		<value>Border</value>
-		<hint>manual driving dialog</hint>
-	</string>
-
-	<string>
-		<key>Top</key>
-		<value>Top</value>
-		<hint>manual driving dialog</hint>
-	</string>
-	<string>
-		<key>Bottom</key>
-		<value>Bottom</value>
-		<hint>manual driving dialog</hint>
-	</string>
-	<string>
-		<key>Left</key>
-		<value>Left</value>
-		<hint>manual driving dialog</hint>
-	</string>
-	<string>
-		<key>Right</key>
-		<value>Right</value>
-		<hint>manual driving dialog</hint>
-	</string>
-	<string>
-		<key>PenUp</key>
-		<value>Pen up</value>
-		<hint>manual driving dialog</hint>
-	</string>
-	<string>
-		<key>PenDown</key>
-		<value>Pen down</value>
-		<hint>manual driving dialog</hint>
-	</string>
-
-	<string>
-		<key>Set</key>
-		<value>Set</value>
-		<hint>manual driving dialog</hint>
-	</string>
-	<string>
-		<key>Speed</key>
-		<value>Draw speed</value>
-		<hint>manual driving dialog</hint>
-	</string>
-	<string>
-		<key>Rate</key>
-		<value>mm/s</value>
-		<hint>manual driving dialog</hint>
-	</string>
-	<string>
-		<key>RateDeg</key>
-		<value>deg/s</value>
-		<hint>manual driving dialog</hint>
-	</string>
-	<string>
-		<key>RateAccel</key>
-		<value>mm/s²</value>
-		<hint>manual driving dialog</hint>
-	</string>
-
-	<string>
-		<key>Makelangelo.MenuRobot</key>
-		<value>Jog Motors (FK)</value>
-		<hint>menu or dialog title</hint>
-	</string>
-	<string>
-		<key>RobotPanel.JogMotors</key>
-		<value>Jog Motors (FK)</value>
-		<hint>menu or dialog title</hint>
-	</string>
-	<string>
-		<key>JogLeftIn</key>
-		<value>Left in</value>
-		<hint>jog motors dialog</hint>
-	</string>
-	<string>
-		<key>JogLeftOut</key>
-		<value>Left out</value>
-		<hint>jog motors dialog</hint>
-	</string>
-	<string>
-		<key>JogRightIn</key>
-		<value>Right in</value>
-		<hint>jog motors dialog</hint>
-	</string>
-	<string>
-		<key>JogRightOut</key>
-		<value>Right out</value>
-		<hint>jog motors dialog</hint>
-	</string>
-	<string>
-		<key>Invert</key>
-		<value>Invert</value>
-		<hint>jog motors dialog</hint>
-	</string>
-
-	<string>
-		<key>UpdateNotice</key>
-		<value><![CDATA[<html><body>A new version of this software is available.<br/>Please visit <a href="https://www.marginallyclever.com/product/makelangelo-software/">https://www.marginallyclever.com/product/makelangelo-software/</a> to get the new hotness.</body></html>]]></value>
-		<hint>check for update dialog</hint>
-	</string>
-	<string>
-		<key>UpToDate</key>
-		<value>This software is up to date.</value>
-		<hint>check for update dialog</hint>
-	</string>
-	<string>
-		<key>UpdateCheckFailed</key>
-		<value>Sorry, I failed. Please visit http://www.marginallyclever.com/
-			to check yourself.</value>
-		<hint>check for update dialog</hint>
-	</string>
-
-	<string>
-		<key>Send</key>
-		<value>Send</value>
-		<hint>drive manually dialog</hint>
-	</string>
-	<string>
-		<key>TitleNotConnected</key>
-		<value> not connected</value>
-		<hint>menu or dialog title</hint>
-	</string>
-	<string>
-		<key>MenuMakelangelo</key>
-		<value>Makelangelo</value>
-		<hint>menu or dialog title</hint>
-	</string>
-	<string>
-		<key>MenuPreferences</key>
-		<value>Preferences</value>
-		<hint>menu or dialog title</hint>
-	</string>
-	<string>
-		<key>MenuLog</key>
-		<value>Log</value>
-		<hint>menu or dialog title</hint>
-	</string>
-	<string>
-		<key>MenuUpdate</key>
-		<value>Check for updates</value>
-		<hint>menu or dialog title</hint>
-	</string>
-
-	<string>
-		<key>MenuQuit</key>
-		<value>Quit</value>
-		<hint>menu or dialog title</hint>
-	</string>
-
 	<string>
 		<key>MenuConnect</key>
 		<value>Connect</value>
-		<hint>menu or dialog title</hint>
-	</string>
-
-	<string>
-		<key>MenuHelp</key>
-		<value>Help</value>
-		<hint>menu or dialog title</hint>
+		<src>/com/marginallyclever/communications/ConnectionManager.java</src>
 	</string>
 	<string>
-		<key>MenuForums</key>
-		<value>Online help forums</value>
-		<hint>menu or dialog title</hint>
+		<key>LogPanel.Send</key>
+		<value>Send</value>
+		<src>/com/marginallyclever/core/log/LogPanel.java</src>
+	</string>
+	<string>
+		<key>LogPanel.ClearLog</key>
+		<value>Clear</value>
+		<src>/com/marginallyclever/core/log/LogPanel.java</src>
+	</string>
+	<string>
+		<key>NodeConnectorAngle.description</key>
+		<value>Angle in degrees</value>
+		<src>/com/marginallyclever/core/node/NodeConnectorAngle.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.action.run</key>
+		<value>Run</value>
+		<src>/com/marginallyclever/core/node/NodeDialog.java</src>
 	</string>
 	<string>
 		<key>MenuAbout</key>
 		<value>About</value>
-		<hint>menu or dialog title</hint>
-	</string>
-
-	<string>
-		<key>ButtonConnect</key>
-		<value>Connect</value>
-		<hint>menu or dialog title</hint>
+		<src>/com/marginallyclever/makelangelo/ActionAbout.java</src>
 	</string>
 	<string>
-		<key>ButtonDisconnect</key>
-		<value>Disconnect</value>
-		<hint>menu or dialog title</hint>
+		<key>MenuUpdate</key>
+		<value>Check for updates</value>
+		<src>/com/marginallyclever/makelangelo/ActionCheckForUpdate.java</src>
 	</string>
 	<string>
-		<key>MenuRescan</key>
-		<value>Rescan</value>
-		<hint>menu or dialog title</hint>
+		<key>Makelangelo.updateNotice</key>
+		<value>The latest version is %1.  This app is %2.</value>
+		<src>/com/marginallyclever/makelangelo/ActionCheckForUpdate.java</src>
 	</string>
 	<string>
-		<key>MenuDisconnect</key>
-		<value>Disconnect</value>
-		<hint>menu or dialog title</hint>
+		<key>Makelangelo.upToDate</key>
+		<value>This app is up to date.</value>
+		<src>/com/marginallyclever/makelangelo/ActionCheckForUpdate.java</src>
 	</string>
-
 	<string>
-		<key>MenuLoadMachineConfig</key>
-		<value>Load settings for...</value>
-		<hint>menu or dialog title</hint>
+		<key>Makelangelo.updateCheckFailed</key>
+		<value>Update check failed.</value>
+		<src>/com/marginallyclever/makelangelo/ActionCheckForUpdate.java</src>
 	</string>
-
 	<string>
-		<key>MenuSettings</key>
+		<key>MenuForums</key>
+		<value>Online help forums</value>
+		<src>/com/marginallyclever/makelangelo/ActionOpenForum.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.manageMachines</key>
+		<value>Manage plotters</value>
+		<src>/com/marginallyclever/makelangelo/AllPlottersGUI.java</src>
+	</string>
+	<string>
+		<key>addMachine</key>
+		<value>Add plotter</value>
+		<src>/com/marginallyclever/makelangelo/AllPlottersGUI.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.robotSettings</key>
 		<value>Settings</value>
-		<hint>menu or dialog title</hint>
+		<src>/com/marginallyclever/makelangelo/AllPlottersGUI.java</src>
 	</string>
 	<string>
-		<key>MenuSettingsMachine</key>
-		<value>Machine</value>
-		<hint>menu or dialog title</hint>
+		<key>confirmDeleteMachineTitle</key>
+		<value>Delete plotter</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
 	</string>
 	<string>
-		<key>MenuAdjustPaper</key>
-		<value>Paper</value>
-		<hint>menu or dialog title</hint>
+		<key>confirmDeleteMachine</key>
+		<value>Are you sure you want to delete %1?</value>
+		<src>/com/marginallyclever/makelangelo/AllPlottersGUI.java</src>
 	</string>
-	<string>
-		<key>MenuAdjustPulleys</key>
-		<value>Pulley size</value>
-		<hint>menu or dialog title</hint>
-	</string>
-	<string>
-		<key>MenuJogMotors</key>
-		<value>Jog Motors</value>
-		<hint>menu or dialog title</hint>
-	</string>
-
-	<string>
-		<key>MenuSelectTool</key>
-		<value>Select active tool</value>
-		<hint>menu or dialog title</hint>
-	</string>
-	<string>
-		<key>MenuAdjustTool</key>
-		<value>Pen</value>
-		<hint>menu or dialog title</hint>
-	</string>
-
-	<string>
-		<key>MenuGCODE</key>
-		<value>Convert</value>
-		<hint>menu or dialog title</hint>
-	</string>
-	<string>
-		<key>MenuTextToGCODE</key>
-		<value>Your message here</value>
-		<hint>menu or dialog title</hint>
-	</string>
-	<string>
-		<key>MenuConvertImage</key>
-		<value>Open Recent...</value>
-		<hint>menu or dialog title</hint>
-	</string>
-	<string>
-		<key>MenuOpenFile</key>
-		<value>Open File...</value>
-		<hint></hint>
-	</string>
-	<string>
-		<key>MenuReopenFile</key>
-		<value>Reopen last file</value>
-		<hint></hint>
-	</string>
-	<string>
-		<key>MenuSaveGCODEAs</key>
-		<value>Save to file/SD card</value>
-		<hint>menu or dialog title</hint>
-	</string>
-
-	<string>
-		<key>MenuDraw</key>
-		<value>Draw</value>
-		<hint>menu or dialog title</hint>
-	</string>
-	<string>
-		<key>Halt</key>
-		<value>Halt</value>
-		<hint>menu or dialog title</hint>
-	</string>
-
-	<string>
-		<key>MenuPreview</key>
-		<value>View</value>
-		<hint>menu or dialog title</hint>
-	</string>
-	<string>
-		<key>ZoomIn</key>
-		<value>Zoom +</value>
-		<hint>menu or dialog title</hint>
-	</string>
-	<string>
-		<key>ZoomOut</key>
-		<value>Zoom -</value>
-		<hint>menu or dialog title</hint>
-	</string>
-	<string>
-		<key>ZoomFit</key>
-		<value>Zoom to fit</value>
-		<hint>menu or dialog title</hint>
-	</string>
-	
-	<string>
-		<key>ShowLog</key>
-		<value>Show Log</value>
-		<hint>menu or dialog title</hint>
-	</string>
-	<string>
-		<key>HideLog</key>
-		<value>Hide Log</value>
-		<hint>menu or dialog title</hint>
-	</string>
-	<string>
-		<key>mmNotice</key>
-		<value>All values in mm.</value>
-		<hint>Machine size</hint>
-	</string>
-
-	<string>
-		<key>penToolAdjust</key>
-		<value>Pen</value>
-		<hint>Adjust pen tool</hint>
-	</string>
-	<string>
-		<key>penToolDiameter</key>
-		<value>Diameter</value>
-		<hint>Adjust pen tool</hint>
-	</string>
-	<string>
-		<key>penToolMaxFeedRate</key>
-		<value>Max speed</value>
-		<hint>Adjust pen tool</hint>
-	</string>
-	<string>
-		<key>penToolUp</key>
-		<value>Up</value>
-		<hint>Adjust pen tool</hint>
-	</string>
-	<string>
-		<key>penToolDown</key>
-		<value>Down</value>
-		<hint>Adjust pen tool</hint>
-	</string>
-	<string>
-		<key>penToolLiftSpeed</key>
-		<value>Lift speed</value>
-		<hint>Adjust pen tool</hint>
-	</string>
-	<string>
-		<key>penToolTest</key>
-		<value>Test</value>
-		<hint>Adjust pen tool</hint>
-	</string>
-
-
-	<string>
-		<key>spraypaintToolTest</key>
-		<value>Spraypaint</value>
-		<hint>Spraypaint tool</hint>
-	</string>
-	<string>
-		<key>spraypaintToolDiameter</key>
-		<value>Dot size</value>
-		<hint>Spraypaint tool</hint>
-	</string>
-	<string>
-		<key>spraypaintToolMaxFeedRate</key>
-		<value>max speed</value>
-		<hint>Spraypaint tool</hint>
-	</string>
-	<string>
-		<key>spraypaintToolUp</key>
-		<value>Off</value>
-		<hint>Spraypaint tool</hint>
-	</string>
-	<string>
-		<key>spraypaintToolDown</key>
-		<value>On</value>
-		<hint>Spraypaint tool</hint>
-	</string>
-	<string>
-		<key>spraypaintToolLiftSpeed</key>
-		<value>On/off speed</value>
-		<hint>Spraypaint tool</hint>
-	</string>
-	<string>
-		<key>spraypaintToolTest</key>
-		<value>Make a dot</value>
-		<hint>Spraypaint tool</hint>
-	</string>
-
-	<string>
-		<key>SierpinskiTriangleName</key>
-		<value>Sierpinski triangle fractal</value>
-		<hint>name of generator</hint>
-	</string>
-	<string>
-		<key>voronoiStipplingName</key>
-		<value>Voronoi stipples</value>
-		<hint>voronoi stippling generator</hint>
-	</string>
-	<string>
-		<key>VoronoiZigZagName</key>
-		<value>Voronoi zigzag</value>
-		<hint>voronoi zigzag generator</hint>
-	</string>
-
-	<string>
-		<key>voronoiStipplingCellCount</key>
-		<value>Number of Cells</value>
-		<hint>voronoi stippling generator</hint>
-	</string>
-	<string>
-		<key>voronoiStipplingGenCount</key>
-		<value>Number of Generations</value>
-		<hint>voronoi stippling generator</hint>
-	</string>
-	<string>
-		<key>voronoiStipplingDotMax</key>
-		<value>Max dot size</value>
-		<hint>voronoi stippling generator</hint>
-	</string>
-	<string>
-		<key>voronoiStipplingDotMin</key>
-		<value>Min dot size</value>
-		<hint>voronoi stippling generator</hint>
-	</string>
-
-	<string>
-		<key>BoxGeneratorName</key>
-		<value>Boxxy</value>
-		<hint>Boxxy generator</hint>
-	</string>
-	<string>
-		<key>BoxGeneratorMaxSize</key>
-		<value>Max size</value>
-		<hint>Boxxy generator</hint>
-	</string>
-	<string>
-		<key>BoxGeneratorCutoff</key>
-		<value>Cutoff</value>
-		<hint>Boxxy generator</hint>
-	</string>
-	<string>
-		<key>BoxGeneratorMaxSizeNote</key>
-		<value>Max size greater than or equal to 1. Cutoff 0...1</value>
-		<hint>Boxxy generator</hint>
-	</string>
-
-	<string>
-		<key>CrosshatchName</key>
-		<value>Crosshatch</value>
-		<hint>Crosshatch generator</hint>
-	</string>
-	<string>
-		<key>HilbertCurveName</key>
-		<value>Hilbert Curve Fractal</value>
-		<hint>Hilbert Curve generator</hint>
-	</string>
-	<string>
-		<key>HilbertCurveSize</key>
-		<value>Size</value>
-		<hint>Hilbert Curve generator</hint>
-	</string>
-	<string>
-		<key>HilbertCurveOrder</key>
-		<value>Order</value>
-		<hint>Hilbert Curve generator</hint>
-	</string>
-	<string>
-		<key>LSystemBranches</key>
-		<value>Branches</value>
-		<hint>LSystem generator</hint>
-	</string>
-	<string>
-		<key>LSystemOrderScale</key>
-		<value>Scale</value>
-		<hint>LSystem generator</hint>
-	</string>
-	<string>
-		<key>LSystemAngle</key>
-		<value>Angle span</value>
-		<hint>LSystem generator</hint>
-	</string>
-	<string>
-		<key>MazeName</key>
-		<value>Maze</value>
-		<hint>Maze generator</hint>
-	</string>
-	<string>
-		<key>MazeRows</key>
-		<value>Rows</value>
-		<hint>Maze generator</hint>
-	</string>
-	<string>
-		<key>MazeColumns</key>
-		<value>Columns</value>
-		<hint>Maze generator</hint>
-	</string>
-
-	<string>
-		<key>PulseLineName</key>
-		<value>Pulse Line</value>
-		<hint>Pulse Line generator</hint>
-	</string>
-	<string>
-		<key>ZigZagName</key>
-		<value>Big zig zag</value>
-		<hint>Zig Zag generator</hint>
-	</string>
-	<string>
-		<key>YourMsgHereName</key>
-		<value>Your message here</value>
-		<hint>Your message here generator</hint>
-	</string>
-	<string>
-		<key>SpiralName</key>
-		<value>Spiral</value>
-		<hint>Spiral generator</hint>
-	</string>
-	<string>
-		<key>SpiralCMYKName</key>
-		<value>Spiral CMYK</value>
-		<hint>Spiral generator</hint>
-	</string>
-
-	<string>
-		<key>SpiralPulseName</key>
-		<value>Pulsing Spiral</value>
-		<hint>Spiral Pulse generator</hint>
-	</string>
-	<string>
-		<key>ScanlineName</key>
-		<value>Scanline</value>
-		<hint>Scanline generator</hint>
-	</string>
-	<string>
-		<key>RGBName</key>
-		<value>Red Green Blue</value>
-		<hint>RGB generator</hint>
-	</string>
-
-	<string>
-		<key>SharePromo</key>
-		<value>Try social media tag #plotter</value>
-		<hint>Your drawing is finished. Share it</hint>
-	</string>
-
-	<string>
-		<key>StatusSoFar</key>
-		<value>Time running: </value>
-		<hint>time machine has been drawing</hint>
-	</string>
-
-	<string>
-		<key>StatusRemaining</key>
-		<value>Estimated time left: </value>
-		<hint>time machine will be drawing</hint>
-	</string>
-
-	<string>
-		<key>DisengageMotors</key>
-		<value>Disengage</value>
-		<hint>Manual driving dialog</hint>
-	</string>
-	<string>
-		<key>EngageMotors</key>
-		<value>Engage</value>
-		<hint>Manual driving dialog</hint>
-	</string>
-
 	<string>
 		<key>AboutHTML</key>
 		<value><![CDATA[
@@ -1155,634 +102,1469 @@
         Mark Raynsford, and <a href='https://ca.linkedin.com/in/kington-chu-219923123'>Kington Chu</a>.</p>
       </body>
     </html>
-    ]]>
-		</value>
-		<hint>HTML for About Dialog</hint>
+    ]]></value>
+		<src>/com/marginallyclever/makelangelo/DialogAbout.java</src>
 	</string>
-
-	<string>
-		<key>MenuSettingsRegister</key>
-		<value>Register</value>
-		<hint>Machine Configuration > Register tab title</hint>
-	</string>
-
-	<string>
-		<key>PleaseRegister</key>
-		<value><![CDATA[<p>Register your robot with your Marginally Clever user account to Unlock features and show your support.</p>]]></value>
-		<hint>Machine Configuration > Register robot</hint>
-	</string>
-
-	<string>
-		<key>PleaseRegisterCreateAccountButton</key>
-		<value>Create an account</value>
-		<hint>Machine Configuration > Register robot</hint>
-	</string>
-
-	<string>
-		<key>PleaseRegisterUsername</key>
-		<value>User name</value>
-		<hint>Machine Configuration > Register robot</hint>
-	</string>
-
-	<string>
-		<key>PleaseRegisterPassword</key>
-		<value>Password</value>
-		<hint>Machine Configuration > Register robot</hint>
-	</string>
-
-	<string>
-		<key>MachineNumber</key>
-		<value>Machine #</value>
-		<hint>Prepare image panel</hint>
-	</string>
-
-	<string>
-		<key>MenuResetMachinePreferencesWarning</key>
-		<value>Are you sure you want to erase all your preferences?</value>
-		<hint>Makelangelo > preferences > reset preferences</hint>
-	</string>
-
-	<string>
-		<key>MenuGenerate</key>
-		<value>Generate art</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>MenuNewFile</key>
-		<value>New</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>MenuCaptureImage</key>
-		<value>Capture From Camera</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>LSystemTreeName</key>
-		<value>L System Tree Fractal</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>LimitTestName</key>
-		<value>Limit Test</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>KochTreeName</key>
-		<value>Koch Curve Fractal</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>FibonacciSpiralName</key>
-		<value>Fibonacci Spiral Fractal</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>DragonName</key>
-		<value>Dragon Fractal</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>ClickAndDrag</key>
-		<value>Click &amp; Drag</value>
-		<hint>live drawing panel</hint>
-	</string>
-	<string>
-		<key>configureMachine</key>
-		<value>Settings</value>
-		<hint>open machine settings dialog</hint>
-	</string>
-	<string>
-		<key>MenuResetMachinePreferences</key>
-		<value>Reset Preferences</value>
-		<hint>Preferences menu</hint>
-	</string>
-	<string>
-		<key>MenuLog</key>
-		<value>Log</value>
-		<hint>menu or dialog title</hint>
-	</string>
-
-	<string>
-		<key>PaperSize</key>
-		<value>Paper Size</value>
-		<hint>machine size control panel</hint>
-	</string>
-
-	<string>
-		<key>ServoLengthNeeded</key>
-		<value>Servo wire length:</value>
-		<hint>settings > machine > measurement calculations</hint>
-	</string>
-	<string>
-		<key>StepperLengthNeeded</key>
-		<value>Stepper wire length (each):</value>
-		<hint>settings > machine > measurement calculations</hint>
-	</string>
-	<string>
-		<key>BeltLengthNeeded</key>
-		<value>Timing belt length (each):</value>
-		<hint>settings > machine > measurement calculations</hint>
-	</string>
-	<string>
-		<key>ConverterWanderName</key>
-		<value>Wander</value>
-		<hint>name of Wander converter style</hint>
-	</string>
-	<string>
-		<key>ConverterWanderLineCount</key>
-		<value># Lines</value>
-		<hint>Wander converter style parameter</hint>
-	</string>
-
-	<string>
-		<key>ConverterMultipassName</key>
-		<value>Multipass</value>
-		<hint>name of Multipass converter style</hint>
-	</string>
-	<string>
-		<key>ConverterMultipassAngle</key>
-		<value>Angle (degrees)</value>
-		<hint>Multipass converter option</hint>
-	</string>
-	<string>
-		<key>ConverterMultipassLevels</key>
-		<value>Levels</value>
-		<hint>Multipass converter option</hint>
-	</string>
-
-	<string>
-		<key>firmwareVersionBadTitle</key>
-		<value>Firmware update</value>
-		<hint>Software is too new for firmware</hint>
-	</string>
-
-	<string>
-		<key>HardwareVersion</key>
-		<value>Model: </value>
-		<hint>What is the hardware model of this robot?</hint>
-	</string>
-
 	<string>
 		<key>firmwareVersionBadMessage</key>
 		<value><![CDATA[<html><body>The firmware (code in the brain of your robot) is not the version I expect. I found <strong>v%VERSION%</strong>.<br/>Please visit <a href="https://www.marginallyclever.com/product/makelangelo-firmware/">https://www.marginallyclever.com/product/makelangelo-firmware/</a><br>
 		   for the latest firmware.<br>Please visit <a href="https://www.marginallyclever.com/product/makelangelo-software/">https://www.marginallyclever.com/product/makelangelo-software/</a> for the latest software.</html></body>]]></value>
-		<hint>Software is too new for firmware</hint>
-	</string>
-
-	<string>
-		<key>TextSize</key>
-		<value>Size</value>
-		<hint>Generator_Text_Panel</hint>
+		<src>/com/marginallyclever/makelangelo/DialogBadFirmwareVersion.java</src>
 	</string>
 	<string>
-		<key>TextFont</key>
-		<value>Font</value>
-		<hint>Generator_Text_Panel</hint>
+		<key>firmwareVersionBadTitle</key>
+		<value>Firmware update</value>
+		<src>/com/marginallyclever/makelangelo/DialogBadFirmwareVersion.java</src>
 	</string>
 	<string>
-		<key>FontFace</key>
-		<value>Typeface</value>
-		<hint>Generator_Text_Panel</hint>
+		<key>DrivePlotterGUI.title</key>
+		<value>Drive plotter</value>
+		<src>/com/marginallyclever/makelangelo/DrivePlotterGUI.java</src>
 	</string>
 	<string>
-		<key>TextMessage</key>
-		<value>Message</value>
-		<hint>Generator_Text_Panel</hint>
+		<key>DrivePlotterGUI.JogMotors</key>
+		<value>Jog Motors (FK)</value>
+		<src>/com/marginallyclever/makelangelo/DrivePlotterGUI.java</src>
 	</string>
 	<string>
-		<key>CaptureImageTitle</key>
-		<value>Capture Camera Image</value>
-		<hint>Capture Image from host camera</hint>
+		<key>DrivePlotterGUI.JogLeftIn</key>
+		<value>Left in</value>
+		<src>/com/marginallyclever/makelangelo/DrivePlotterGUI.java</src>
 	</string>
 	<string>
-		<key>CaptureImage</key>
-		<value>Capture</value>
-		<hint>Capture Image from host camera</hint>
+		<key>DrivePlotterGUI.JogRightIn</key>
+		<value>Right in</value>
+		<src>/com/marginallyclever/makelangelo/DrivePlotterGUI.java</src>
 	</string>
 	<string>
-		<key>UseCapture</key>
-		<value>Use</value>
-		<hint>Use Image for processing</hint>
+		<key>DrivePlotterGUI.JogLeftOut</key>
+		<value>Left out</value>
+		<src>/com/marginallyclever/makelangelo/DrivePlotterGUI.java</src>
 	</string>
 	<string>
-		<key>CancelCapture</key>
-		<value>Cancel</value>
-		<hint>Cancel Capture. Don't process.</hint>
+		<key>DrivePlotterGUI.JogRightOut</key>
+		<value>Right out</value>
+		<src>/com/marginallyclever/makelangelo/DrivePlotterGUI.java</src>
 	</string>
 	<string>
-		<key>AWB</key>
-		<value>Automatic White Balance</value>
-		<hint>Image Automatic White Balance setting</hint>
+		<key>DrivePlotterGUI.ButtonConnect</key>
+		<value>Connect</value>
+		<src>/com/marginallyclever/makelangelo/DrivePlotterGUI.java</src>
 	</string>
 	<string>
-		<key>DRC</key>
-		<value>Dynamic Range</value>
-		<hint>Image Dynamic Range Setting</hint>
+		<key>DrivePlotterGUI.ButtonDisconnect</key>
+		<value>Disconnect</value>
+		<src>/com/marginallyclever/makelangelo/DrivePlotterGUI.java</src>
 	</string>
 	<string>
-		<key>Exposure</key>
-		<value>Exposure</value>
-		<hint>Image Exposure Setting</hint>
+		<key>DrivePlotterGUI.Utilities</key>
+		<value>Utilities</value>
+		<src>/com/marginallyclever/makelangelo/DrivePlotterGUI.java</src>
 	</string>
 	<string>
-		<key>Contrast</key>
-		<value>Contrast</value>
-		<hint>Image Contrast Setting</hint>
+		<key>DrivePlotterGUI.EngageMotors</key>
+		<value>Engage</value>
+		<src>/com/marginallyclever/makelangelo/DrivePlotterGUI.java</src>
 	</string>
 	<string>
-		<key>Quality</key>
-		<value>Quality</value>
-		<hint>Image Quality Setting</hint>
+		<key>DrivePlotterGUI.DisengageMotors</key>
+		<value>Disengage</value>
+		<src>/com/marginallyclever/makelangelo/DrivePlotterGUI.java</src>
 	</string>
 	<string>
-		<key>Sharpness</key>
-		<value>Sharpness</value>
-		<hint>Image Sharpness Setting</hint>
+		<key>DrivePlotterGUI.PenUp</key>
+		<value>Pen up</value>
+		<src>/com/marginallyclever/makelangelo/DrivePlotterGUI.java</src>
 	</string>
 	<string>
-		<key>Off</key>
-		<value>Off</value>
-		<hint></hint>
+		<key>DrivePlotterGUI.PenDown</key>
+		<value>Pen down</value>
+		<src>/com/marginallyclever/makelangelo/DrivePlotterGUI.java</src>
 	</string>
 	<string>
-		<key>Auto</key>
-		<value>Auto</value>
-		<hint></hint>
+		<key>DrivePlotterGUI.SetHome</key>
+		<value>Set home</value>
+		<src>/com/marginallyclever/makelangelo/DrivePlotterGUI.java</src>
 	</string>
 	<string>
-		<key>Sun</key>
-		<value>Sun</value>
-		<hint></hint>
+		<key>DrivePlotterGUI.FindHome</key>
+		<value>Find home</value>
+		<src>/com/marginallyclever/makelangelo/DrivePlotterGUI.java</src>
 	</string>
 	<string>
-		<key>Cloud</key>
-		<value>Cloud</value>
-		<hint></hint>
+		<key>DrivePlotterGUI.GoHome</key>
+		<value>Go home</value>
+		<src>/com/marginallyclever/makelangelo/DrivePlotterGUI.java</src>
 	</string>
 	<string>
-		<key>Shade</key>
-		<value>Shade</value>
-		<hint></hint>
+		<key>DrivePlotterGUI.drawImagePanel</key>
+		<value>Draw image</value>
+		<src>/com/marginallyclever/makelangelo/DrivePlotterGUI.java</src>
 	</string>
 	<string>
-		<key>Tungsten</key>
-		<value>Tungsten</value>
-		<hint></hint>
+		<key>DrivePlotterGUI.Start</key>
+		<value>Start</value>
+		<src>/com/marginallyclever/makelangelo/DrivePlotterGUI.java</src>
 	</string>
 	<string>
-		<key>Fluorescent</key>
-		<value>Fluorescent</value>
-		<hint></hint>
+		<key>DrivePlotterGUI.StartAtLine</key>
+		<value>Start at line #</value>
+		<src>/com/marginallyclever/makelangelo/DrivePlotterGUI.java</src>
 	</string>
 	<string>
-		<key>Incandescent</key>
-		<value>Incandescent</value>
-		<hint></hint>
+		<key>DrivePlotterGUI.Pause</key>
+		<value>Pause</value>
+		<src>/com/marginallyclever/makelangelo/DrivePlotterGUI.java</src>
 	</string>
 	<string>
-		<key>Flash</key>
-		<value>Flash</value>
-		<hint></hint>
+		<key>DrivePlotterGUI.Unpause</key>
+		<value>Unpause</value>
+		<src>/com/marginallyclever/makelangelo/DrivePlotterGUI.java</src>
 	</string>
 	<string>
-		<key>Horizon</key>
-		<value>Horizon</value>
-		<hint></hint>
+		<key>DrivePlotterGUI.Halt</key>
+		<value>Halt</value>
+		<src>/com/marginallyclever/makelangelo/DrivePlotterGUI.java</src>
 	</string>
 	<string>
-		<key>High</key>
-		<value>High</value>
-		<hint></hint>
+		<key>DrivePlotterGUI.AxisDriveControls</key>
+		<value>Cartesian (IK)</value>
+		<src>/com/marginallyclever/makelangelo/DrivePlotterGUI.java</src>
 	</string>
 	<string>
-		<key>Medium</key>
-		<value>Medium</value>
-		<hint></hint>
+		<key>PaperSize</key>
+		<value>Paper Size</value>
+		<src>/com/marginallyclever/makelangelo/EditPaperGUI.java</src>
 	</string>
 	<string>
-		<key>Low</key>
-		<value>Low</value>
-		<hint></hint>
+		<key>EditPaperGUI.PaperWidth</key>
+		<value>Paper width</value>
+		<src>/com/marginallyclever/makelangelo/EditPaperGUI.java</src>
 	</string>
 	<string>
-		<key>Antishake</key>
-		<value>Antishake</value>
-		<hint></hint>
+		<key>EditPaperGUI.PaperHeight</key>
+		<value>Paper height</value>
+		<src>/com/marginallyclever/makelangelo/EditPaperGUI.java</src>
 	</string>
 	<string>
-		<key>Backlight</key>
-		<value>Backlight</value>
-		<hint></hint>
+		<key>EditPaperGUI.PaperMargin</key>
+		<value>Margin (%)</value>
+		<src>/com/marginallyclever/makelangelo/EditPaperGUI.java</src>
 	</string>
 	<string>
-		<key>Beach</key>
-		<value>Beach</value>
-		<hint></hint>
-	</string>
-	<string>
-		<key>Fireworks</key>
-		<value>Fireworks</value>
-		<hint></hint>
-	</string>
-	<string>
-		<key>FixedFPS</key>
-		<value>FixedFPS</value>
-		<hint></hint>
-	</string>
-	<string>
-		<key>Night</key>
-		<value>Night</value>
-		<hint></hint>
-	</string>
-	<string>
-		<key>NightPreview</key>
-		<value>NightPreview</value>
-		<hint></hint>
-	</string>
-	<string>
-		<key>Snow</key>
-		<value>Snow</value>
-		<hint></hint>
-	</string>
-	<string>
-		<key>Sports</key>
-		<value>Sports</value>
-		<hint></hint>
-	</string>
-	<string>
-		<key>Spotlight</key>
-		<value>Spotlight</value>
-		<hint></hint>
-	</string>
-	<string>
-		<key>Verylong</key>
-		<value>Verylong</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>Choose</key>
-		<value>Choose</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>Import</key>
-		<value>Import</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>Export</key>
-		<value>Export</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>Reset</key>
-		<value>Reset</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>Help</key>
-		<value>Help</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>Art Pipeline</key>
-		<value>Art Pipeline</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>paper color</key>
+		<key>EditPaperGUI.paperColor</key>
 		<value>Paper color</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>Crosshatch</key>
-		<value>Crosshatch</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>MoireName</key>
-		<value>Moire</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>horizontal</key>
-		<value>Horizontal</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>vertical</key>
-		<value>Vertical</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>Sandy Noble Style</key>
-		<value>Sandy Noble Style</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>ConverterIntensity</key>
-		<value>Intensity</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>top right</key>
-		<value>Top right</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>top left</key>
-		<value>Top left</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>bottom right</key>
-		<value>Bottom right</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>bottom left</key>
-		<value>Bottom left</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>center</key>
-		<value>Center</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>spiralToCorners</key>
-		<value>Spiral to corners</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>SpiralPulseSpacing</key>
-		<value>Space between rings</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>SpiralPulseHeight</key>
-		<value>Pulse height</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>voronoiStipplingCutoff</key>
-		<value>Low-pass cutoff</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>voronoiStipplingDrawBorders</key>
-		<value>Draw borders?</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>converterWanderCMYK</key>
-		<value>CMYK?</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>FillPageName</key>
-		<value>Fill page</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>GosperCurveName</key>
-		<value>Gosper curve</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>GosperCurveOrder</key>
-		<value>Order</value>
-		<hint></hint>
-	</string>
-
-	<string>
-		<key>Resize</key>
-		<value>Resize</value>
-		<hint>Art Pipeline</hint>
+		<src>/com/marginallyclever/makelangelo/EditPaperGUI.java</src>
 	</string>
 	<string>
-		<key>Flip</key>
-		<value>Flip</value>
-		<hint>Art Pipeline</hint>
+		<key>EditPlotterGUI.nickname</key>
+		<value>Nickname</value>
+		<src>/com/marginallyclever/makelangelo/EditPlotterGUI.java</src>
 	</string>
 	<string>
-		<key>FlipNone</key>
-		<value>No Flip</value>
-		<hint>Art Pipeline</hint>
+		<key>EditPlotterGUI.machineWidth</key>
+		<value>Width</value>
+		<src>/com/marginallyclever/makelangelo/EditPlotterGUI.java</src>
 	</string>
 	<string>
-		<key>FlipH</key>
-		<value>Flip horizontal</value>
-		<hint>Art Pipeline</hint>
+		<key>EditPlotterGUI.machineHeight</key>
+		<value>Height</value>
+		<src>/com/marginallyclever/makelangelo/EditPlotterGUI.java</src>
 	</string>
 	<string>
-		<key>FlipV</key>
-		<value>Flip vertical</value>
-		<hint>Art Pipeline</hint>
-	</string>
-	
-	<string>
-		<key>Reorder</key>
-		<value>Reorder</value>
-		<hint>Art Pipeline</hint>
-	</string>
-	
-	<string>
-		<key>Simplify</key>
-		<value>Simplify</value>
-		<hint>Art Pipeline</hint>
+		<key>EditPlotterGUI.totalStepperNeeded</key>
+		<value>Stepper cable length</value>
+		<src>/com/marginallyclever/makelangelo/EditPlotterGUI.java</src>
 	</string>
 	<string>
-		<key>Crop to margins</key>
-		<value>Crop to margins</value>
-		<hint>Art Pipeline</hint>
+		<key>EditPlotterGUI.totalBeltNeeded</key>
+		<value>Belt length (combined, mm)</value>
+		<src>/com/marginallyclever/makelangelo/EditPlotterGUI.java</src>
 	</string>
-
 	<string>
-		<key>GraphPaperName</key>
-		<value>Graph Paper</value>
-		<hint>Generator</hint>
+		<key>EditPlotterGUI.totalServoNeeded</key>
+		<value>Servo cable length</value>
+		<src>/com/marginallyclever/makelangelo/EditPlotterGUI.java</src>
 	</string>
-	
 	<string>
-		<key>Package</key>
-		<value>Papercraft Box</value>
-		<hint>Generator</hint>
+		<key>EditPlotterGUI.travelFeedRate</key>
+		<value>Travel speed</value>
+		<src>/com/marginallyclever/makelangelo/EditPlotterGUI.java</src>
 	</string>
-
 	<string>
-		<key>Polyeder</key>
-		<value>Papercraft Polyhedron</value>
-		<hint>Generator</hint>
+		<key>EditPlotterGUI.drawFeedRate</key>
+		<value>Drawing speed</value>
+		<src>/com/marginallyclever/makelangelo/EditPlotterGUI.java</src>
 	</string>
-	
 	<string>
-		<key>Makelangelo.menuConvert</key>
-		<value>Convert picture</value>
+		<key>EditPlotterGUI.acceleration</key>
+		<value>Acceleration</value>
+		<src>/com/marginallyclever/makelangelo/EditPlotterGUI.java</src>
 	</string>
-
 	<string>
-		<key>Makelangelo.menuGenerate</key>
-		<value>Generate path</value>
+		<key>EditPlotterGUI.minimumSegmentTime</key>
+		<value>Minimum segment time</value>
+		<src>/com/marginallyclever/makelangelo/EditPlotterGUI.java</src>
 	</string>
-	
 	<string>
-		<key>Makelangelo.menuEdit</key>
-		<value>Edit</value>
+		<key>EditPlotterGUI.penZRate</key>
+		<value>Pen lift speed</value>
+		<src>/com/marginallyclever/makelangelo/EditPlotterGUI.java</src>
 	</string>
-	
+	<string>
+		<key>EditPlotterGUI.penUp</key>
+		<value>Pen up angle</value>
+		<src>/com/marginallyclever/makelangelo/EditPlotterGUI.java</src>
+	</string>
+	<string>
+		<key>EditPlotterGUI.penDown</key>
+		<value>Pen down angle</value>
+		<src>/com/marginallyclever/makelangelo/EditPlotterGUI.java</src>
+	</string>
+	<string>
+		<key>EditPlotterGUI.nickname.tooltip</key>
+		<value>A friendly name for your robot</value>
+		<src>/com/marginallyclever/makelangelo/EditPlotterGUI.java</src>
+	</string>
+	<string>
+		<key>EditPlotterGUI.machineWidth.tooltip</key>
+		<value>Millimeters from center of one motor to the other.</value>
+		<src>/com/marginallyclever/makelangelo/EditPlotterGUI.java</src>
+	</string>
+	<string>
+		<key>EditPlotterGUI.machineHeight.tooltip</key>
+		<value>Millimeters from center of motor to bottom of drawing area.</value>
+		<src>/com/marginallyclever/makelangelo/EditPlotterGUI.java</src>
+	</string>
+	<string>
+		<key>EditPlotterGUI.totalBeltNeeded.tooltip</key>
+		<value>Length of both timing belts added together, in millimeters.</value>
+		<src>/com/marginallyclever/makelangelo/EditPlotterGUI.java</src>
+	</string>
+	<string>
+		<key>EditPlotterGUI.totalServoNeeded.tooltip</key>
+		<value>Length of servo extension cable, in millimeters.</value>
+		<src>/com/marginallyclever/makelangelo/EditPlotterGUI.java</src>
+	</string>
+	<string>
+		<key>EditPlotterGUI.totalStepperNeeded.tooltip</key>
+		<value>Length of cable for each stepper motor, combined, in millimeters.</value>
+		<src>/com/marginallyclever/makelangelo/EditPlotterGUI.java</src>
+	</string>
+	<string>
+		<key>EditPlotterGUI.travelFeedRate.tooltip</key>
+		<value>mm/s speed while not drawing.</value>
+		<src>/com/marginallyclever/makelangelo/EditPlotterGUI.java</src>
+	</string>
+	<string>
+		<key>EditPlotterGUI.drawFeedRate.tooltip</key>
+		<value>mm/s speed while drawing.</value>
+		<src>/com/marginallyclever/makelangelo/EditPlotterGUI.java</src>
+	</string>
+	<string>
+		<key>EditPlotterGUI.acceleration.tooltip</key>
+		<value>mm/s/s linear acceleration of pen.</value>
+		<src>/com/marginallyclever/makelangelo/EditPlotterGUI.java</src>
+	</string>
+	<string>
+		<key>EditPlotterGUI.minimumSegmentTime.tooltip</key>
+		<value>microsconds (µs).  Bigger number means slow down earlier to avoid hiccups and jittery motion.</value>
+		<src>/com/marginallyclever/makelangelo/EditPlotterGUI.java</src>
+	</string>
+	<string>
+		<key>EditPlotterGUI.penZRate.tooltip</key>
+		<value>degrees/s lifting and lowering the pen.</value>
+		<src>/com/marginallyclever/makelangelo/EditPlotterGUI.java</src>
+	</string>
+	<string>
+		<key>EditPlotterGUI.penUp.tooltip</key>
+		<value>Angle of servo when pen is travelling.  Default 90 degrees.</value>
+		<src>/com/marginallyclever/makelangelo/EditPlotterGUI.java</src>
+	</string>
+	<string>
+		<key>EditPlotterGUI.penDown.tooltip</key>
+		<value>Angle of servo when pen is drawing.  Default 30 degrees.</value>
+		<src>/com/marginallyclever/makelangelo/EditPlotterGUI.java</src>
+	</string>
+	<string>
+		<key>LoadImageDialog.FileTypeImage</key>
+		<value>Image (jpg/bmp/png/gif)</value>
+		<src>/com/marginallyclever/makelangelo/LoadImageDialog.java</src>
+	</string>
+	<string>
+		<key>LoadImageDialog.ConversionStyle</key>
+		<value>Style</value>
+		<src>/com/marginallyclever/makelangelo/LoadImageDialog.java</src>
+	</string>
+	<string>
+		<key>LoadImageDialog.ConversionOptions</key>
+		<value>Conversion options</value>
+		<src>/com/marginallyclever/makelangelo/LoadImageDialog.java</src>
+	</string>
+	<string>
+		<key>LoadImageDialog.Converting</key>
+		<value>Converting</value>
+		<src>/com/marginallyclever/makelangelo/LoadImageDialog.java</src>
+	</string>
 	<string>
 		<key>Makelangelo.capturePhoto</key>
 		<value>Capture photo</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
 	</string>
-	
+	<string>
+		<key>Makelangelo.collectAnonymousMetricsOnUpdate</key>
+		<value><![CDATA[<html><body>May Marginally Clever Robots, Ltd. collect anonymous usage metrics about this app?<br><br>You can update this any time in <i>Makelangelo &gt; Preferences &gt; Metrics</i></body></html>
+		]]></value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.FileMenu</key>
+		<value>Makelangelo</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.action.new</key>
+		<value>New</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>AreYouSure</key>
+		<value>Are You Sure?</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.action.save</key>
+		<value>Save</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.MenuPreferences</key>
+		<value>Preferences</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.MenuQuit</key>
+		<value>Quit</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.editPaper</key>
+		<value>Edit paper</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.editPen</key>
+		<value>Edit pen</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.menuGenerate</key>
+		<value>Generate path</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.menuConvert</key>
+		<value>Convert picture</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.menuEdit</key>
+		<value>Edit</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.action.optimize</key>
+		<value>Optimize</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.action.simplify</key>
+		<value>Simplify</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.action.rotate90</key>
+		<value>Rotate 90 counter-clockwise</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.action.rotate90cw</key>
+		<value>Rotate 90 clockwise</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.action.flipVertical</key>
+		<value>Flip vertical</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.action.flipHorizontal</key>
+		<value>Flip horizontal</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.action.scaleToHeight</key>
+		<value>Scale to paper height</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.action.scaleToWidth</key>
+		<value>Scale to paper width</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.action.center</key>
+		<value>Center image</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.action.crop</key>
+		<value>Crop image to paper</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
 	<string>
 		<key>Makelangelo.menuView</key>
 		<value>View</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
 	</string>
-	
 	<string>
-		<key>Makelangelo.menuRobot</key>
-		<value>Robot</value>
+		<key>Makelangelo.viewPenUp</key>
+		<value>Show pen up moves</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.ZoomOut</key>
+		<value>Zoom out</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.ZoomIn</key>
+		<value>Zoom in</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.ZoomFit</key>
+		<value>Zoom to fit</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.ShowLog</key>
+		<value>Open log</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>Log</key>
+		<value>Log</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
 	</string>
 	<string>
 		<key>Makelangelo.menuHelp</key>
 		<value>Help</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.menuRobot</key>
+		<value>Robot</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.drivePlotter</key>
+		<value>Drive Plotter</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.appName</key>
+		<value>Makelangelo %1</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.ConfirmQuitQuestion</key>
+		<value>Are you sure you want to quit?</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.ConfirmQuitTitle</key>
+		<value>Exit</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.OpeningFile</key>
+		<value>Opening %1</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>Makelangelo.UnknownFileType</key>
+		<value>Unknown file type</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
+		<key>NewPlotterGUI.HardwareVersion</key>
+		<value>Model: </value>
+		<src>/com/marginallyclever/makelangelo/NewPlotterGUI.java</src>
+	</string>
+	<string>
+		<key>NodeConnectorTransformedImage.inputFileFormat</key>
+		<value>Input file</value>
+		<src>/com/marginallyclever/makelangelo/nodeConnector/NodeConnectorTransformedImage.java</src>
+	</string>
+	<string>
+		<key>Converter_Boxes.inputMaxBoxSize.tooltip</key>
+		<value>Largest box size, in millimeters.</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Boxes.java</src>
+	</string>
+	<string>
+		<key>ImageConverter.inputCutoff.tooltip</key>
+		<value>Brightness cutoff (0..256). Anything darker will be drawn.  Anything lighter will be ignored.</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Boxes.java</src>
+	</string>
+	<string>
+		<key>ImageConverter.inputLowPass.tooltip</key>
+		<value>Brightness low pass (0..256)</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Boxes.java</src>
+	</string>
+	<string>
+		<key>ImageConverter.inputHighPass.tooltip</key>
+		<value>Brightness high pass (0..256)</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Boxes.java</src>
+	</string>
+	<string>
+		<key>Converter_Boxes.name</key>
+		<value>Boxxy</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Boxes.java</src>
+	</string>
+	<string>
+		<key>Converter_CMYK.inputStepSize.tooltip</key>
+		<value>Discance between scanlines, in millimeters</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_CMYK.java</src>
+	</string>
+	<string>
+		<key>Converter_CMYK.outputTurtleC.tooltip</key>
+		<value>Cyan turtle</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_CMYK.java</src>
+	</string>
+	<string>
+		<key>Converter_CMYK.outputTurtleM.tooltip</key>
+		<value>Magenta turtle</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_CMYK.java</src>
+	</string>
+	<string>
+		<key>Converter_CMYK.outputTurtleY.tooltip</key>
+		<value>Yellow turtle</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_CMYK.java</src>
+	</string>
+	<string>
+		<key>Converter_CMYK.name</key>
+		<value>CMYK scan lines</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_CMYK.java</src>
+	</string>
+	<string>
+		<key>Converter_Crosshatch.inputStepSize.tooltip</key>
+		<value>Distance between lines (in pixels?)</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Crosshatch.java</src>
+	</string>
+	<string>
+		<key>Converter_Crosshatch.name</key>
+		<value>Crosshatch</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Crosshatch.java</src>
+	</string>
+	<string>
+		<key>Converter_Moire.inputDirection.horizontal</key>
+		<value>Horizontal</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Moire.java</src>
+	</string>
+	<string>
+		<key>Converter_Moire.inputDirection.vertical</key>
+		<value>Vertical</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Moire.java</src>
+	</string>
+	<string>
+		<key>Converter_Moire.inputHeight.tooltip</key>
+		<value>Height of waves</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Moire.java</src>
+	</string>
+	<string>
+		<key>Converter_Moire.inputDirection.tooltip</key>
+		<value>Direction of waves</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Moire.java</src>
+	</string>
+	<string>
+		<key>Converter_Moire.name</key>
+		<value>Moire</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Moire.java</src>
+	</string>
+	<string>
+		<key>Converter_Multipass.inputAngle.tooltip</key>
+		<value>Angle of the lines, in degrees.  0 is horizontal, increasing angle turns counter-clockwise.</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Multipass.java</src>
+	</string>
+	<string>
+		<key>Converter_Multipass.inputPasses.tooltip</key>
+		<value>How many passes at different cutoff levels?  Default is 4.</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Multipass.java</src>
+	</string>
+	<string>
+		<key>Converter_Multipass.name</key>
+		<value>Multipass</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Multipass.java</src>
+	</string>
+	<string>
+		<key>horizontal</key>
+		<value>Horizontal</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Pulse.java</src>
+	</string>
+	<string>
+		<key>vertical</key>
+		<value>Vertical</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Pulse.java</src>
+	</string>
+	<string>
+		<key>Converter_Pulse.inputHeight.tooltip</key>
+		<value>Height of pulses, in millimeters.</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Pulse.java</src>
+	</string>
+	<string>
+		<key>Converter_Pulse.inputDirection.tooltip</key>
+		<value>Direction of pulses.</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Pulse.java</src>
+	</string>
+	<string>
+		<key>Converter_Pulse.name</key>
+		<value>Pulse</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Pulse.java</src>
+	</string>
+	<string>
+		<key>Converter_RandomLines.inputLines.tooltip</key>
+		<value>How many lines to draw on the image</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_RandomLines.java</src>
+	</string>
+	<string>
+		<key>Converter_RandomLines.name</key>
+		<value>Random Lines</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_RandomLines.java</src>
+	</string>
+	<string>
+		<key>Converter_Sandy.inputBlockScale</key>
+		<value>Rings </value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Sandy.java</src>
+	</string>
+	<string>
+		<key>Converter_Sandy.inputCenter</key>
+		<value>Center position</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Sandy.java</src>
+	</string>
+	<string>
+		<key>Converter_Sandy.inputCenter.topRight</key>
+		<value>Top right</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Sandy.java</src>
+	</string>
+	<string>
+		<key>Converter_Sandy.inputCenter.topLeft</key>
+		<value>Top left</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Sandy.java</src>
+	</string>
+	<string>
+		<key>Converter_Sandy.inputCenter.bottomLeft</key>
+		<value>Bottom left</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Sandy.java</src>
+	</string>
+	<string>
+		<key>Converter_Sandy.inputCenter.bottomRight</key>
+		<value>Bottom right</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Sandy.java</src>
+	</string>
+	<string>
+		<key>Converter_Sandy.inputCenter.center</key>
+		<value>Center</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Sandy.java</src>
+	</string>
+	<string>
+		<key>Converter_Sandy.inputBlockScale.tooltip</key>
+		<value>Size of blocks</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Sandy.java</src>
+	</string>
+	<string>
+		<key>Converter_Sandy.inputCenter.tooltip</key>
+		<value>Direction</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Sandy.java</src>
+	</string>
+	<string>
+		<key>Converter_Sandy.name</key>
+		<value>Sandy Noble style</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Sandy.java</src>
+	</string>
+	<string>
+		<key>Converter_Spiral.toCorners.tooltip</key>
+		<value>Check to convert across the entire paper.  Uncheck to stop at the first paper edge.</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Spiral.java</src>
+	</string>
+	<string>
+		<key>Converter_Spiral.name</key>
+		<value>Spiral</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Spiral.java</src>
+	</string>
+	<string>
+		<key>Converter_SpiralPulse.convertToCorners.tooltip</key>
+		<value>Check to convert across the entire paper.  Uncheck to stop at the first paper edge.</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_SpiralPulse.java</src>
+	</string>
+	<string>
+		<key>Converter_SpiralPulse.inputDensity.tooltip</key>
+		<value>How close together are the pulses?</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_SpiralPulse.java</src>
+	</string>
+	<string>
+		<key>Converter_SpiralPulse.inputHeight.tooltip</key>
+		<value>How tall are the pulses?</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_SpiralPulse.java</src>
+	</string>
+	<string>
+		<key>Converter_SpiralPulse.inputSpacing.tooltip</key>
+		<value>How much room between one spiral and the next?</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_SpiralPulse.java</src>
+	</string>
+	<string>
+		<key>Converter_SpiralPulse.name</key>
+		<value>Pulsing Spiral</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_SpiralPulse.java</src>
+	</string>
+	<string>
+		<key>Converter_Spiral_CMYK.toCorners.tooltip</key>
+		<value>Check to convert across the entire paper.  Uncheck to stop at the first paper edge.</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Spiral_CMYK.java</src>
+	</string>
+	<string>
+		<key>Converter_Spiral_CMYK.name</key>
+		<value>CMYK Spirals</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Converter_Spiral_CMYK.java</src>
+	</string>
+	<string>
+		<key>Converter_CannyEdge.name</key>
+		<value>Canny edge</value>
+		<src>/com/marginallyclever/makelangelo/nodes/deprecated/Converter_CannyEdge.java</src>
+	</string>
+	<string>
+		<key>Converter_ColorFloodFill.name</key>
+		<value>Color flood fill</value>
+		<src>/com/marginallyclever/makelangelo/nodes/deprecated/Converter_ColorFloodFill.java</src>
+	</string>
+	<string>
+		<key>Converter_MagicCircle.name</key>
+		<value>Magic circle</value>
+		<src>/com/marginallyclever/makelangelo/nodes/deprecated/Converter_MagicCircle.java</src>
+	</string>
+	<string>
+		<key>Converter_Wander.name</key>
+		<value>Wander</value>
+		<src>/com/marginallyclever/makelangelo/nodes/deprecated/Converter_Wander.java</src>
+	</string>
+	<string>
+		<key>Converter_ZigZag.name</key>
+		<value>ZigZag</value>
+		<src>/com/marginallyclever/makelangelo/nodes/deprecated/Converter_ZigZag.java</src>
+	</string>
+	<string>
+		<key>LoadDXF.filter</key>
+		<value>DXF files (DXF)</value>
+		<src>/com/marginallyclever/makelangelo/nodes/dxf/LoadDXF.java</src>
+	</string>
+	<string>
+		<key>LoadDXF.inputFile.tooltip</key>
+		<value>The file to load</value>
+		<src>/com/marginallyclever/makelangelo/nodes/dxf/LoadDXF.java</src>
+	</string>
+	<string>
+		<key>LoadDXF.name</key>
+		<value>Load DXF</value>
+		<src>/com/marginallyclever/makelangelo/nodes/dxf/LoadDXF.java</src>
+	</string>
+	<string>
+		<key>SaveDXF.name</key>
+		<value>Save DXF</value>
+		<src>/com/marginallyclever/makelangelo/nodes/dxf/SaveDXF.java</src>
+	</string>
+	<string>
+		<key>Edit_TransformTurtle.inputTurtle</key>
+		<value>Turtle</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Edit_TransformTurtle.java</src>
+	</string>
+	<string>
+		<key>Edit_TransformTurtle.inputAngle</key>
+		<value>Angle</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Edit_TransformTurtle.java</src>
+	</string>
+	<string>
+		<key>Edit_TransformTurtle.inputScale</key>
+		<value>Scale</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Edit_TransformTurtle.java</src>
+	</string>
+	<string>
+		<key>Edit_TransformTurtle.inputTurtle.tooltip</key>
+		<value>Turtle</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Edit_TransformTurtle.java</src>
+	</string>
+	<string>
+		<key>NodeConnectorAngle.inputAngle.tooltip</key>
+		<value>Angle</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Edit_TransformTurtle.java</src>
+	</string>
+	<string>
+		<key>NodeConnectorAngle.inputScale.tooltip</key>
+		<value>Scale</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Edit_TransformTurtle.java</src>
+	</string>
+	<string>
+		<key>Edit_TransformTurtle.name</key>
+		<value>Transform Turtle</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Edit_TransformTurtle.java</src>
+	</string>
+	<string>
+		<key>Generator_Dragon.inputOrder.tooltip</key>
+		<value>Recursive fractals repeat inside each other.  This number controls how many levels 'deep' to go.</value>
+		<src>/com/marginallyclever/makelangelo/nodes/fractals/Generator_Dragon.java</src>
+	</string>
+	<string>
+		<key>Generator_Dragon.name</key>
+		<value>Dragon</value>
+		<src>/com/marginallyclever/makelangelo/nodes/fractals/Generator_Dragon.java</src>
+	</string>
+	<string>
+		<key>Generator_FibonacciSpiral.inputOrder.tooltip</key>
+		<value>Recursive fractals repeat inside each other.  This number controls how many levels 'deep' to go.</value>
+		<src>/com/marginallyclever/makelangelo/nodes/fractals/Generator_FibonacciSpiral.java</src>
+	</string>
+	<string>
+		<key>Generator_FibonacciSpiral.name</key>
+		<value>Fibonacci spiral</value>
+		<src>/com/marginallyclever/makelangelo/nodes/fractals/Generator_FibonacciSpiral.java</src>
+	</string>
+	<string>
+		<key>Generator_GosperCurve.inputOrder.tooltip</key>
+		<value>Recursive fractals repeat inside each other.  This number controls how many levels 'deep' to go.</value>
+		<src>/com/marginallyclever/makelangelo/nodes/fractals/Generator_GosperCurve.java</src>
+	</string>
+	<string>
+		<key>Generator_GosperCurve.name</key>
+		<value>Gosper curve</value>
+		<src>/com/marginallyclever/makelangelo/nodes/fractals/Generator_GosperCurve.java</src>
+	</string>
+	<string>
+		<key>Generator_HilbertCurve.inputOrder.tooltip</key>
+		<value>Recursive fractals repeat inside each other.  This number controls how many levels 'deep' to go.</value>
+		<src>/com/marginallyclever/makelangelo/nodes/fractals/Generator_HilbertCurve.java</src>
+	</string>
+	<string>
+		<key>Generator_HilbertCurve.name</key>
+		<value>Hilbert curve</value>
+		<src>/com/marginallyclever/makelangelo/nodes/fractals/Generator_HilbertCurve.java</src>
+	</string>
+	<string>
+		<key>Generator_KochCurve.inputOrder.tooltip</key>
+		<value>Recursive fractals repeat inside each other.  This number controls how many levels 'deep' to go.</value>
+		<src>/com/marginallyclever/makelangelo/nodes/fractals/Generator_KochCurve.java</src>
+	</string>
+	<string>
+		<key>Generator_KochCurve.name</key>
+		<value>Koch curve</value>
+		<src>/com/marginallyclever/makelangelo/nodes/fractals/Generator_KochCurve.java</src>
+	</string>
+	<string>
+		<key>Generator_SierpinskiTriangle.inputOrder.tooltip</key>
+		<value>Recursive fractals repeat inside each other.  This number controls how many levels 'deep' to go.</value>
+		<src>/com/marginallyclever/makelangelo/nodes/fractals/Generator_SierpinskiTriangle.java</src>
+	</string>
+	<string>
+		<key>Generator_SierpinskiTriangle.name</key>
+		<value>Sierpinski triangle</value>
+		<src>/com/marginallyclever/makelangelo/nodes/fractals/Generator_SierpinskiTriangle.java</src>
+	</string>
+	<string>
+		<key>LoadGCode.filter</key>
+		<value>GCode files (ngc)</value>
+		<src>/com/marginallyclever/makelangelo/nodes/gcode/LoadGCode.java</src>
+	</string>
+	<string>
+		<key>LoadGCode.inputFile.tooltip</key>
+		<value>The file to load</value>
+		<src>/com/marginallyclever/makelangelo/nodes/gcode/LoadGCode.java</src>
+	</string>
+	<string>
+		<key>LoadGCode.name</key>
+		<value>Load GCode</value>
+		<src>/com/marginallyclever/makelangelo/nodes/gcode/LoadGCode.java</src>
+	</string>
+	<string>
+		<key>SaveGCode.name</key>
+		<value>Save GCode</value>
+		<src>/com/marginallyclever/makelangelo/nodes/gcode/SaveGCode.java</src>
+	</string>
+	<string>
+		<key>SaveError</key>
+		<value>File could not be saved:</value>
+		<src>/com/marginallyclever/makelangelo/nodes/gcode/SaveGCode.java</src>
+	</string>
+	<string>
+		<key>Generator_FillPage.inputAngle.tooltip</key>
+		<value>Angle (degrees) of the lines</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Generator_FillPage.java</src>
+	</string>
+	<string>
+		<key>Generator_FillPage.name</key>
+		<value>Fill Page</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Generator_FillPage.java</src>
+	</string>
+	<string>
+		<key>Generator_GraphPaper.inputSpacingMm.tooltip</key>
+		<value>Space between smallest squares, in millimeters</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Generator_GraphPaper.java</src>
+	</string>
+	<string>
+		<key>Generator_GraphPaper.name</key>
+		<value>Graph paper</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Generator_GraphPaper.java</src>
+	</string>
+	<string>
+		<key>Generator_Lissajous.inputDelta.tooltip</key>
+		<value>Delta value in Lissajous equation.</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Generator_Lissajous.java</src>
+	</string>
+	<string>
+		<key>Generator_Lissajous.inputA.tooltip</key>
+		<value>A value in Lissajous equation.</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Generator_Lissajous.java</src>
+	</string>
+	<string>
+		<key>Generator_Lissajous.inputB.tooltip</key>
+		<value>B value in Lissajous equation.</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Generator_Lissajous.java</src>
+	</string>
+	<string>
+		<key>Generator_Lissajous.inputSamples.tooltip</key>
+		<value>More samples means smoother curves.</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Generator_Lissajous.java</src>
+	</string>
+	<string>
+		<key>Generator_Lissajous.name</key>
+		<value>Lissajous</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Generator_Lissajous.java</src>
+	</string>
+	<string>
+		<key>Generator_LSystemTree.inputSeed.tooltip</key>
+		<value>Seed value controls the start of the random number generator.  Save this number to recreate the same tree.</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Generator_LSystemTree.java</src>
+	</string>
+	<string>
+		<key>Generator_LSystemTree.inputOrder.tooltip</key>
+		<value>Recursive fractals repeat inside each other.  This number controls how many levels 'deep' to go.</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Generator_LSystemTree.java</src>
+	</string>
+	<string>
+		<key>Generator_LSystemTree.inputBranches.tooltip</key>
+		<value>Number of splits at each junction</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Generator_LSystemTree.java</src>
+	</string>
+	<string>
+		<key>Generator_LSystemTree.inputNoise.tooltip</key>
+		<value>The variation in the branch angles</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Generator_LSystemTree.java</src>
+	</string>
+	<string>
+		<key>Generator_LSystemTree.inputAngleSpan.tooltip</key>
+		<value>Maximum degrees between first and last branch in a node.</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Generator_LSystemTree.java</src>
+	</string>
+	<string>
+		<key>Generator_LSystemTree.inputOrderScale.tooltip</key>
+		<value>Controls length of each branch</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Generator_LSystemTree.java</src>
+	</string>
+	<string>
+		<key>Generator_LSystemTree.name</key>
+		<value>L System Tree</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Generator_LSystemTree.java</src>
+	</string>
+	<string>
+		<key>Generator_Package.inputBoxWidth.tooltip</key>
+		<value>Width in millimeters</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Generator_Package.java</src>
+	</string>
+	<string>
+		<key>Generator_Package.inputBoxLength.tooltip</key>
+		<value>Length in millimeters</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Generator_Package.java</src>
+	</string>
+	<string>
+		<key>Generator_Package.inputBoxHeight.tooltip</key>
+		<value>Height in millimeters</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Generator_Package.java</src>
+	</string>
+	<string>
+		<key>Generator_Package.name</key>
+		<value>Package generator</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Generator_Package.java</src>
+	</string>
+	<string>
+		<key>Generator_Rectangle.name</key>
+		<value>Rectangle</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Generator_Rectangle.java</src>
+	</string>
+	<string>
+		<key>Generator_Spirograph.inputPScale.tooltip</key>
+		<value>P scale ??</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Generator_Spirograph.java</src>
+	</string>
+	<string>
+		<key>Generator_Spirograph.inputMinorRadius.tooltip</key>
+		<value>Radius (mm) of the inside edge of the spirograph.</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Generator_Spirograph.java</src>
+	</string>
+	<string>
+		<key>Generator_Spirograph.inputMajorRadius.tooltip</key>
+		<value>Radius (mm) of the outer edge of the spirograph.</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Generator_Spirograph.java</src>
+	</string>
+	<string>
+		<key>Generator_Spirograph.inputNumSamples.tooltip</key>
+		<value>More samples for a smoother drawing.</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Generator_Spirograph.java</src>
+	</string>
+	<string>
+		<key>Generator_Spirograph.inputIsEpitrochoid.tooltip</key>
+		<value>Epitrochoid... won't fit in a tooltip.  Look on Wikipedia.</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Generator_Spirograph.java</src>
+	</string>
+	<string>
+		<key>Generator_Spirograph.name</key>
+		<value>Spirograph</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Generator_Spirograph.java</src>
+	</string>
+	<string>
+		<key>Generator_Text.inputMessage.tooltip</key>
+		<value>The message to display</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Generator_Text.java</src>
+	</string>
+	<string>
+		<key>Generator_Text.inputFontPointSize.tooltip</key>
+		<value>The size of the font (in points)</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Generator_Text.java</src>
+	</string>
+	<string>
+		<key>Generator_Text.name</key>
+		<value>Text (your message here)</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Generator_Text.java</src>
+	</string>
+	<string>
+		<key>ImageConverter.inputImage.tooltip</key>
+		<value>The image file to load</value>
+		<src>/com/marginallyclever/makelangelo/nodes/ImageConverter.java</src>
+	</string>
+	<string>
+		<key>ImageConverter.outputTurtle.tooltip</key>
+		<value>Output turtle</value>
+		<src>/com/marginallyclever/makelangelo/nodes/ImageConverter.java</src>
+	</string>
+	<string>
+		<key>Generator_Maze.inputRows.tooltip</key>
+		<value>horizontal rows inside the maze (between the lines)</value>
+		<src>/com/marginallyclever/makelangelo/nodes/maze/Generator_Maze.java</src>
+	</string>
+	<string>
+		<key>Generator_Maze.inputCols.tooltip</key>
+		<value>vertical columns inside the maze (between the lines)</value>
+		<src>/com/marginallyclever/makelangelo/nodes/maze/Generator_Maze.java</src>
+	</string>
+	<string>
+		<key>Generator_Maze.name</key>
+		<value>Maze</value>
+		<src>/com/marginallyclever/makelangelo/nodes/maze/Generator_Maze.java</src>
+	</string>
+	<string>
+		<key>NodeLoadImage.inputFile.tooltip</key>
+		<value>The file to load</value>
+		<src>/com/marginallyclever/makelangelo/nodes/NodeLoadTransformedImage.java</src>
+	</string>
+	<string>
+		<key>NodeLoadTransformedImage.name</key>
+		<value>Load TransformedImage</value>
+		<src>/com/marginallyclever/makelangelo/nodes/NodeLoadTransformedImage.java</src>
+	</string>
+	<string>
+		<key>Generator_Polyeder.name</key>
+		<value>Papercraft Polygon</value>
+		<src>/com/marginallyclever/makelangelo/nodes/polyhedron/Generator_Polyeder.java</src>
+	</string>
+	<string>
+		<key>LoadScratch2.fileType</key>
+		<value>Scrach 2 (SB2)</value>
+		<src>/com/marginallyclever/makelangelo/nodes/scratch/LoadScratch2.java</src>
+	</string>
+	<string>
+		<key>LoadScratch2.name</key>
+		<value>Load Scratch 2</value>
+		<src>/com/marginallyclever/makelangelo/nodes/scratch/LoadScratch2.java</src>
+	</string>
+	<string>
+		<key>LoadScratch3.fileType</key>
+		<value>Scrach 3 (SB3)</value>
+		<src>/com/marginallyclever/makelangelo/nodes/scratch/LoadScratch3.java</src>
+	</string>
+	<string>
+		<key>LoadScratch3.name</key>
+		<value>Load Scratch 3</value>
+		<src>/com/marginallyclever/makelangelo/nodes/scratch/LoadScratch3.java</src>
+	</string>
+	<string>
+		<key>LoadSVG.filter</key>
+		<value>Scalable Vector Graphics (svg)</value>
+		<src>/com/marginallyclever/makelangelo/nodes/svg/LoadSVG.java</src>
+	</string>
+	<string>
+		<key>LoadSVG.inputFile.tooltip</key>
+		<value>The file to load</value>
+		<src>/com/marginallyclever/makelangelo/nodes/svg/LoadSVG.java</src>
+	</string>
+	<string>
+		<key>LoadSVG.name</key>
+		<value>Load SVG</value>
+		<src>/com/marginallyclever/makelangelo/nodes/svg/LoadSVG.java</src>
+	</string>
+	<string>
+		<key>SaveSVG.name</key>
+		<value>Save SVG</value>
+		<src>/com/marginallyclever/makelangelo/nodes/svg/SaveSVG.java</src>
+	</string>
+	<string>
+		<key>ImageGenerator.inputWidth.tooltip</key>
+		<value>Width scale (mm)</value>
+		<src>/com/marginallyclever/makelangelo/nodes/TurtleGenerator.java</src>
+	</string>
+	<string>
+		<key>ImageGenerator.inputHeight.tooltip</key>
+		<value>Height scale (mm)</value>
+		<src>/com/marginallyclever/makelangelo/nodes/TurtleGenerator.java</src>
+	</string>
+	<string>
+		<key>ImageGenerator.outputTurtle.tooltip</key>
+		<value>Turtle created from this process</value>
+		<src>/com/marginallyclever/makelangelo/nodes/TurtleGenerator.java</src>
+	</string>
+	<string>
+		<key>Converter_VoronoiStippling.name</key>
+		<value>Voronoi stippling</value>
+		<src>/com/marginallyclever/makelangelo/nodes/voronoi/Converter_VoronoiStippling.java</src>
+	</string>
+	<string>
+		<key>Converter_VoronoiZigZag.name</key>
+		<value>Voronoi Zigzag</value>
+		<src>/com/marginallyclever/makelangelo/nodes/voronoi/Converter_VoronoiZigZag.java</src>
+	</string>
+	<string>
+		<key>StartAtLastPenDown</key>
+		<value>Back up to last pen down</value>
+		<src>/com/marginallyclever/makelangelo/PanelStartAt.java</src>
+	</string>
+	<string>
+		<key>StartAtAddPenDown</key>
+		<value>Add pen down command here</value>
+		<src>/com/marginallyclever/makelangelo/PanelStartAt.java</src>
+	</string>
+	<string>
+		<key>StartAtExactly</key>
+		<value>Do nothing special</value>
+		<src>/com/marginallyclever/makelangelo/PanelStartAt.java</src>
+	</string>
+	<string>
+		<key>StartAt</key>
+		<value>Start at</value>
+		<src>/com/marginallyclever/makelangelo/PanelStartAt.java</src>
+	</string>
+	<string>
+		<key>penToolDiameter</key>
+		<value>Diameter</value>
+		<src>/com/marginallyclever/makelangelo/pen/EditPenGUI.java</src>
+	</string>
+	<string>
+		<key>pen down color</key>
+		<value>Down color</value>
+		<src>/com/marginallyclever/makelangelo/pen/EditPenGUI.java</src>
+	</string>
+	<string>
+		<key>pen up color</key>
+		<value>Up color</value>
+		<src>/com/marginallyclever/makelangelo/pen/EditPenGUI.java</src>
+	</string>
+	<string>
+		<key>CaptureImageTitle</key>
+		<value>Capture Camera Image</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>AWB</key>
+		<value>Automatic White Balance</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>Off</key>
+		<value>Off</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>Auto</key>
+		<value>Auto</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>Sun</key>
+		<value>Sun</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>Cloud</key>
+		<value>Cloud</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>Shade</key>
+		<value>Shade</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>Tungsten</key>
+		<value>Tungsten</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>Fluorescent</key>
+		<value>Fluorescent</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>Incandescent</key>
+		<value>Incandescent</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>Flash</key>
+		<value>Flash</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>Horizon</key>
+		<value>Horizon</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>DRC</key>
+		<value>Dynamic Range</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>High</key>
+		<value>High</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>Medium</key>
+		<value>Medium</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>Low</key>
+		<value>Low</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>Exposure</key>
+		<value>Exposure</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>Antishake</key>
+		<value>Antishake</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>Backlight</key>
+		<value>Backlight</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>Beach</key>
+		<value>Beach</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>Fireworks</key>
+		<value>Fireworks</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>FixedFPS</key>
+		<value>FixedFPS</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>Night</key>
+		<value>Night</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>NightPreview</key>
+		<value>NightPreview</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>Snow</key>
+		<value>Snow</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>Sports</key>
+		<value>Sports</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>Spotlight</key>
+		<value>Spotlight</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>Verylong</key>
+		<value>Verylong</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>Contrast</key>
+		<value>Contrast</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>Quality</key>
+		<value>Quality</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>Sharpness</key>
+		<value>Sharpness</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>CaptureImage</key>
+		<value>Capture</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>UseCapture</key>
+		<value>Use</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>CancelCapture</key>
+		<value>Cancel</value>
+		<src>/com/marginallyclever/makelangelo/PiCaptureAction.java</src>
+	</string>
+	<string>
+		<key>MenuGraphicsAntialias</key>
+		<value>Antialias lines</value>
+		<src>/com/marginallyclever/makelangelo/preferences/GFXPreferences.java</src>
+	</string>
+	<string>
+		<key>MenuGraphicsSpeedVSQuality</key>
+		<value>Speed over quality</value>
+		<src>/com/marginallyclever/makelangelo/preferences/GFXPreferences.java</src>
+	</string>
+	<string>
+		<key>MenuGraphicsDrawWhileRunning</key>
+		<value>Show entire image while drawing</value>
+		<src>/com/marginallyclever/makelangelo/preferences/GFXPreferences.java</src>
+	</string>
+	<string>
+		<key>LanguagePreferences.language</key>
+		<value>Language</value>
+		<src>/com/marginallyclever/makelangelo/preferences/LanguagePreferences.java</src>
+	</string>
+	<string>
+		<key>LanguagePreferences.notice</key>
+		<value>After changing language the app will need to be restarted to see the effect</value>
+		<src>/com/marginallyclever/makelangelo/preferences/LanguagePreferences.java</src>
+	</string>
+	<string>
+		<key>Import</key>
+		<value>Import</value>
+		<src>/com/marginallyclever/makelangelo/preferences/MakelangeloAppPreferences.java</src>
+	</string>
+	<string>
+		<key>Export</key>
+		<value>Export</value>
+		<src>/com/marginallyclever/makelangelo/preferences/MakelangeloAppPreferences.java</src>
+	</string>
+	<string>
+		<key>Reset</key>
+		<value>Reset</value>
+		<src>/com/marginallyclever/makelangelo/preferences/MakelangeloAppPreferences.java</src>
+	</string>
+	<string>
+		<key>MenuSoundsTitle</key>
+		<value>Sounds</value>
+		<src>/com/marginallyclever/makelangelo/preferences/MakelangeloAppPreferences.java</src>
+	</string>
+	<string>
+		<key>MenuGraphicsTitle</key>
+		<value>Graphics</value>
+		<src>/com/marginallyclever/makelangelo/preferences/MakelangeloAppPreferences.java</src>
+	</string>
+	<string>
+		<key>MenuLanguageTitle</key>
+		<value>Language</value>
+		<src>/com/marginallyclever/makelangelo/preferences/MakelangeloAppPreferences.java</src>
+	</string>
+	<string>
+		<key>MenuMetricsTitle</key>
+		<value>Metrics</value>
+		<src>/com/marginallyclever/makelangelo/preferences/MakelangeloAppPreferences.java</src>
+	</string>
+	<string>
+		<key>MenuResetMachinePreferencesWarning</key>
+		<value>Are you sure you want to reset all your preferences?</value>
+		<src>/com/marginallyclever/makelangelo/preferences/MakelangeloAppPreferences.java</src>
+	</string>
+	<string>
+		<key>MenuResetMachinePreferencesWarningHeader</key>
+		<value>Are you sure?</value>
+		<src>/com/marginallyclever/makelangelo/preferences/MakelangeloAppPreferences.java</src>
+	</string>
+	<string>
+		<key>collectAnonymousMetrics</key>
+		<value><![CDATA[<html><body>I consent to sharing anonymous usage data<br>with Marginally Clever Robots, Limited.</body></html>]]></value>
+		<src>/com/marginallyclever/makelangelo/preferences/MetricsPreferences.java</src>
+	</string>
+	<string>
+		<key>MenuSoundsConnect</key>
+		<value>Connect</value>
+		<src>/com/marginallyclever/makelangelo/preferences/SoundPreferences.java</src>
+	</string>
+	<string>
+		<key>MenuSoundsDisconnect</key>
+		<value>Disconnect</value>
+		<src>/com/marginallyclever/makelangelo/preferences/SoundPreferences.java</src>
+	</string>
+	<string>
+		<key>MenuSoundsFinishConvert</key>
+		<value>Finish converting</value>
+		<src>/com/marginallyclever/makelangelo/preferences/SoundPreferences.java</src>
+	</string>
+	<string>
+		<key>MenuSoundsFinishDraw</key>
+		<value>Finish drawing</value>
+		<src>/com/marginallyclever/makelangelo/preferences/SoundPreferences.java</src>
+	</string>
+	<string>
+		<key>RobotController.name</key>
+		<value>Robot Controller</value>
+		<src>/com/marginallyclever/makelangelo/RobotController.java</src>
+	</string>
+	<string>
+		<key>SharePromo</key>
+		<value>Try social media tag #plotter</value>
+		<src>/com/marginallyclever/makelangelo/StatusBar.java</src>
 	</string>
 </language>

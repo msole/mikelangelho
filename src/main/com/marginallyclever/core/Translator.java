@@ -176,6 +176,7 @@ public final class Translator {
 						
 						if( !lang.getName().isEmpty() && 
 							!lang.getAuthor().isEmpty()) {
+							Log.message("Loaded "+actualFilename);
 							// we loaded a language file that seems pretty legit.
 							languages.put(lang.getName(), lang);
 							++found;

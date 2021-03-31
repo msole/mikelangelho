@@ -82,7 +82,7 @@ public class DrivePlotterGUI implements ActionListener, PlotterListener {
 	public void run(Frame parent) {
 		parentFrame = parent;
 		
-		JDialog dialog = new JDialog(parent,Translator.get("Makelangelo.menuRobot"), true);
+		JDialog dialog = new JDialog(parent,Translator.get("DrivePlotterGUI.title"), true);
         dialog.setLocation(parent.getLocation());
 
 		myPanel = new JPanel(new GridBagLayout());
@@ -151,7 +151,7 @@ public class DrivePlotterGUI implements ActionListener, PlotterListener {
 
 
 	private JPanel createJogMotorsPanel(final Plotter plotter) {
-		CollapsiblePanel jogPanel = new CollapsiblePanel(Translator.get("RobotPanel.JogMotors"));
+		CollapsiblePanel jogPanel = new CollapsiblePanel(Translator.get("DrivePlotterGUI.JogMotors"));
 		JPanel jogInterior = jogPanel.getContentPane().getInteriorPanel();
 		jogInterior.setLayout(new GridBagLayout());
 		final GridBagConstraints gbc = new GridBagConstraints();
@@ -161,7 +161,7 @@ public class DrivePlotterGUI implements ActionListener, PlotterListener {
 		gbc.gridy=0;
 		gbc.weightx=1;
 			
-		jogInterior.add(buttonLeftIn = new JButton(Translator.get("JogLeftIn")),gbc);
+		jogInterior.add(buttonLeftIn = new JButton(Translator.get("DrivePlotterGUI.JogLeftIn")),gbc);
 		buttonLeftIn.addPropertyChangeListener(new PropertyChangeListener() {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
@@ -173,7 +173,7 @@ public class DrivePlotterGUI implements ActionListener, PlotterListener {
 		jogInterior.add(new JLabel(""),gbc);
 		
 		gbc.gridx=2;
-		jogInterior.add(buttonRightIn = new JButton(Translator.get("JogRightIn")),gbc);
+		jogInterior.add(buttonRightIn = new JButton(Translator.get("DrivePlotterGUI.JogRightIn")),gbc);
 		buttonRightIn.addPropertyChangeListener(new PropertyChangeListener() {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
@@ -183,7 +183,7 @@ public class DrivePlotterGUI implements ActionListener, PlotterListener {
 		
 		gbc.gridy++;
 		gbc.gridx=0;
-		jogInterior.add(buttonLeftOut = new JButton(Translator.get("JogLeftOut")),gbc);
+		jogInterior.add(buttonLeftOut = new JButton(Translator.get("DrivePlotterGUI.JogLeftOut")),gbc);
 		buttonLeftOut.addPropertyChangeListener(new PropertyChangeListener() {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
@@ -195,7 +195,7 @@ public class DrivePlotterGUI implements ActionListener, PlotterListener {
 		jogInterior.add(new JLabel(""),gbc);
 		
 		gbc.gridx=2;
-		jogInterior.add(buttonRightOut = new JButton(Translator.get("JogRightOut")),gbc);
+		jogInterior.add(buttonRightOut = new JButton(Translator.get("DrivePlotterGUI.JogRightOut")),gbc);
 		buttonRightOut.addPropertyChangeListener(new PropertyChangeListener() {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
@@ -209,14 +209,14 @@ public class DrivePlotterGUI implements ActionListener, PlotterListener {
 	protected JPanel createConnectSubPanel() {
 		connectionPanel = new SelectPanel();
 				
-        buttonConnect = new SelectButton(Translator.get("ButtonConnect"));
+        buttonConnect = new SelectButton(Translator.get("DrivePlotterGUI.ButtonConnect"));
         buttonConnect.addPropertyChangeListener(new PropertyChangeListener() {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
 				if(isConnected) {
 					myController.halt();
 					myPlotter.closeConnection();
-					buttonConnect.setText(Translator.get("ButtonConnect"));
+					buttonConnect.setText(Translator.get("DrivePlotterGUI.ButtonConnect"));
 					buttonConnect.setForeground(Color.GREEN);
 					isConnected=false;
 					updateButtonAccess();
@@ -226,7 +226,7 @@ public class DrivePlotterGUI implements ActionListener, PlotterListener {
 					NetworkConnection s = connectionManager.requestNewConnection(parentFrame);
 					if(s!=null) {
 						Log.message("Connected.");
-						buttonConnect.setText(Translator.get("ButtonDisconnect"));
+						buttonConnect.setText(Translator.get("DrivePlotterGUI.ButtonDisconnect"));
 						buttonConnect.setForeground(Color.RED);
 						myPlotter.openConnection( s );
 					}
@@ -242,7 +242,7 @@ public class DrivePlotterGUI implements ActionListener, PlotterListener {
 	}
 
 	private JPanel createUtilitiesPanel(final Plotter plotter) {
-		CollapsiblePanel utilitiesPanel = new CollapsiblePanel(Translator.get("RobotPanel.Animate"));
+		CollapsiblePanel utilitiesPanel = new CollapsiblePanel(Translator.get("DrivePlotterGUI.Utilities"));
 		JPanel panelInterior = utilitiesPanel.getContentPane().getInteriorPanel();
 
 		panelInterior.setLayout(new GridBagLayout());
@@ -254,7 +254,7 @@ public class DrivePlotterGUI implements ActionListener, PlotterListener {
 		gbc.weightx=1;
 		gbc.gridwidth=1;
 		
-		toggleEngageMotor = new JButton(Translator.get("EngageMotors"));
+		toggleEngageMotor = new JButton(Translator.get("DrivePlotterGUI.EngageMotors"));
 		panelInterior.add(toggleEngageMotor,gbc);
 		toggleEngageMotor.addActionListener(new ActionListener() {
 			@Override
@@ -263,7 +263,7 @@ public class DrivePlotterGUI implements ActionListener, PlotterListener {
 			}
 		});
 
-		toggleDisengageMotor = new JButton(Translator.get("DisengageMotors"));
+		toggleDisengageMotor = new JButton(Translator.get("DrivePlotterGUI.DisengageMotors"));
 		panelInterior.add(toggleDisengageMotor,gbc);
 		toggleDisengageMotor.addActionListener(new ActionListener() {
 			@Override
@@ -277,7 +277,7 @@ public class DrivePlotterGUI implements ActionListener, PlotterListener {
 		panelInterior.add(new JSeparator(),gbc);
 		
 		gbc.gridy++;
-		penUp = new JButton(Translator.get("PenUp"));
+		penUp = new JButton(Translator.get("DrivePlotterGUI.PenUp"));
 		panelInterior.add(penUp,gbc);
 		penUp.addActionListener(new ActionListener() {
 			@Override
@@ -287,7 +287,7 @@ public class DrivePlotterGUI implements ActionListener, PlotterListener {
 		});
 		
 		gbc.gridy++;
-		penDown = new JButton(Translator.get("PenDown"));
+		penDown = new JButton(Translator.get("DrivePlotterGUI.PenDown"));
 		panelInterior.add(penDown,gbc);
 		penDown.addActionListener(new ActionListener() {
 			@Override
@@ -300,7 +300,7 @@ public class DrivePlotterGUI implements ActionListener, PlotterListener {
 		panelInterior.add(new JSeparator(),gbc);
 
 		gbc.gridy++;
-		setHome = new JButton(Translator.get("SetHome"));
+		setHome = new JButton(Translator.get("DrivePlotterGUI.SetHome"));
 	    panelInterior.add(setHome,gbc);
 	    setHome.addActionListener(new ActionListener() {
 			@Override
@@ -311,7 +311,7 @@ public class DrivePlotterGUI implements ActionListener, PlotterListener {
 		});
 
 		gbc.gridy++;
-		findHome = new JButton(Translator.get("FindHome"));
+		findHome = new JButton(Translator.get("DrivePlotterGUI.FindHome"));
 		panelInterior.add(findHome,gbc);
 		findHome.addActionListener(new ActionListener() {
 			@Override
@@ -321,7 +321,7 @@ public class DrivePlotterGUI implements ActionListener, PlotterListener {
 		});
 
 		gbc.gridy++;
-		goHome = new JButton(Translator.get("GoHome"));
+		goHome = new JButton(Translator.get("DrivePlotterGUI.GoHome"));
 		panelInterior.add(goHome,gbc);
 		goHome.addActionListener(new ActionListener() {
 			@Override
@@ -334,7 +334,7 @@ public class DrivePlotterGUI implements ActionListener, PlotterListener {
 	}
 	
 	private JPanel createDrawImagePanel() {
-		CollapsiblePanel drawImagePanel = new CollapsiblePanel(Translator.get("RobotPanel.drawImagePanel"));
+		CollapsiblePanel drawImagePanel = new CollapsiblePanel(Translator.get("DrivePlotterGUI.drawImagePanel"));
 		JPanel panelInterior = drawImagePanel.getContentPane().getInteriorPanel();
 
 		panelInterior.setLayout(new GridBagLayout());
@@ -347,7 +347,7 @@ public class DrivePlotterGUI implements ActionListener, PlotterListener {
 		gbc.gridwidth=1;
 		
 		gbc.gridy++;
-		buttonStart = new JButton(Translator.get("Start"));
+		buttonStart = new JButton(Translator.get("DrivePlotterGUI.Start"));
 		panelInterior.add(buttonStart,gbc);
 		buttonStart.addActionListener(new ActionListener() {
 			@Override
@@ -357,7 +357,7 @@ public class DrivePlotterGUI implements ActionListener, PlotterListener {
 		});
 
 		gbc.gridy++;
-		buttonStartAt = new JButton(Translator.get("StartAtLine"));
+		buttonStartAt = new JButton(Translator.get("DrivePlotterGUI.StartAtLine"));
 		panelInterior.add(buttonStartAt,gbc);
 		buttonStartAt.addActionListener(new ActionListener() {
 			@Override
@@ -367,18 +367,18 @@ public class DrivePlotterGUI implements ActionListener, PlotterListener {
 		});
 
 		gbc.gridy++;
-		buttonPause = new JButton(Translator.get("Pause"));
+		buttonPause = new JButton(Translator.get("DrivePlotterGUI.Pause"));
 		panelInterior.add(buttonPause,gbc);
 		buttonPause.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// toggle pause
 				if (myController.isPaused()) {
-					buttonPause.setText(Translator.get("Pause"));
+					buttonPause.setText(Translator.get("DrivePlotterGUI.Pause"));
 					myController.unPause();
 					myController.sendFileCommand();
 				} else {
-					buttonPause.setText(Translator.get("Unpause"));
+					buttonPause.setText(Translator.get("DrivePlotterGUI.Unpause"));
 					myController.pause();
 				}
 			}
@@ -386,7 +386,7 @@ public class DrivePlotterGUI implements ActionListener, PlotterListener {
 
 		
 		gbc.gridy++;
-		buttonHalt = new JButton(Translator.get("Halt"));
+		buttonHalt = new JButton(Translator.get("DrivePlotterGUI.Halt"));
 		panelInterior.add(buttonHalt,gbc);
 		buttonHalt.addActionListener(new ActionListener() {
 			@Override
@@ -404,7 +404,7 @@ public class DrivePlotterGUI implements ActionListener, PlotterListener {
 	
 	// manual cartesian driving
 	private CollapsiblePanel createAxisDrivingControls() {
-		CollapsiblePanel drivePanel = new CollapsiblePanel(Translator.get("RobotPanel.AxisDriveControls"));
+		CollapsiblePanel drivePanel = new CollapsiblePanel(Translator.get("DrivePlotterGUI.AxisDriveControls"));
 		JPanel panelInterior = drivePanel.getContentPane().getInteriorPanel();
 		panelInterior.setLayout(new GridBagLayout());
 		
@@ -523,7 +523,7 @@ public class DrivePlotterGUI implements ActionListener, PlotterListener {
 		if(buttonPause!=null) {
 			buttonPause.setEnabled(isConfirmed && isRunning);
 			if(!isConfirmed) {
-				buttonPause.setText(Translator.get("Pause"));
+				buttonPause.setText(Translator.get("DrivePlotterGUI.Pause"));
 			}
 		}
 		
@@ -569,7 +569,7 @@ public class DrivePlotterGUI implements ActionListener, PlotterListener {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				JFrame mainFrame = new JFrame(Translator.get("Makelangelo.menuRobot"));
+				JFrame mainFrame = new JFrame(Translator.get("DrivePlotterGUI.title"));
 				mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 				Plotter p = new Makelangelo5();
@@ -627,9 +627,9 @@ public class DrivePlotterGUI implements ActionListener, PlotterListener {
 				break;
 			case "engaged":
 				if((boolean)evt.getNewValue()) {
-					toggleEngageMotor.setText(Translator.get("DisengageMotors"));
+					toggleEngageMotor.setText(Translator.get("DrivePlotterGUI.DisengageMotors"));
 				} else {
-					toggleEngageMotor.setText(Translator.get("EngageMotors"));
+					toggleEngageMotor.setText(Translator.get("DrivePlotterGUI.EngageMotors"));
 				}
 				break;
 			}

@@ -76,7 +76,7 @@ public class LoadImageDialog implements LoadFile {
 		IMAGE_FILE_EXTENSIONS.add("bmp");
 		IMAGE_FILE_EXTENSIONS.add("gif");
 	}
-	private static FileNameExtensionFilter filter = new FileNameExtensionFilter(Translator.get("FileTypeImage"),
+	private static FileNameExtensionFilter filter = new FileNameExtensionFilter(Translator.get("LoadImageDialog.FileTypeImage"),
 			IMAGE_FILE_EXTENSIONS.toArray(new String[IMAGE_FILE_EXTENSIONS.size()]));
 	private ArrayList<String> imageConverterNames = new ArrayList<String>();
 
@@ -125,7 +125,7 @@ public class LoadImageDialog implements LoadFile {
 		c.gridx = 0;
 		c.gridy = y;
 		c.ipadx = 5;
-		conversionPanel.add(new JLabel(Translator.get("ConversionStyle")), c);
+		conversionPanel.add(new JLabel(Translator.get("LoadImageDialog.ConversionStyle")), c);
 		c.anchor = GridBagConstraints.WEST;
 		c.gridwidth = 3;
 		c.gridx = 1;
@@ -154,7 +154,7 @@ public class LoadImageDialog implements LoadFile {
 			}
 		});
 
-		int result = JOptionPane.showConfirmDialog(parent, conversionPanel, Translator.get("ConversionOptions"),
+		int result = JOptionPane.showConfirmDialog(parent, conversionPanel, Translator.get("LoadImageDialog.ConversionOptions"),
 				JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 		if (result == JOptionPane.OK_OPTION) {
 			setPreferredDrawStyle(styleNames.getSelectedIndex());
@@ -254,7 +254,7 @@ public class LoadImageDialog implements LoadFile {
 	protected void startSwingWorker() {
 		Log.message("Starting thread 1");
 
-		pm = new ProgressMonitor(null, Translator.get("Converting"), "", 0, 100);
+		pm = new ProgressMonitor(null, Translator.get("LoadImageDialog.Converting"), "", 0, 100);
 		pm.setProgress(0);
 		pm.setMillisToPopup(0);
 

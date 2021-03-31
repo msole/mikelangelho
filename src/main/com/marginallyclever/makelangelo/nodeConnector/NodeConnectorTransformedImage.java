@@ -34,7 +34,7 @@ public class NodeConnectorTransformedImage extends NodeConnector<TransformedImag
 		// TODO in read-only mode, show a thumbnail?
 		// TODO in read/write mode, show a thumbnail? AND a file selection dialog.
 		// TODO SelectTransformedImage(label,source filename)
-		String name = Translator.get("TransformedImage.inputFileFormat");
+		String name = Translator.get("NodeConnectorTransformedImage.inputFileFormat");
 		FileNameExtensionFilter filter = new FileNameExtensionFilter(name, ImageIO.getReaderFileSuffixes());
 		SelectFile s = new SelectFile(this.getName(),filter,sourceFile);
 		s.addPropertyChangeListener(new PropertyChangeListener() {

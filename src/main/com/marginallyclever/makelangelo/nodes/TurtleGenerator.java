@@ -22,7 +22,7 @@ abstract public class TurtleGenerator extends Node {
 		inputs.add(inputHeight);
 		outputs.add(outputTurtle);
 		
-		inputWidth.setDescription(Translator.get("ImageGenerator.inputFile.tooltip"));
+		inputWidth.setDescription(Translator.get("ImageGenerator.inputWidth.tooltip"));
 		inputHeight.setDescription(Translator.get("ImageGenerator.inputHeight.tooltip"));
 		outputTurtle.setDescription(Translator.get("ImageGenerator.outputTurtle.tooltip"));
 	}

@@ -15,7 +15,7 @@ import com.marginallyclever.core.turtle.Turtle;
  * @author Dan Royer
  */
 public class Converter_Sandy extends ImageConverter {
-	private String [] directionChoices = new String[] { 
+	private String [] centerChoices = new String[] { 
 		Translator.get("Converter_Sandy.inputDirection.topRight"),
 		Translator.get("Converter_Sandy.inputDirection.topLeft"), 
 		Translator.get("Converter_Sandy.inputDirection.bottomLeft"), 
@@ -23,21 +23,21 @@ public class Converter_Sandy extends ImageConverter {
 		Translator.get("Converter_Sandy.inputDirection.center")
 	};
 
-	private NodeConnectorInteger inputBlockScale = new NodeConnectorInteger("Converter_Sandy.inputBlockScale",150);
-	private NodeConnectorOneOfMany inputDirection = new NodeConnectorOneOfMany("Converter_Sandy.inputDirection",directionChoices,0);
+	private NodeConnectorInteger inputBlockScale = new NodeConnectorInteger(Translator.get("Converter_Sandy.inputBlockScale"),150);
+	private NodeConnectorOneOfMany inputCenter = new NodeConnectorOneOfMany(Translator.get("Converter_Sandy.inputCenter"),centerChoices,0);
 	// only consider intensity above the low pass value.
-	protected NodeConnectorBoundedInt inputLowPass = new NodeConnectorBoundedInt("ImageConverter.inputLowPass",255,0,0);
+	protected NodeConnectorBoundedInt inputLowPass = new NodeConnectorBoundedInt(Translator.get("ImageConverter.inputLowPass"),255,0,0);
 	// only consider intensity below the high pass value.
-	protected NodeConnectorBoundedInt inputHighPass = new NodeConnectorBoundedInt("ImageConverter.inputHighPass",255,0,255);
+	protected NodeConnectorBoundedInt inputHighPass = new NodeConnectorBoundedInt(Translator.get("ImageConverter.inputHighPass"),255,0,255);
 	
 	public Converter_Sandy() {
 		super();
 		inputs.add(inputBlockScale);
-		inputs.add(inputDirection);
+		inputs.add(inputCenter);
 		inputs.add(inputLowPass);
 		inputs.add(inputHighPass);
 		inputBlockScale.setDescription(Translator.get("Converter_Sandy.inputBlockScale.tooltip"));
-		inputDirection.setDescription(Translator.get("Converter_Sandy.inputDirection.tooltip"));
+		inputCenter.setDescription(Translator.get("Converter_Sandy.inputDirection.tooltip"));
 		inputLowPass.setDescription(Translator.get("ImageConverter.inputLowPass.tooltip"));
 		inputHighPass.setDescription(Translator.get("ImageConverter.inputHighPass.tooltip"));
 	}
@@ -73,7 +73,7 @@ public class Converter_Sandy extends ImageConverter {
 
 		boolean wasDrawing=false;
 		
-		switch(inputDirection.getValue()) {
+		switch(inputCenter.getValue()) {
 		case 0:		cx = xRight;	cy = yTop;		last_x = pRight; 	last_y = pTop;		break;
 		case 1:		cx = xLeft;		cy = yTop;		last_x = pLeft; 	last_y = pTop;		break;
 		case 2:		cx = xLeft;		cy = yBottom;	last_x = pLeft; 	last_y = pBottom;	break;

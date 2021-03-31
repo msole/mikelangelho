@@ -31,7 +31,7 @@ public class SaveDXF extends Node implements SaveFile {
 	public SaveDXF() {
 		super();
 		inputs.add(inputFile);
-		inputFile.setDescription(Translator.get("LoadDXF.filter.tooltip"));
+		inputFile.setDescription(Translator.get("LoadDXF.inputFile.tooltip"));
 	}
 	
 	@Override

@@ -38,7 +38,7 @@ public class NewPlotterGUI extends JPanel {
 		d.weightx = 0;
 		d.weighty = 0;
 
-		JLabel modelLabel = new JLabel(Translator.get("HardwareVersion"));
+		JLabel modelLabel = new JLabel(Translator.get("NewPlotterGUI.HardwareVersion"));
 		modelLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 10));
 		panel.add(modelLabel, d);
 
