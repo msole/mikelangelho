@@ -70,17 +70,19 @@ public class LoadDXF extends TurtleGenerator implements LoadFile {
 	}
 
 	// count all entities in all layers
-	@SuppressWarnings("unchecked")
 	protected void countAllEntities(DXFDocument doc) {
+		@SuppressWarnings("unchecked")
 		Iterator<DXFLayer> layerIter = (Iterator<DXFLayer>) doc.getDXFLayerIterator();
 		int entityTotal = 0;
 		while (layerIter.hasNext()) {
 			DXFLayer layer = (DXFLayer) layerIter.next();
 			int color = layer.getColor();
 			Log.message("Found layer " + layer.getName() + "(RGB="+color+")");
+			@SuppressWarnings("unchecked")
 			Iterator<String> entityIter = (Iterator<String>) layer.getDXFEntityTypeIterator();
 			while (entityIter.hasNext()) {
 				String entityType = (String) entityIter.next();
+				@SuppressWarnings("unchecked")
 				List<DXFEntity> entityList = (List<DXFEntity>) layer.getDXFEntities(entityType);
 				Log.message("Found " + entityList.size() + " of type " + entityType);
 				entityTotal += entityList.size();
@@ -89,99 +91,11 @@ public class LoadDXF extends TurtleGenerator implements LoadFile {
 		Log.message(entityTotal + " total entities.");
 	}
 
-	
-	/**
-	 * Put every entity into a bucket.
-	 * @param doc
-	 * @param grid
-	 * @param groups
-	 */
-	@SuppressWarnings("unchecked")
-	protected void sortEntitiesIntoBucketsAndGroups(DXFDocument doc,DXFLayer layer,DXFBucketGrid grid,List<DXFGroup> groups) {
-		//Log.message("Sorting layer "+layer.getName()+" into buckets...");
-
-		Iterator<String> entityTypeIter = (Iterator<String>) layer.getDXFEntityTypeIterator();
-		while (entityTypeIter.hasNext()) {
-			String entityType = (String) entityTypeIter.next();
-			List<DXFEntity> entityList = (List<DXFEntity>)layer.getDXFEntities(entityType);
-			Iterator<DXFEntity> iter = entityList.iterator();
-			while(iter.hasNext()) {
-				DXFEntity e = iter.next();
-				DXFBucketEntity be = new DXFBucketEntity(e);
-				
-				if(e.getType().equals(DXFConstants.ENTITY_TYPE_LINE)) {
-					DXFLine line = (DXFLine)e;
-					grid.addEntity(be, line.getStartPoint());
-					grid.addEntity(be, line.getEndPoint());
-					continue;
-				}
-				if(e.getType().equals(DXFConstants.ENTITY_TYPE_CIRCLE)) {
-					DXFCircle circle = (DXFCircle)e;
-					double r = circle.getRadius();
-					Point center = circle.getCenterPoint();
-					double cx = center.getX();
-					double cy = center.getY();
-
-					Point a = new Point(cx+r,cy,0);
-					Point b = new Point();
-					for(double i=1;i<=40;++i) {  // hard coded 40?  gross!
-						double v = (Math.PI*2.0) * (i/40.0);
-						double s=r*Math.sin(v);
-						double c=r*Math.cos(v);
-						b.setX(cx+c);
-						b.setY(cy+s);
-						grid.addEntity(be, a);
-						grid.addEntity(be, b);
-						a.setX(b.getX());
-						a.setY(b.getY());
-					}
-					continue;
-				}
-				if(e.getType().equals(DXFConstants.ENTITY_TYPE_SPLINE)) {
-					e = DXFSplineConverter.toDXFPolyline((DXFSpline)e);
-					// fall through to the next case, polyline.
-				}
-				if(e.getType().equals(DXFConstants.ENTITY_TYPE_POLYLINE)) {
-					DXFPolyline polyLine = (DXFPolyline)e;
-					
-					if(!polyLine.isClosed()) {
-						grid.addEntity(be, polyLine.getVertex(0).getPoint());
-						grid.addEntity(be, polyLine.getVertex(polyLine.getVertexCount()-1).getPoint());
-					} else {
-						grid.addEntity(be, polyLine.getVertex(0).getPoint());
-						grid.addEntity(be, polyLine.getVertex(0).getPoint());
-					}
-					continue;
-				}
-				if(e.getType().equals(DXFConstants.ENTITY_TYPE_LWPOLYLINE)) {
-					DXFLWPolyline polyLine = (DXFLWPolyline)e;
-					if(!polyLine.isClosed()) {
-						grid.addEntity(be, polyLine.getVertex(0).getPoint());
-						grid.addEntity(be, polyLine.getVertex(polyLine.getVertexCount()-1).getPoint());
-					} else {
-						grid.addEntity(be, polyLine.getVertex(0).getPoint());
-						grid.addEntity(be, polyLine.getVertex(0).getPoint());
-					}
-					continue;
-				}
-				//if(e.getType().equals(DXFConstants.ENTITY_TYPE_ARC)) {}
-				//if(e.getType().equals(DXFConstants.ENTITY_TYPE_CIRCLE)) {}
-				// I don't know this entity type.
-				Log.error("Unknown DXF type "+e.getType());
-			}
-		}
-		
-		//grid.countEntitiesInBuckets();
-	}
-	
-	
 	/**
 	 * 
-	 * @param in
-	 * @param robotController
+	 * @param in stream from which to read the DXF file
 	 * @return true if load is successful.
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public boolean load(InputStream in) {
 		Log.message("Loading...");
@@ -201,47 +115,27 @@ public class LoadDXF extends TurtleGenerator implements LoadFile {
 		imageCenterY = (bounds.getMaximumY() + bounds.getMinimumY()) / 2.0;
 
 		// convert each entity
-		Iterator<DXFLayer> layerIter = doc.getDXFLayerIterator();
+		@SuppressWarnings("unchecked")
+		Iterator<DXFLayer> layerIter = (Iterator<DXFLayer>)doc.getDXFLayerIterator();
 		while (layerIter.hasNext()) {
 			DXFLayer layer = (DXFLayer) layerIter.next();
 			int color = layer.getColor();
 			Log.message("Found layer " + layer.getName() + "(color index="+color+")");
-			
-			// Some DXF layers are empty.  Only write the tool change command if there's something on this layer.
-			Iterator<String> entityTypeIter = (Iterator<String>)layer.getDXFEntityTypeIterator();
-			if (!entityTypeIter.hasNext()) {
-				continue;
-			}
 
 			// ignore the color index, DXF is dumb.
 			turtle.setColor(new ColorRGB(0,0,0));
 			
-			// Sort the entities on this layer into the buckets.
-			// Buckets are arranged in an XY grid.
-			// All non-closed entities would appear in two buckets.
-			// One Entity might be in the same bucket twice.
-			Point topLeft = new Point();
-			Point bottomRight = new Point();
-			topLeft.setX(bounds.getMinimumX());
-			topLeft.setY(bounds.getMinimumY());
-			bottomRight.setX(bounds.getMaximumX());
-			bottomRight.setY(bounds.getMaximumY());
-			DXFBucketGrid grid = new DXFBucketGrid(15,15,topLeft,bottomRight);
-			List<DXFGroup> groups = new LinkedList<DXFGroup>();
+			// Some DXF layers are empty.  Only write the tool change command if there's something on this layer.
+			@SuppressWarnings("unchecked")
+			Iterator<String> entityTypeIter = (Iterator<String>)layer.getDXFEntityTypeIterator();
 
-			sortEntitiesIntoBucketsAndGroups(doc,layer,grid,groups);
-
-			// Use the buckets to narrow the search field and find neighboring entities
-			//grid.sortEntitiesIntoContinguousGroups(groups,0.1);
-			grid.dumpEverythingIntoABucket(groups);
-			removeDuplicates(groups);
-
-			Iterator<DXFGroup> groupIter = groups.iterator();
-			while(groupIter.hasNext()) {
-				DXFGroup g = groupIter.next();
-				Iterator<DXFBucketEntity> ents = g.entities.iterator();
-				while(ents.hasNext()) {
-					parseEntity(turtle,ents.next().entity);
+			while (entityTypeIter.hasNext()) {
+				String entityType = (String) entityTypeIter.next();
+				@SuppressWarnings("unchecked")
+				List<DXFEntity> entityList = (List<DXFEntity>)layer.getDXFEntities(entityType);
+				Iterator<DXFEntity> iter = entityList.iterator();
+				while(iter.hasNext()) {
+					parseEntity(turtle,iter.next());
 				}
 			}
 		}
@@ -310,30 +204,10 @@ public class LoadDXF extends TurtleGenerator implements LoadFile {
 		return null;
 	}
 	
-	/**
-	 * http://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist
-	 * @param groups
-	 */
-	protected void removeDuplicates(List<DXFGroup> groups) {
-		int totalRemoved=0;
-		
-		Iterator<DXFGroup> g = groups.iterator();
-		while(g.hasNext()) {
-			DXFGroup group = g.next();
-			int before = group.entities.size();
-			Set<DXFBucketEntity> hs = new LinkedHashSet<>();
-			hs.addAll(group.entities);
-			group.entities.clear();
-			group.entities.addAll(hs);
-			int after = group.entities.size();
-			totalRemoved += before - after;
-		}
-		if(totalRemoved!=0) Log.message(totalRemoved+" duplicates removed.");
-	}
-	
 	protected double TX(double x) {
 		return (x-imageCenterX);
 	}
+	
 	protected double TY(double y) {
 		return (y-imageCenterY);
 	}
