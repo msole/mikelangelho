@@ -285,6 +285,15 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 		});
 		menu.add(buttonNew);
 		
+		JMenuItem buttonLoad = new JMenuItem(Translator.get("Makelangelo.action.load"));
+		buttonLoad.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				loadFile();	
+			}
+		});
+		menu.add(buttonLoad);
+		
 		JMenuItem buttonSave = new JMenuItem(Translator.get("Makelangelo.action.save"));
 		buttonSave.addActionListener(new ActionListener() {
 			@Override
@@ -826,7 +835,6 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 		mainFrame.setVisible(true);
 	}
 
-
 	private void adjustWindowSize() {
 		Log.message("adjust window size...");
 
@@ -990,6 +998,29 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 		return true;
 	}
 	
+	private void loadFile() {
+		// list all the known file types that I can load.
+		File lastDir = (lastFileIn==null?null : new File(lastFileIn));
+		JFileChooser fc = new JFileChooser(lastDir);
+		
+		ServiceLoader<LoadFile> imageLoaders = ServiceLoader.load(LoadFile.class);
+		for( LoadFile loader : imageLoaders ) {
+			FileFilter filter = loader.getFileNameFilter();
+			fc.addChoosableFileFilter(filter);
+		}
+		
+		// allow wild card (*.*) file extensions
+		fc.setAcceptAllFileFilterUsed(true);
+		// remember the last path & filter used.
+		if(lastFilterIn!=null) fc.setFileFilter(lastFilterIn);
+
+		// run the dialog
+		if (fc.showOpenDialog(getMainFrame()) == JFileChooser.APPROVE_OPTION) {
+			String selectedFile = fc.getSelectedFile().getAbsolutePath();
+			openFileOnDemand(selectedFile);
+		}
+	}
+	
 	private void saveFile() {
 		// list all the known file types that I can save.
 		File lastDir = (lastFileOut==null?null : new File(lastFileOut));
@@ -1142,6 +1173,7 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 		Point2D bottom = new Point2D();
 		Turtle.getBounds(myTurtles, top, bottom);
 		double th=top.y-bottom.y;
+		if(th==0) return;
 		double ph=myPaper.getHeight();
 		double n = ph/th;
 		System.out.println("scale="+n);
@@ -1155,6 +1187,7 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 		Point2D bottom = new Point2D();
 		Turtle.getBounds(myTurtles, top, bottom);
 		double tw=top.x-bottom.x;
+		if(tw==0) return;
 		double pw=myPaper.getWidth();
 		double n = pw/tw;
 		System.out.println("scale="+n);
