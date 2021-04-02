@@ -433,6 +433,11 @@
 		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
 	</string>
 	<string>
+		<key>Makelangelo.action.load</key>
+		<value>Load</value>
+		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
+	</string>
+	<string>
 		<key>Makelangelo.action.save</key>
 		<value>Save</value>
 		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
