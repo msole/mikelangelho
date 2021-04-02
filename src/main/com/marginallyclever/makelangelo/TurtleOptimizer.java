@@ -288,7 +288,7 @@ public class TurtleOptimizer {
 	}
 
 	// the newSequence is pretty good... but travel moves are still crossing over each other.
-	// 
+	// any point two travel moves cross is a waste of movement.
 	private void untwist(ArrayList<Polyline> newSequence) {
 		System.out.println("Untwisting...");
 		int numFixed=0;
@@ -366,6 +366,9 @@ public class TurtleOptimizer {
 		ArrayList<TurtleMove> toKeep = new ArrayList<TurtleMove>();
 		
 		int len = turtle.history.size();
+		if(len==0) {
+			return;
+		}
 		
 		TurtleMove a=turtle.history.get(0);
 		TurtleMove b=null;
@@ -398,6 +401,9 @@ public class TurtleOptimizer {
 		ArrayList<TurtleMove> toKeep = new ArrayList<TurtleMove>();
 		
 		int len = turtle.history.size();
+		if(len==0) {
+			return;
+		}
 
 		Vector3d v0 = new Vector3d();
 		Vector3d v1 = new Vector3d();
