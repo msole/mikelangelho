@@ -30,7 +30,7 @@ import com.marginallyclever.makelangelo.plotter.Plotter;
 import com.marginallyclever.makelangelo.plotter.PlotterListener;
 
 /**
- * Control panel for connecting to and controlling a {@Plotter}.
+ * Control panel for connecting to and driving a {@Plotter}.
  * @author Dan Royer
  * @author Peter Colapietro
  * @since 7.1.4
