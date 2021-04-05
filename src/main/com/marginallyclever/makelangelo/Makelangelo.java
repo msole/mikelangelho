@@ -15,6 +15,7 @@ package com.marginallyclever.makelangelo;
  * @version 1.00 2012/2/28
  */
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
@@ -111,9 +112,6 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 	private MakelangeloAppPreferences appPreferences;
 	private AllPlotters allPlotters;
 	private Plotter activePlotter;
-
-	// who manages sending drawings to the plotter?
-	private RobotController myController;
 	
 	// what drawing tool is loaded.
 	private Pen myPen = new Pen();
@@ -123,6 +121,9 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 	private Paper myPaper = new Paper();
 	// The collection of lines to draw.
 	private ArrayList<Turtle> myTurtles;
+	// When dialogs for generators and converters are open, they may run many times.
+	// keep these turtles in a separate list and only commit them when the dialog is closed.
+	private ArrayList<Turtle> myIntermediateTurtles;
 	
 	private Camera camera;
 
@@ -134,6 +135,7 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 	
 	// GUI elements
 	private JFrame mainFrame = null;
+	private JPanel mainOrganizer;
 	
 	// only allow one log frame
 	private JFrame logFrame = null;
@@ -176,8 +178,7 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 		super();
 
 		myTurtles = new ArrayList<Turtle>();
-		// by default start with one turtle.
-		myTurtles.add(new Turtle());
+		myIntermediateTurtles = new ArrayList<Turtle>();
 		
 		Translator.start();
 		
@@ -242,7 +243,7 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 	/**
 	 * If the menu bar exists, empty it. If it doesn't exist, create it.
 	 */
-	public void createMenuBar() {
+	private void createMenuBar() {
 		Log.message("Create menu bar");
 
 		menuBar = new JMenuBar();
@@ -405,23 +406,22 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 					dialog.addActionListener(new ActionListener() {
 						@Override
 						public void actionPerformed(ActionEvent e) {
+							myIntermediateTurtles.clear();
+							
 							for(NodeConnector<?> nc : node.outputs ) {
 								if(nc instanceof NodeConnectorTurtle) {
 									System.out.println("Node output "+nc.getClass().getSimpleName());
-									myTurtles.add(((NodeConnectorTurtle)nc).getValue());
+									myIntermediateTurtles.add(((NodeConnectorTurtle)nc).getValue());
 								}
-							}
-
-							if(myController!=null) {
-								myController.setTurtles(myTurtles);
-							}
-							if(myTurtles.size()==0) {
-								System.out.println("No turtles found!");
 							}
 						}
 					});
 					dialog.run();
 					// @see makelangeloApp.openFile();
+					
+					// dialog is now closed.
+					myTurtles.addAll(myIntermediateTurtles);
+					myIntermediateTurtles.clear();
 					
 					menuBar.setEnabled(true);
 				}
@@ -450,22 +450,20 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 					dialog.addActionListener(new ActionListener() {
 						@Override
 						public void actionPerformed(ActionEvent e) {
+							myIntermediateTurtles.clear();
 							for(NodeConnector<?> nc : node.outputs ) {
 								if(nc instanceof NodeConnectorTurtle) {
 									System.out.println("Node output "+nc.getClass().getSimpleName());
-									myTurtles.add(((NodeConnectorTurtle)nc).getValue());
+									myIntermediateTurtles.add(((NodeConnectorTurtle)nc).getValue());
 								}
-							}
-							
-							if(myController!=null) {
-								myController.setTurtles(myTurtles);
-							}
-							if(myTurtles.size()==0) {
-								System.out.println("No turtles found!");
 							}
 						}
 					});
 					dialog.run();
+
+					// dialog is now closed.
+					myTurtles.addAll(myIntermediateTurtles);
+					myIntermediateTurtles.clear();
 					
 					menuBar.setEnabled(true);
 				}
@@ -725,6 +723,8 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 		buttonDrive.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				// who manages sending drawings to the plotter?
+				RobotController myController = new RobotController(activePlotter);
 				DrivePlotterGUI mm = new DrivePlotterGUI(myController); 
 				mm.run(mainFrame);
 				refreshRobotsList();
@@ -743,7 +743,6 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 		}
 
 		logPanel.setRobot(null);
-		myController = null;
 		
 		// uncheck the favorites list
 		int limit = (int)Math.min(allPlotters.length(), favoriteRobots.length);
@@ -759,7 +758,6 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 		// PropertyChangeEvent here?
 		if(activePlotter!=null) {
 			System.out.println("Changing active plotter to "+p.getNickname());
-			myController = new RobotController(activePlotter);
 			
 			// create a robot and listen to it for important news
 			logPanel.setRobot(activePlotter);
@@ -794,7 +792,7 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 	/**
 	 *  For thread safety this method should be invoked from the event-dispatching thread.
 	 */
-	public void createAppWindow() {
+	private void createAppWindow() {
 		Log.message("Creating GUI...");
 
 		mainFrame = new JFrame(Translator.get("Makelangelo.appName",VERSION));
@@ -823,9 +821,13 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 		previewPanel.addListener(myPaper);
 		previewPanel.addListener(this);
 
-		setActivePlotter(allPlotters.get(0));
-
-		mainFrame.setContentPane(previewPanel);
+		if(allPlotters.length()>0) {
+			setActivePlotter(allPlotters.get(0));
+		}
+		
+		mainOrganizer = new JPanel(new BorderLayout());
+		mainOrganizer.add(previewPanel, BorderLayout.CENTER);
+		mainFrame.setContentPane(mainOrganizer);
 		
 		Log.message("  adding drag & drop support...");
 		mainFrame.setTransferHandler(this);
@@ -955,7 +957,7 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 	 * @param filename the file to be opened.
 	 * @return true if file was loaded successfully.  false if it failed.
 	 */
-	public boolean openFileOnDemand(String filename) {
+	private boolean openFileOnDemand(String filename) {
 		Log.message(Translator.get("Makelangelo.OpeningFile",filename));
 
 		ServiceLoader<LoadFile> imageLoaders = ServiceLoader.load(LoadFile.class);
@@ -1137,8 +1139,6 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 			}
 		}
 		
-		myController.setTurtles(myTurtles);
-		
 		if(myTurtles.size()>0) {
 			System.out.println("No turtles found!");
 		}
@@ -1147,7 +1147,7 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 	// DO NOT add confirm here, it's too late at this point.
 	private void newFile() {
 		myTurtles.clear();
-		myController.setTurtles(myTurtles);
+		myIntermediateTurtles.clear();
 	}
 
 	private void rotateTurtles(double degrees) {
@@ -1304,9 +1304,16 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 	@Override
 	public void render(GL2 gl2) {
 		float size = (float)(myPen.getDiameter() * 200.0 / camera.getZoom());
+
+		TurtleRenderer tr = new DefaultTurtleRenderer(gl2,showPenUp);
 		
 		for( Turtle t : myTurtles ) {
-			TurtleRenderer tr = new DefaultTurtleRenderer(gl2,showPenUp);
+			tr.setPenDownColor(t.getColor());
+			gl2.glLineWidth(size);
+			t.render(tr);
+		}
+		
+		for( Turtle t : myIntermediateTurtles ) {
 			tr.setPenDownColor(t.getColor());
 			gl2.glLineWidth(size);
 			t.render(tr);
