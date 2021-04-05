@@ -310,7 +310,7 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 		buttonAdjustPreferences.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				appPreferences.run(getMainFrame());
+				appPreferences.run(mainFrame);
 			}
 		});
 		menu.add(buttonAdjustPreferences);
@@ -401,8 +401,8 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 					node.setHeight(myPaper.getHeight());
 					
 					// Display the panel
-					NodeDialog dialog = new NodeDialog(getMainFrame(),node);
-			        dialog.setLocation(getMainFrame().getLocation());
+					NodeDialog dialog = new NodeDialog(mainFrame,node);
+			        dialog.setLocation(mainFrame.getLocation());
 					dialog.addActionListener(new ActionListener() {
 						@Override
 						public void actionPerformed(ActionEvent e) {
@@ -445,8 +445,8 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 					
 					// add the converter to the pool
 					// display the panel
-					NodeDialog dialog = new NodeDialog(getMainFrame(),node);
-			        dialog.setLocation(getMainFrame().getLocation());
+					NodeDialog dialog = new NodeDialog(mainFrame,node);
+			        dialog.setLocation(mainFrame.getLocation());
 					dialog.addActionListener(new ActionListener() {
 						@Override
 						public void actionPerformed(ActionEvent e) {
@@ -957,7 +957,7 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 	 * @param filename the file to be opened.
 	 * @return true if file was loaded successfully.  false if it failed.
 	 */
-	private boolean openFileOnDemand(String filename) {
+	public boolean openFileOnDemand(String filename) {
 		Log.message(Translator.get("Makelangelo.OpeningFile",filename));
 
 		ServiceLoader<LoadFile> imageLoaders = ServiceLoader.load(LoadFile.class);
@@ -1017,7 +1017,7 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 		if(lastFilterIn!=null) fc.setFileFilter(lastFilterIn);
 
 		// run the dialog
-		if (fc.showOpenDialog(getMainFrame()) == JFileChooser.APPROVE_OPTION) {
+		if (fc.showOpenDialog(mainFrame) == JFileChooser.APPROVE_OPTION) {
 			String selectedFile = fc.getSelectedFile().getAbsolutePath();
 			openFileOnDemand(selectedFile);
 		}
@@ -1040,7 +1040,7 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 		if(lastFilterOut!=null) fc.setFileFilter(lastFilterOut);
 		
 		// run the dialog
-		if (fc.showSaveDialog(getMainFrame()) == JFileChooser.APPROVE_OPTION) {
+		if (fc.showSaveDialog(mainFrame) == JFileChooser.APPROVE_OPTION) {
 			String selectedFile = fc.getSelectedFile().getAbsolutePath();
 			FileNameExtensionFilter selectedFilter = (FileNameExtensionFilter)fc.getFileFilter();
 			
@@ -1071,7 +1071,7 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 				try (final OutputStream fileOutputStream = new FileOutputStream(selectedFile)) {
 					success=saver.save(fileOutputStream,myTurtles,activePlotter);
 				} catch(IOException e) {
-					JOptionPane.showMessageDialog(getMainFrame(), "Save failed: "+e.getMessage());
+					JOptionPane.showMessageDialog(mainFrame, "Save failed: "+e.getMessage());
 				}
 				if(success==true) {
 					lastFileOut = selectedFile;
