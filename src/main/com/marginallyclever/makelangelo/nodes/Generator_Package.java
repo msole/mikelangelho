@@ -12,11 +12,11 @@ import com.marginallyclever.core.turtle.Turtle;
  */
 public class Generator_Package extends TurtleGenerator {
 	// shape of box
-	private NodeConnectorInteger inputBoxWidth = new NodeConnectorInteger("Generator_Package.inputBoxWidth",200);
+	private NodeConnectorInteger inputBoxWidth = new NodeConnectorInteger(Translator.get("Generator_Package.inputBoxWidth"),200);
 	// shape of box
-	private NodeConnectorInteger inputBoxLength = new NodeConnectorInteger("Generator_Package.inputBoxLength",100);
+	private NodeConnectorInteger inputBoxLength = new NodeConnectorInteger(Translator.get("Generator_Package.inputBoxLength"),100);
 	// shape of box
-	private NodeConnectorInteger inputBoxHeight = new NodeConnectorInteger("Generator_Package.inputBoxHeight",50);
+	private NodeConnectorInteger inputBoxHeight = new NodeConnectorInteger(Translator.get("Generator_Package.inputBoxHeight"),50);
 	
 	public Generator_Package() {
 		super();

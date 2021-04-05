@@ -12,9 +12,9 @@ import com.marginallyclever.makelangelo.nodeConnector.NodeConnectorTurtle;
  */
 abstract public class TurtleGenerator extends Node {
 	// results
-	protected NodeConnectorTurtle outputTurtle = new NodeConnectorTurtle("ImageGenerator.outputTurtle");
-	protected NodeConnectorDouble inputWidth = new NodeConnectorDouble("ImageGenerator.inputWidth",100.0);
-	protected NodeConnectorDouble inputHeight = new NodeConnectorDouble("ImageGenerator.inputHeight",100.0);
+	protected NodeConnectorTurtle outputTurtle = new NodeConnectorTurtle(Translator.get("ImageGenerator.outputTurtle"));
+	protected NodeConnectorDouble inputWidth = new NodeConnectorDouble(Translator.get("ImageGenerator.inputWidth"),100.0);
+	protected NodeConnectorDouble inputHeight = new NodeConnectorDouble(Translator.get("ImageGenerator.inputHeight"),100.0);
 	
 	protected TurtleGenerator() {
 		super();

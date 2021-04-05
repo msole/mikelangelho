@@ -16,11 +16,11 @@ import com.marginallyclever.core.turtle.Turtle;
  */
 public class Converter_Sandy extends ImageConverter {
 	private String [] centerChoices = new String[] { 
-		Translator.get("Converter_Sandy.inputDirection.topRight"),
-		Translator.get("Converter_Sandy.inputDirection.topLeft"), 
-		Translator.get("Converter_Sandy.inputDirection.bottomLeft"), 
-		Translator.get("Converter_Sandy.inputDirection.bottomRight"), 
-		Translator.get("Converter_Sandy.inputDirection.center")
+		Translator.get("Converter_Sandy.inputCenter.topRight"),
+		Translator.get("Converter_Sandy.inputCenter.topLeft"), 
+		Translator.get("Converter_Sandy.inputCenter.bottomLeft"), 
+		Translator.get("Converter_Sandy.inputCenter.bottomRight"), 
+		Translator.get("Converter_Sandy.inputCenter.center")
 	};
 
 	private NodeConnectorInteger inputBlockScale = new NodeConnectorInteger(Translator.get("Converter_Sandy.inputBlockScale"),150);
@@ -37,7 +37,7 @@ public class Converter_Sandy extends ImageConverter {
 		inputs.add(inputLowPass);
 		inputs.add(inputHighPass);
 		inputBlockScale.setDescription(Translator.get("Converter_Sandy.inputBlockScale.tooltip"));
-		inputCenter.setDescription(Translator.get("Converter_Sandy.inputDirection.tooltip"));
+		inputCenter.setDescription(Translator.get("Converter_Sandy.inputCenter.tooltip"));
 		inputLowPass.setDescription(Translator.get("ImageConverter.inputLowPass.tooltip"));
 		inputHighPass.setDescription(Translator.get("ImageConverter.inputHighPass.tooltip"));
 	}

@@ -14,9 +14,9 @@ import com.marginallyclever.core.turtle.Turtle;
  */
 public class Converter_Multipass extends ImageConverter {
 	// angle.  0-360
-	private NodeConnectorAngle inputAngle = new NodeConnectorAngle("Converter_Multipass.inputAngle",0.0);
+	private NodeConnectorAngle inputAngle = new NodeConnectorAngle(Translator.get("Converter_Multipass.inputAngle"),0.0);
 	// number of graduated passes. >=1
-	private NodeConnectorBoundedInt inputPasses = new NodeConnectorBoundedInt("Converter_Multipass.inputPasses",6,1,4);
+	private NodeConnectorBoundedInt inputPasses = new NodeConnectorBoundedInt(Translator.get("Converter_Multipass.inputPasses"),6,1,4);
 	
 	public Converter_Multipass() {
 		super();

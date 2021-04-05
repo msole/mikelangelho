@@ -12,7 +12,7 @@ import com.marginallyclever.makelangelo.nodes.TurtleGenerator;
  */
 public class Generator_KochCurve extends TurtleGenerator {
 	// controls complexity of curve
-	private NodeConnectorInteger inputOrder = new NodeConnectorBoundedInt("Generator_KochCurve.inputOrder",15,1,4);
+	private NodeConnectorInteger inputOrder = new NodeConnectorBoundedInt(Translator.get("Fractal.inputOrder"),15,1,4);
 	
 	private double xMax = 7;
 	private double xMin = -7;
@@ -23,7 +23,7 @@ public class Generator_KochCurve extends TurtleGenerator {
 	public Generator_KochCurve() {
 		super();
 		inputs.add(inputOrder);
-		inputOrder.setDescription(Translator.get("Generator_KochCurve.inputOrder.tooltip"));
+		inputOrder.setDescription(Translator.get("Fractal.inputOrder.tooltip"));
 	}
 	
 	@Override

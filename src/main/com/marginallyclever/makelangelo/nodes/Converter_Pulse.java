@@ -16,14 +16,14 @@ import com.marginallyclever.core.turtle.Turtle;
  */
 public class Converter_Pulse extends ImageConverter {
 	// height of zigzag.  should probably be less than spacing.  >=1
-	private NodeConnectorDouble inputHeight = new NodeConnectorDouble("Converter_Pulse.inputHeight",6.0);
+	private NodeConnectorDouble inputHeight = new NodeConnectorDouble(Translator.get("Converter_Pulse.inputHeight"),6.0);
 	// direction choice
 	private String[] directionChoices = new String[]{Translator.get("horizontal"), Translator.get("vertical") };
-	private NodeConnectorOneOfMany inputDirection = new NodeConnectorOneOfMany("Converter_Pulse.direction", directionChoices, 0);
+	private NodeConnectorOneOfMany inputDirection = new NodeConnectorOneOfMany(Translator.get("Converter_Pulse.direction"), directionChoices, 0);
 	// only consider intensity above the low pass value.
-	protected NodeConnectorBoundedInt inputLowPass = new NodeConnectorBoundedInt("ImageConverter.inputLowPass",255,0,0);
+	protected NodeConnectorBoundedInt inputLowPass = new NodeConnectorBoundedInt(Translator.get("ImageConverter.inputLowPass"),255,0,0);
 	// only consider intensity below the high pass value.
-	protected NodeConnectorBoundedInt inputHighPass = new NodeConnectorBoundedInt("ImageConverter.inputHighPass",255,0,255);
+	protected NodeConnectorBoundedInt inputHighPass = new NodeConnectorBoundedInt(Translator.get("ImageConverter.inputHighPass"),255,0,255);
 	
 	public Converter_Pulse() {
 		super();

@@ -16,13 +16,13 @@ import com.marginallyclever.makelangelo.nodeConnector.NodeConnectorTurtle;
  */
 public class Converter_Spiral_CMYK extends ImageConverter {
 	// draw the spiral right out to the edges of the square bounds.
-	private NodeConnectorBoolean convertToCorners = new NodeConnectorBoolean("Converter_Spiral_CMYK.toCorners",true);
+	private NodeConnectorBoolean convertToCorners = new NodeConnectorBoolean(Translator.get("Converter_Spiral_CMYK.toCorners"),true);
 	// cyan channel
-	protected NodeConnectorTurtle outputTurtleC = new NodeConnectorTurtle("Converter_Spiral_CMYK.outputTurtleC");
+	protected NodeConnectorTurtle outputTurtleC = new NodeConnectorTurtle(Translator.get("Converter_Spiral_CMYK.outputTurtleC"));
 	// magenta channel
-	protected NodeConnectorTurtle outputTurtleM = new NodeConnectorTurtle("Converter_Spiral_CMYK.outputTurtleM");
+	protected NodeConnectorTurtle outputTurtleM = new NodeConnectorTurtle(Translator.get("Converter_Spiral_CMYK.outputTurtleM"));
 	// yellow channel
-	protected NodeConnectorTurtle outputTurtleY = new NodeConnectorTurtle("Converter_Spiral_CMYK.outputTurtleY");
+	protected NodeConnectorTurtle outputTurtleY = new NodeConnectorTurtle(Translator.get("Converter_Spiral_CMYK.outputTurtleY"));
 	
 	public Converter_Spiral_CMYK() {
 		super();

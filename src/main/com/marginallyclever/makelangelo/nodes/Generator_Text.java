@@ -22,9 +22,9 @@ import com.marginallyclever.core.turtle.Turtle;
  */
 public class Generator_Text extends TurtleGenerator {
 	// Unicode text
-	private NodeConnectorString inputMessage = new NodeConnectorString("Generator_Text.inputMessage","");
+	private NodeConnectorString inputMessage = new NodeConnectorString(Translator.get("Generator_Text.inputMessage"),"");
 	// point size.  default 20.
-	private NodeConnectorInteger inputFontPointSize = new NodeConnectorInteger("ImageConverter.outputTurtle",20);
+	private NodeConnectorInteger inputFontPointSize = new NodeConnectorInteger(Translator.get("Generator_Text.inputFontPointSize"),20);
 
 	//private double width=100;
 	//private double height=100;

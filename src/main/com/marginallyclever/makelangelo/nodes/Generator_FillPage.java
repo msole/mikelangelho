@@ -12,7 +12,7 @@ import com.marginallyclever.core.turtle.Turtle;
  */
 public class Generator_FillPage extends TurtleGenerator {
 	// controls complexity of curve
-	private NodeConnectorAngle inputAngle = new NodeConnectorAngle("Generator_FillPage.inputAngle",0.0);
+	private NodeConnectorAngle inputAngle = new NodeConnectorAngle(Translator.get("Generator_FillPage.inputAngle"),0.0);
 	
 	private double stepSize = 2.0;
 	private double yBottom = -100;

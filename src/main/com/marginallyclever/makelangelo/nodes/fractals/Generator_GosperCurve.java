@@ -12,7 +12,7 @@ import com.marginallyclever.makelangelo.nodes.TurtleGenerator;
  */
 public class Generator_GosperCurve extends TurtleGenerator {
 	// controls complexity of curve
-	private NodeConnectorInteger inputOrder = new NodeConnectorBoundedInt("Generator_GosperCurve.inputOrder",15,1,4);
+	private NodeConnectorInteger inputOrder = new NodeConnectorBoundedInt(Translator.get("Fractal.inputOrder"),15,1,4);
 	
 	private double turtleStep = 10.0f;
 	private double xMax = 0;
@@ -23,7 +23,7 @@ public class Generator_GosperCurve extends TurtleGenerator {
 	public Generator_GosperCurve() {
 		super();
 		inputs.add(inputOrder);
-		inputOrder.setDescription(Translator.get("Generator_GosperCurve.inputOrder.tooltip"));
+		inputOrder.setDescription(Translator.get("Fractal.inputOrder.tooltip"));
 	}
 
 	@Override

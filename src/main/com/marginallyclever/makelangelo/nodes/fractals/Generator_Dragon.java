@@ -16,7 +16,7 @@ import com.marginallyclever.makelangelo.nodes.TurtleGenerator;
  */
 public class Generator_Dragon extends TurtleGenerator {
 	// controls complexity of curve
-	private NodeConnectorInteger inputOrder = new NodeConnectorBoundedInt("Generator_Dragon.inputOrder",15,1,5);
+	private NodeConnectorInteger inputOrder = new NodeConnectorBoundedInt(Translator.get("Fractal.inputOrder"),15,1,5);
 
 	private List<Integer> sequence;
 
@@ -24,7 +24,7 @@ public class Generator_Dragon extends TurtleGenerator {
 	public Generator_Dragon() {
 		super();
 		inputs.add(inputOrder);
-		inputOrder.setDescription(Translator.get("Generator_Dragon.inputOrder.tooltip"));
+		inputOrder.setDescription(Translator.get("Fractal.inputOrder.tooltip"));
 	}
 	
 	@Override

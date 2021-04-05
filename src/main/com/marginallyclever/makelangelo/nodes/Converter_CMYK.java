@@ -20,13 +20,13 @@ import com.marginallyclever.makelangelo.nodeConnector.NodeConnectorTurtle;
  */
 public class Converter_CMYK extends ImageConverter {
 	// detail level of scan.  1 is the most detailed. 2 is half as much. etc.
-	private NodeConnectorBoundedInt inputStepSize = new NodeConnectorBoundedInt("Converter_CMYK.inputStepSize",6,1,1);
+	private NodeConnectorBoundedInt inputStepSize = new NodeConnectorBoundedInt(Translator.get("Converter_CMYK.inputStepSize"),6,1,1);
 	// cyan channel
-	private NodeConnectorTurtle outputTurtleC = new NodeConnectorTurtle("Converter_CMYK.outputTurtleC");
+	private NodeConnectorTurtle outputTurtleC = new NodeConnectorTurtle(Translator.get("Converter_CMYK.outputTurtleC"));
 	// magenta channel
-	private NodeConnectorTurtle outputTurtleM = new NodeConnectorTurtle("Converter_CMYK.outputTurtleM");
+	private NodeConnectorTurtle outputTurtleM = new NodeConnectorTurtle(Translator.get("Converter_CMYK.outputTurtleM"));
 	// yellow channel
-	private NodeConnectorTurtle outputTurtleY = new NodeConnectorTurtle("Converter_CMYK.outputTurtleY");
+	private NodeConnectorTurtle outputTurtleY = new NodeConnectorTurtle(Translator.get("Converter_CMYK.outputTurtleY"));
 	
 	public Converter_CMYK() {
 		super();

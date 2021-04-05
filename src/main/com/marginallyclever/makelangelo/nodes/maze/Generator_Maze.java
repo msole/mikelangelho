@@ -12,9 +12,9 @@ import com.marginallyclever.makelangelo.nodes.TurtleGenerator;
  */
 public class Generator_Maze extends TurtleGenerator {
 	// controls complexity of maze
-	private NodeConnectorInteger inputRows = new NodeConnectorInteger("Generator_Maze.inputRows",10);
+	private NodeConnectorInteger inputRows = new NodeConnectorInteger(Translator.get("Generator_Maze.inputRows"),10);
 	// controls complexity of maze
-	private NodeConnectorInteger inputCols = new NodeConnectorInteger("Generator_Maze.inputCols",10);
+	private NodeConnectorInteger inputCols = new NodeConnectorInteger(Translator.get("Generator_Maze.inputCols"),10);
 
 	protected double xMax, xMin, yMax, yMin;
 	protected MazeCell[] cells;

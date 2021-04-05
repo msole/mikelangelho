@@ -484,7 +484,7 @@
 	</string>
 	<string>
 		<key>Makelangelo.menuGenerate</key>
-		<value>Generate art</value>
+		<value>Generate path</value>
 		<src>/com/marginallyclever/makelangelo/Makelangelo.java</src>
 	</string>
 	<string>
@@ -1213,8 +1213,8 @@
 		<src>/com/marginallyclever/makelangelo/nodes/Generator_LSystemTree.java</src>
 	</string>
 	<string>
-		<key>Fractal.inputOrder</key>
-		<value>Order</value>
+		<key>inputOrder.inputOrder</key>
+		<value></value>
 		<src>/com/marginallyclever/makelangelo/nodes/Generator_LSystemTree.java</src>
 	</string>
 	<string>
@@ -1240,6 +1240,11 @@
 	<string>
 		<key>Generator_LSystemTree.inputSeed.tooltip</key>
 		<value>Seed value controls the start of the random number generator.  Save this number to recreate the same tree.</value>
+		<src>/com/marginallyclever/makelangelo/nodes/Generator_LSystemTree.java</src>
+	</string>
+	<string>
+		<key>inputOrder.inputOrder.tooltip</key>
+		<value></value>
 		<src>/com/marginallyclever/makelangelo/nodes/Generator_LSystemTree.java</src>
 	</string>
 	<string>

@@ -206,7 +206,7 @@ public class AllPlottersGUI {
 		Plotter p = allPlotters.get(index);
 		int result = JOptionPane.showConfirmDialog(
 				myParent,
-				Translator.get("confirmDeleteMachineTile"),
+				Translator.get("confirmDeleteMachineTitle"),
 				Translator.get("confirmDeleteMachine",p.getNickname()),
 				JOptionPane.YES_NO_OPTION);
 		if(result == JOptionPane.YES_OPTION) {

@@ -14,13 +14,13 @@ import com.marginallyclever.core.turtle.Turtle;
  */
 public class Converter_Boxes extends ImageConverter {
 	// how big should the largest box be?
-	private NodeConnectorBoundedInt inputMaxBoxSize = new NodeConnectorBoundedInt("Converter_Boxes.inputMaxBoxSize",10,1,4);
+	private NodeConnectorBoundedInt inputMaxBoxSize = new NodeConnectorBoundedInt(Translator.get("Converter_Boxes.inputMaxBoxSize"),10,1,4);
 	// the cutoff value when weighting the line against the source image.
-	protected NodeConnectorBoundedInt inputCutoff = new NodeConnectorBoundedInt("ImageConverter.inputCutoff",255,0,127);
+	protected NodeConnectorBoundedInt inputCutoff = new NodeConnectorBoundedInt(Translator.get("ImageConverter.inputCutoff"),255,0,127);
 	// only consider intensity above the low pass value.
-	protected NodeConnectorBoundedInt inputLowPass = new NodeConnectorBoundedInt("ImageConverter.inputLowPass",255,0,0);
+	protected NodeConnectorBoundedInt inputLowPass = new NodeConnectorBoundedInt(Translator.get("ImageConverter.inputLowPass"),255,0,0);
 	// only consider intensity below the high pass value.
-	protected NodeConnectorBoundedInt inputHighPass = new NodeConnectorBoundedInt("ImageConverter.inputHighPass",255,0,255);
+	protected NodeConnectorBoundedInt inputHighPass = new NodeConnectorBoundedInt(Translator.get("ImageConverter.inputHighPass"),255,0,255);
 	
 	
 	public Converter_Boxes() {

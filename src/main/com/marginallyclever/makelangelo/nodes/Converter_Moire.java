@@ -28,9 +28,9 @@ public class Converter_Moire extends ImageConverter {
 		}; 
 
 	// height of zigzag.  should probably be less than spacing.  >=1
-	private NodeConnectorDouble inputHeight = new NodeConnectorDouble("Converter_Moire.inputHeight",6.0);
-	private NodeConnectorInteger inputDirection = new NodeConnectorOneOfMany("Converter_Moire.inputDirection",directionChoices,0);
-	private NodeConnectorBoundedInt inputCutoff = new NodeConnectorBoundedInt("ImageConverter.inputCutoff",255,0,127);
+	private NodeConnectorDouble inputHeight = new NodeConnectorDouble(Translator.get("Converter_Moire.inputHeight"),6.0);
+	private NodeConnectorInteger inputDirection = new NodeConnectorOneOfMany(Translator.get("Converter_Moire.inputDirection"),directionChoices,0);
+	private NodeConnectorBoundedInt inputCutoff = new NodeConnectorBoundedInt(Translator.get("ImageConverter.inputCutoff"),255,0,127);
 	
 	public Converter_Moire() {
 		super();

@@ -12,7 +12,7 @@ import com.marginallyclever.core.turtle.Turtle;
  */
 public class Generator_GraphPaper extends TurtleGenerator {
 	// mm between grid lines
-	private NodeConnectorDouble inputSpacingMm = new NodeConnectorDouble("Generator_GraphPaper.inputSpacingMm",10.0);
+	private NodeConnectorDouble inputSpacingMm = new NodeConnectorDouble(Translator.get("Generator_GraphPaper.inputSpacingMm"),10.0);
 	
 	
 	public Generator_GraphPaper() {

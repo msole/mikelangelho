@@ -16,7 +16,7 @@ import com.marginallyclever.makelangelo.nodes.TurtleGenerator;
  */
 public class Generator_FibonacciSpiral extends TurtleGenerator {
 	// controls complexity of curve
-	private NodeConnectorInteger inputOrder = new NodeConnectorBoundedInt("Generator_FibonacciSpiral.inputOrder",25,1,7);
+	private NodeConnectorInteger inputOrder = new NodeConnectorBoundedInt(Translator.get("Fractal.inputOrder"),25,1,7);
 	
 	private double xMax = 100;
 	private double yMax = 100;
@@ -25,7 +25,7 @@ public class Generator_FibonacciSpiral extends TurtleGenerator {
 	public Generator_FibonacciSpiral() {
 		super();
 		inputs.add(inputOrder);
-		inputOrder.setDescription(Translator.get("Generator_FibonacciSpiral.inputOrder.tooltip"));
+		inputOrder.setDescription(Translator.get("Fractal.inputOrder.tooltip"));
 	}
 	
 	@Override

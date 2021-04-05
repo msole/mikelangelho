@@ -54,10 +54,10 @@ public class EditPaperGUI extends SelectPanel {
 		double rot = myPaper.getRotation();
 		add(pw = new SelectDouble(Translator.get("EditPaperGUI.PaperWidth"),(float)(right-left)));
 		add(ph = new SelectDouble(Translator.get("EditPaperGUI.PaperHeight"),(float)(top-bot)));
-		add(isLandscape = new SelectBoolean("\u21cb",false));
+		add(isLandscape = new SelectBoolean(Translator.get("EditPaperGUI.isLandscape"),false));
 		
 		add(sx = new SelectDouble(Translator.get("EditPaperGUI.ShiftX"),(left+right)/2.0)); 
-		add(sy = new SelectDouble(Translator.get("EditPaperGUI.Shifty"),(top+bot)/2.0)); 
+		add(sy = new SelectDouble(Translator.get("EditPaperGUI.ShiftY"),(top+bot)/2.0)); 
 		add(ang = new SelectDouble(Translator.get("EditPaperGUI.Rotation"),rot));
 		
 		add(paperMargin = new SelectSlider(Translator.get("EditPaperGUI.PaperMargin"),50,0,100 - (int) (myPaper.getMarginPercent() * 100)));

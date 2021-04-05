@@ -15,17 +15,17 @@ import com.marginallyclever.core.turtle.Turtle;
  */
 public class Generator_LSystemTree extends TurtleGenerator {
 	// random seed
-	private NodeConnectorInteger inputSeed = new NodeConnectorInteger("Generator_LSystemTree.inputSeed",0xDEADBEEF);
+	private NodeConnectorInteger inputSeed = new NodeConnectorInteger(Translator.get("Generator_LSystemTree.inputSeed"),0xDEADBEEF);
 	// resursion depth
-	private NodeConnectorInteger inputOrder = new NodeConnectorBoundedInt("Generator_LSystemTree.inputOrder",10,1,4);
+	private NodeConnectorInteger inputOrder = new NodeConnectorBoundedInt(Translator.get("inputOrder.inputOrder"),10,1,4);
 	// resursion width
-	private NodeConnectorInteger inputBranches = new NodeConnectorBoundedInt("Generator_LSystemTree.inputBranches",10,1,3);
+	private NodeConnectorInteger inputBranches = new NodeConnectorBoundedInt(Translator.get("Generator_LSystemTree.inputBranches"),10,1,3);
 	// variation
-	private NodeConnectorInteger inputNoise = new NodeConnectorInteger("Generator_LSystemTree.inputNoise",0);
+	private NodeConnectorInteger inputNoise = new NodeConnectorInteger(Translator.get("Generator_LSystemTree.inputNoise"),0);
 	// how far branches can spread
-	private NodeConnectorDouble inputAngleSpan = new NodeConnectorAngle("Generator_LSystemTree.inputAngleSpan",120.0);
+	private NodeConnectorDouble inputAngleSpan = new NodeConnectorAngle(Translator.get("Generator_LSystemTree.inputAngleSpan"),120.0);
 	// how far branches can spread
-	private NodeConnectorDouble inputOrderScale = new NodeConnectorDouble("Generator_LSystemTree.inputOrderScale",0.76);
+	private NodeConnectorDouble inputOrderScale = new NodeConnectorDouble(Translator.get("Generator_LSystemTree.inputOrderScale"),0.76);
 	
 	private int order;
 	private int numBranches;
@@ -43,7 +43,7 @@ public class Generator_LSystemTree extends TurtleGenerator {
 		inputs.add(inputAngleSpan	);
 		inputs.add(inputOrderScale	);
 		inputSeed		.setDescription(Translator.get("Generator_LSystemTree.inputSeed.tooltip"));
-		inputOrder		.setDescription(Translator.get("Generator_LSystemTree.inputOrder.tooltip"));
+		inputOrder		.setDescription(Translator.get("inputOrder.inputOrder.tooltip"));
 		inputBranches	.setDescription(Translator.get("Generator_LSystemTree.inputBranches.tooltip"));
 		inputNoise		.setDescription(Translator.get("Generator_LSystemTree.inputNoise.tooltip"));
 		inputAngleSpan	.setDescription(Translator.get("Generator_LSystemTree.inputAngleSpan.tooltip"));

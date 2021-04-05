@@ -13,7 +13,7 @@ import com.marginallyclever.core.turtle.Turtle;
  */
 public class Converter_Crosshatch extends ImageConverter {
 	// detail of scan.  lower number is more detail.  >0
-	private NodeConnectorDouble inputStepSize = new NodeConnectorDouble("Converter_Crosshatch.inputStepSize",2.0);
+	private NodeConnectorDouble inputStepSize = new NodeConnectorDouble(Translator.get("Converter_Crosshatch.inputStepSize"),2.0);
 	
 	public Converter_Crosshatch() {
 		super();

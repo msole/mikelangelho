@@ -2,19 +2,14 @@ package com.marginallyclever.makelangelo.nodes.dxf;
 
 import java.io.InputStream;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.kabeja.dxf.Bounds;
-import org.kabeja.dxf.DXFCircle;
 import org.kabeja.dxf.DXFConstants;
 import org.kabeja.dxf.DXFDocument;
 import org.kabeja.dxf.DXFEntity;
-import org.kabeja.dxf.DXFLWPolyline;
 import org.kabeja.dxf.DXFLayer;
 import org.kabeja.dxf.DXFLine;
 import org.kabeja.dxf.DXFPolyline;

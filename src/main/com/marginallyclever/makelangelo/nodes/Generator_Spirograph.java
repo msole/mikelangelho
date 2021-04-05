@@ -15,15 +15,15 @@ import com.marginallyclever.core.turtle.Turtle;
  */
 public class Generator_Spirograph extends TurtleGenerator {
 	// controls complexity of curve
-	private NodeConnectorDouble inputPScale = new NodeConnectorDouble("Generator_Spirograph.inputPScale",80.0);
+	private NodeConnectorDouble inputPScale = new NodeConnectorDouble(Translator.get("Generator_Spirograph.inputPScale"),80.0);
 	// controls size of pattern. >=0
-	private NodeConnectorInteger inputMinorRadius = new NodeConnectorInteger("Generator_Spirograph.inputMinorRadius",2);
+	private NodeConnectorInteger inputMinorRadius = new NodeConnectorInteger(Translator.get("Generator_Spirograph.inputMinorRadius"),2);
 	// controls interior size of pattern. >=0
-	private NodeConnectorInteger inputMajorRadius = new NodeConnectorInteger("Generator_Spirograph.inputMajorRadius",100);
+	private NodeConnectorInteger inputMajorRadius = new NodeConnectorInteger(Translator.get("Generator_Spirograph.inputMajorRadius"),100);
 	// resolution of curve
-	private NodeConnectorInteger inputNumSamples = new NodeConnectorInteger("Generator_Spirograph.inputNumSamples",2000);
+	private NodeConnectorInteger inputNumSamples = new NodeConnectorInteger(Translator.get("Generator_Spirograph.inputNumSamples"),2000);
 	// style
-	private NodeConnectorBoolean inputIsEpitrochoid = new NodeConnectorBoolean("Generator_Spirograph.inputIsEpitrochoid",false);
+	private NodeConnectorBoolean inputIsEpitrochoid = new NodeConnectorBoolean(Translator.get("Generator_Spirograph.inputIsEpitrochoid"),false);
 	
 	private double xMax,xMin,yMax,yMin;
 	private double totalScale;

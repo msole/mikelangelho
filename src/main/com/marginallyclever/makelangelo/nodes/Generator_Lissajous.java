@@ -14,13 +14,13 @@ import com.marginallyclever.core.turtle.Turtle;
  */
 public class Generator_Lissajous extends TurtleGenerator {
 	// controls complexity of curve
-	private NodeConnectorAngle inputDelta = new NodeConnectorAngle("Generator_Lissajous.inputDelta",360.0/6.0);
+	private NodeConnectorAngle inputDelta = new NodeConnectorAngle(Translator.get("Generator_Lissajous.inputDelta"),360.0/6.0);
 	// controls complexity of curve
-	private NodeConnectorInteger inputA = new NodeConnectorInteger("Generator_Lissajous.inputA",200);
+	private NodeConnectorInteger inputA = new NodeConnectorInteger(Translator.get("Generator_Lissajous.inputA"),200);
 	// controls complexity of curve
-	private NodeConnectorInteger inputB = new NodeConnectorInteger("Generator_Lissajous.inputB",200);
+	private NodeConnectorInteger inputB = new NodeConnectorInteger(Translator.get("Generator_Lissajous.inputB"),200);
 	// quality of curve
-	private NodeConnectorInteger inputSamples = new NodeConnectorInteger("Generator_Lissajous.inputSamples",10000);
+	private NodeConnectorInteger inputSamples = new NodeConnectorInteger(Translator.get("Generator_Lissajous.inputSamples"),10000);
 	
 	// scale the step size so the curve fits on the paper
 	// TODO make parameter?

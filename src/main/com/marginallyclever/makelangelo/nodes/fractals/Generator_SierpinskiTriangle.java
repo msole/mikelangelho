@@ -14,7 +14,7 @@ import com.marginallyclever.makelangelo.nodes.TurtleGenerator;
  */
 public class Generator_SierpinskiTriangle extends TurtleGenerator {
 	// controls complexity of curve
-	private NodeConnectorInteger inputOrder = new NodeConnectorBoundedInt("Generator_SierpinskiTriangle.inputOrder",15,1,4);
+	private NodeConnectorInteger inputOrder = new NodeConnectorBoundedInt(Translator.get("Fractal.inputOrder"),15,1,4);
 	
 	private double xMax, xMin, yMax, yMin;
 	private double maxSize;
@@ -22,7 +22,7 @@ public class Generator_SierpinskiTriangle extends TurtleGenerator {
 	public Generator_SierpinskiTriangle() {
 		super();
 		inputs.add(inputOrder);
-		inputOrder.setDescription(Translator.get("Generator_SierpinskiTriangle.inputOrder.tooltip"));
+		inputOrder.setDescription(Translator.get("Fractal.inputOrder.tooltip"));
 	}
 	
 	@Override

@@ -12,7 +12,7 @@ import com.marginallyclever.makelangelo.nodes.TurtleGenerator;
  */
 public class Generator_HilbertCurve extends TurtleGenerator {
 	// controls complexity of curve
-	private NodeConnectorInteger inputOrder = new NodeConnectorBoundedInt("Generator_HilbertCurve.inputOrder",15,1,4);
+	private NodeConnectorInteger inputOrder = new NodeConnectorBoundedInt(Translator.get("Fractal.inputOrder"),15,1,4);
 	
 	private float turtleStep = 10.0f;
 	private double xMax = 7;
@@ -22,7 +22,7 @@ public class Generator_HilbertCurve extends TurtleGenerator {
 	public Generator_HilbertCurve() {
 		super();
 		inputs.add(inputOrder);
-		inputOrder.setDescription(Translator.get("Generator_HilbertCurve.inputOrder.tooltip"));
+		inputOrder.setDescription(Translator.get("Fractal.inputOrder.tooltip"));
 	}
 
 	@Override
