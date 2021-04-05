@@ -818,15 +818,18 @@ public abstract class Plotter implements Serializable, NetworkConnectionListener
 
 		// Part of M100 is a D5 which reports "Firmware v**".  We want to know we're on the right version of the firmware.
 		if (!firmwareVersionChecked && data.lastIndexOf(versionCheckStart) >= 0) {
+			Log.message("Firmware version check");
 			String afterV = data.substring(versionCheckStart.length()).trim();
 			long versionFound = Long.parseLong(afterV);
 
 			if (versionFound == expectedFirmwareVersion) {
+				Log.message("Firmware good");
 				firmwareVersionChecked = true;
 				justNow = true;
 				// request the hardware version of this robot
 				sendLineToRobot("D10\n");
 			} else {
+				Log.message("Firmware bad");
 				notifyFirmwareVersionBad(versionFound);
 			}
 		}
@@ -838,6 +841,7 @@ public abstract class Plotter implements Serializable, NetworkConnectionListener
 		// 6 is makelangelo 6
 		// is hardware checked?
 		if (!hardwareVersionChecked && data.lastIndexOf("D10") >= 0) {
+			Log.message("Hardware version check");
 			String[] pieces = data.split(" ");
 			if (pieces.length > 1) {
 				String last = pieces[pieces.length - 1];
@@ -845,8 +849,10 @@ public abstract class Plotter implements Serializable, NetworkConnectionListener
 				if (last.startsWith("V")) {
 					String version = last.substring(1);
 					if(version.contentEquals(getVersion())) {
+						Log.message("Hardware version good");
 						hardwareVersionChecked = true;
 					} else {
+						Log.message("Hardware version bad");
 						// TODO die here if versions don't match?
 					}
 					justNow = true;
@@ -857,6 +863,7 @@ public abstract class Plotter implements Serializable, NetworkConnectionListener
 		// all checks have passed!
 		if (justNow && portConfirmed && firmwareVersionChecked && hardwareVersionChecked) {
 			// send whatever config settings I have for this machine.
+			Log.message("All tests passed.");
 			sendConfig();
 			
 			// tell everyone I've confirmed connection.
