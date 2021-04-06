@@ -104,7 +104,6 @@ public class StatusBar extends JPanel {
 		long total_time = (long) ((float) t_draw_now * (float) total / (float) sofar);
 		long remaining = total_time - t_draw_now;
 
-		//System.out.println(t_draw_now+"\t"+t_start);
 		mLines.setText(sofar + " / " + total + " ("+StringHelper.formatDouble(100*(double)sofar/(double)total)+"%)");
 		mTime.setText(Log.millisecondsToHumanReadable(t_draw_now) + " / " + Log.millisecondsToHumanReadable(remaining));
 	}
