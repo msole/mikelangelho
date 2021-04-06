@@ -625,7 +625,7 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 		JMenu menu = new JMenu(Translator.get("Makelangelo.menuView"));
 		menuBar.add(menu);
 		
-		JMenuItem buttonShowUp = new JMenuItem(Translator.get("Makelangelo.viewPenUp"));
+		JMenuItem buttonShowUp = new JRadioButtonMenuItem(Translator.get("Makelangelo.viewPenUp"));
 		buttonShowUp.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_UP, InputEvent.CTRL_DOWN_MASK));
 		buttonShowUp.addActionListener(new ActionListener() {
 			@Override
