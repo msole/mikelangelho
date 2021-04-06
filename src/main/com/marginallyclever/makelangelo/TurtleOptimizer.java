@@ -296,35 +296,32 @@ public class TurtleOptimizer {
 		
 		int size=newSequence.size();
 		for(int a=0;a<size-1;++a) {
-			// travel between Polyline a and a+1
-			Integer ah = newSequence.get(a).peekLast();
-			Integer at = newSequence.get(a+1).peekFirst();
+			// travel between sequence a and a+1
+			Integer A = newSequence.get(a).peekLast();
+			Integer B = newSequence.get(a+1).peekFirst();
 			
 			for(int b=a+1;b<size-1;++b) {
-				// travel between Polyline b and b+1
-				Integer bh = newSequence.get(b).peekLast();
-				Integer bt = newSequence.get(b+1).peekFirst();
+				// travel between sequence b and b+1
+				Integer C = newSequence.get(b).peekLast();
+				Integer D = newSequence.get(b+1).peekFirst();
 				
-				if(travelsCross(ah,at,bh,bt)) {
-					if(!travelsCross(ah,bh,at,bt)) {
+				if(travelsCross(A,B,C,D)) {
+					// if we uncross the travel moves?
+					if(!travelsCross(A,C,B,D)) {
 						numFixed++;
-						// reverse the content of each polyline a+1...b, inclusive.
+						// reverse the content of each sequence a+1...b, inclusive.
 						int start = a+1;
 						int end = b;
 						for(int c=start;c<=end;++c) {
 							Collections.reverse(newSequence.get(c));
 						}
-						// reverse the order of polylines a+1...b, inclusive.
+						// reverse the order of sequences a+1...b, inclusive.
 						int mid = (end-start)/2;
-						for(int c=0;c<=mid;++c) {
+						for(int c=0;c<mid;++c) {
 							Collections.swap(newSequence, start+c, end-c);
 						}
-	
-						at = newSequence.get(a+1).peekFirst();
-						bh = newSequence.get(b).peekLast();
-						bt = newSequence.get(b+1).peekFirst();
-						if(travelsCross(ah,at,bh,bt)) {
-						}
+						// update B for our next time through the loop.
+						B = newSequence.get(a+1).peekFirst();
 					} else {
 						numUnfixed++;
 					}
