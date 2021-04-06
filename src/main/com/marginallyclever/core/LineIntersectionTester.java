@@ -25,8 +25,8 @@ public class LineIntersectionTester {
 	    // for details of below formula.
 	    double val = (q.y - p.y) * (r.x - q.x) -
 	                 (q.x - p.x) * (r.y - q.y);
-	  
-	    if (val < 0.01) return 0; // colinear
+
+	    if (Math.abs(val)<1e-7) return 0; // colinear
 	  
 	    return (val > 0)? 1: 2; // clock or counterclock wise
 	} 
