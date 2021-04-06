@@ -678,7 +678,7 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(logFrame == null) {
-					logFrame = new JFrame(Translator.get("Log"));
+					logFrame = new JFrame(Log.LOG_FILE_PATH+Log.LOG_FILE_NAME_TXT);
 					logFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 					logFrame.setPreferredSize(new Dimension(600,400));
 					logFrame.add(logPanel);
