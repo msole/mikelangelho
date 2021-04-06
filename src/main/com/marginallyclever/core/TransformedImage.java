@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
 import java.awt.image.WritableRaster;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -356,6 +357,9 @@ public class TransformedImage {
 	 * @return
 	 */
 	static public TransformedImage loadImage(String filename) {
+		File check = new File(filename);
+		if(!check.exists()) return null;
+		
 		TransformedImage img = null;
 		
 		try (final InputStream fileInputStream = new FileInputStream(filename)) {
@@ -363,6 +367,7 @@ public class TransformedImage {
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
+		
 		return img;
 	}
 
