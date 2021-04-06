@@ -620,11 +620,6 @@ public class DrivePlotterGUI implements ActionListener, PlotterListener {
 	public void propertyChange(PropertyChangeEvent evt) {
 		if(evt.getSource() == myPlotter) {
 			switch(evt.getPropertyName()) {
-			case "halt":  updateButtonAccess();  break;
-			case "running":
-				statusBar.start();
-				updateButtonAccess(); // disables all the manual driving buttons
-				break;
 			case "engaged":
 				if((boolean)evt.getNewValue()) {
 					toggleEngageMotor.setText(Translator.get("DrivePlotterGUI.DisengageMotors"));
@@ -639,6 +634,9 @@ public class DrivePlotterGUI implements ActionListener, PlotterListener {
 				statusBar.setProgress((int)evt.getOldValue(), (int)evt.getNewValue());
 				break;
 			case "running":
+				if((boolean)evt.getNewValue()==true) {
+					statusBar.start();
+				}
 				updateButtonAccess();
 				break;
 			}
