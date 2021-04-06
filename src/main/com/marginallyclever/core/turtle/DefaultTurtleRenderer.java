@@ -14,6 +14,7 @@ public class DefaultTurtleRenderer implements TurtleRenderer {
 	public ColorRGB colorTravel = new ColorRGB(0,255,0);
 	public ColorRGB colorDraw = new ColorRGB(0,0,0);
 	public boolean showPenUp = false;
+	private int myLimit=0;
 	
 	public DefaultTurtleRenderer(GL2 gl2, boolean showPenUp) {
 		this.gl2=gl2;
@@ -32,6 +33,9 @@ public class DefaultTurtleRenderer implements TurtleRenderer {
 
 	@Override
 	public void draw(TurtleMove p0, TurtleMove p1) {
+		if(myLimit<=0) return;
+		--myLimit;
+		
 		gl2.glColor3d(
 				colorDraw.getRed() / 255.0,
 				colorDraw.getGreen() / 255.0,
@@ -43,6 +47,9 @@ public class DefaultTurtleRenderer implements TurtleRenderer {
 	@Override
 	public void travel(TurtleMove p0, TurtleMove p1) {
 		if(!showPenUp) return;
+
+		if(myLimit<=0) return;
+		--myLimit;
 		
 		gl2.glColor3d(
 				colorTravel.getRed() / 255.0,
@@ -55,5 +62,10 @@ public class DefaultTurtleRenderer implements TurtleRenderer {
 	@Override
 	public void setPenDownColor(ColorRGB color) {
 		colorDraw.set(color);
+	}
+
+	@Override
+	public void resetLimit(int until) {
+		myLimit = until;
 	}
 }

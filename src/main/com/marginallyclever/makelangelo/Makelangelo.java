@@ -50,9 +50,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JSeparator;
+import javax.swing.JSlider;
 import javax.swing.KeyStroke;
 import javax.swing.TransferHandler;
 import javax.swing.UIManager;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -117,10 +120,11 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 	private Pen myPen = new Pen();
 	
 	// what surface is under the tool.
-	
 	private Paper myPaper = new Paper();
+	
 	// The collection of lines to draw.
 	private ArrayList<Turtle> myTurtles;
+	
 	// When dialogs for generators and converters are open, they may run many times.
 	// keep these turtles in a separate list and only commit them when the dialog is closed.
 	private ArrayList<Turtle> myIntermediateTurtles;
@@ -134,8 +138,9 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 	protected FileFilter lastFilterOut = null;
 	
 	// GUI elements
-	private JFrame mainFrame = null;
+	private JFrame mainFrame;
 	private JPanel mainOrganizer;
+	private JSlider progressBar;
 	
 	// only allow one log frame
 	private JFrame logFrame = null;
@@ -183,6 +188,14 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 		Translator.start();
 		
 		logPanel = new LogPanel();
+		
+		progressBar = new JSlider(JSlider.HORIZONTAL,0,30000,30000);
+		progressBar.addChangeListener(new ChangeListener() {
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				
+			}
+		});
 
 		Log.message("Locale="+Locale.getDefault().toString());
 		Log.message("Headless="+(GraphicsEnvironment.isHeadless()?"Y":"N"));
@@ -422,13 +435,33 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 					// dialog is now closed.
 					myTurtles.addAll(myIntermediateTurtles);
 					myIntermediateTurtles.clear();
+					updateProgressBar();
 					
 					menuBar.setEnabled(true);
 				}
 			});
 		}
 	}
+	
+	private void updateProgressBar() {
+		if(myTurtles.isEmpty()) {
+			mainOrganizer.remove(progressBar);
+			mainOrganizer.revalidate();
+		} else {
+			int sum=0;
+			for( Turtle t : myTurtles             ) sum += t.history.size();
+			for( Turtle t : myIntermediateTurtles ) sum += t.history.size();
+			progressBar.setMaximum(sum);
+			progressBar.setMajorTickSpacing(1000);
+			progressBar.setMinorTickSpacing(100);
+			progressBar.setToolTipText(Integer.toString(sum));
+			progressBar.setValue(sum);
 
+			mainOrganizer.add(progressBar,BorderLayout.NORTH);
+			mainOrganizer.revalidate();
+		}
+	}
+	
 	private void addMenuConvert() {
 		Log.message("  convert...");
 		JMenu menu = new JMenu(Translator.get("Makelangelo.menuConvert"));
@@ -464,6 +497,7 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 					// dialog is now closed.
 					myTurtles.addAll(myIntermediateTurtles);
 					myIntermediateTurtles.clear();
+					updateProgressBar();
 					
 					menuBar.setEnabled(true);
 				}
@@ -488,6 +522,7 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			optimizeTurtles();
+			updateProgressBar();
 		}
 		});
 		menu.add(buttonOptimize);
@@ -497,6 +532,7 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			simplifyTurtles();
+			updateProgressBar();
 		}
 		});
 		menu.add(buttonSimplify);
@@ -725,6 +761,7 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 			public void actionPerformed(ActionEvent e) {
 				// who manages sending drawings to the plotter?
 				RobotController myController = new RobotController(activePlotter);
+				myController.setTurtles(myTurtles);
 				DrivePlotterGUI mm = new DrivePlotterGUI(myController); 
 				mm.run(mainFrame);
 				refreshRobotsList();
@@ -977,6 +1014,7 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 							myTurtles.add(((NodeConnectorTurtle)nc).getValue());
 						}
 					}
+					updateProgressBar();
 				}
 				
 				return success;
@@ -1138,16 +1176,15 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 				myTurtles.add(((NodeConnectorTurtle)nc).getValue());
 			}
 		}
-		
-		if(myTurtles.size()>0) {
-			System.out.println("No turtles found!");
-		}
+
+		updateProgressBar();
 	}
 	
 	// DO NOT add confirm here, it's too late at this point.
 	private void newFile() {
 		myTurtles.clear();
 		myIntermediateTurtles.clear();
+		updateProgressBar();
 	}
 
 	private void rotateTurtles(double degrees) {
@@ -1306,6 +1343,8 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 		float size = (float)(myPen.getDiameter() * 200.0 / camera.getZoom());
 
 		TurtleRenderer tr = new DefaultTurtleRenderer(gl2,showPenUp);
+		int until = progressBar.getValue();
+		tr.resetLimit(until);
 		
 		for( Turtle t : myTurtles ) {
 			tr.setPenDownColor(t.getColor());
