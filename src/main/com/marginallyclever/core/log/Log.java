@@ -199,12 +199,15 @@ public class Log {
 		long s = millis / 1000;
 		long m = s / 60;
 		long h = m / 60;
+		long d = h / 24;
 		m %= 60;
 		s %= 60;
+		h %= 24;
 
 		String elapsed = "";
-		if (h > 0) elapsed += h + "h";
-		if (h > 0 || m > 0) elapsed += m + "m";
+		if(d > 0) elapsed += d + "d";
+		if(elapsed.length()>0 || h > 0) elapsed += h + "h";
+		if(elapsed.length()>0 || m > 0) elapsed += m + "m";
 		elapsed += s + "s ";
 
 		return elapsed;
