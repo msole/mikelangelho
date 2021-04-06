@@ -271,7 +271,7 @@ public class RobotController extends Node implements PlotterListener {
 		Log.message("New method "+printTimeEstimate(newEstimate));
 		
 		// show results
-		notifyListeners("progress",newEstimate, lineCount);
+		notifyListeners("progress", 0, lineCount);
 	}
 	
 	protected String printTimeEstimate(double seconds) {
