@@ -423,7 +423,7 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 							
 							for(NodeConnector<?> nc : node.outputs ) {
 								if(nc instanceof NodeConnectorTurtle) {
-									System.out.println("Node output "+nc.getClass().getSimpleName());
+									//System.out.println("Node output "+nc.getClass().getSimpleName());
 									myIntermediateTurtles.add(((NodeConnectorTurtle)nc).getValue());
 								}
 							}
@@ -486,7 +486,7 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 							myIntermediateTurtles.clear();
 							for(NodeConnector<?> nc : node.outputs ) {
 								if(nc instanceof NodeConnectorTurtle) {
-									System.out.println("Node output "+nc.getClass().getSimpleName());
+									//System.out.println("Node output "+nc.getClass().getSimpleName());
 									myIntermediateTurtles.add(((NodeConnectorTurtle)nc).getValue());
 								}
 							}
@@ -1010,7 +1010,7 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 
 					for(NodeConnector<?> nc : g.outputs ) {
 						if(nc instanceof NodeConnectorTurtle) {
-							System.out.println("Node output "+nc.getClass().getSimpleName());
+							//System.out.println("Node output "+nc.getClass().getSimpleName());
 							myTurtles.add(((NodeConnectorTurtle)nc).getValue());
 						}
 					}
@@ -1172,7 +1172,7 @@ public final class Makelangelo extends TransferHandler implements RendersInOpenG
 		
 		for(NodeConnector<?> nc : c.outputs ) {
 			if(nc instanceof NodeConnectorTurtle) {
-				System.out.println("Node output "+nc.getClass().getSimpleName());
+				//System.out.println("Node output "+nc.getClass().getSimpleName());
 				myTurtles.add(((NodeConnectorTurtle)nc).getValue());
 			}
 		}
