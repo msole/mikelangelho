@@ -5,6 +5,7 @@ import java.util.LinkedList;
 
 import javax.vecmath.Vector3d;
 
+import com.marginallyclever.core.log.Log;
 import com.marginallyclever.core.turtle.Turtle;
 import com.marginallyclever.core.turtle.TurtleMove;
 
@@ -410,6 +411,18 @@ public class FirmwareSimulation {
 		double fu = myPlotter.getTravelFeedRate();
 		double fd = myPlotter.getDrawingFeedRate();
 		double fz = myPlotter.getZFeedrate();
+		if(fu<=0) {
+			Log.message("Travel feedrate zero.");
+			return 0;
+		}
+		if(fu<=0) {
+			Log.message("Draw feedrate zero.");
+			return 0;
+		}
+		if(fu<=0) {
+			Log.message("Z feedrate zero.");
+			return 0;
+		}
 		double a = myPlotter.getAcceleration();
 		boolean isUp=true;
 		double zu = myPlotter.getPenUpAngle();
