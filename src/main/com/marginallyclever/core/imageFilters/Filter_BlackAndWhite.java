@@ -18,7 +18,7 @@ public class Filter_BlackAndWhite extends ImageFilter {
 	}
 
 	public TransformedImage filter(TransformedImage img) {
-		int mode = 1;
+		int mode = 2;
 		switch (mode) {
 		case 0:	return filterLevels(img);
 		case 1:	return filterTone(img);
