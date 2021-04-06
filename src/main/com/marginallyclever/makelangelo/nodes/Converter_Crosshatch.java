@@ -4,7 +4,7 @@ import com.marginallyclever.core.Histogram;
 import com.marginallyclever.core.TransformedImage;
 import com.marginallyclever.core.Translator;
 import com.marginallyclever.core.imageFilters.Filter_BlackAndWhite;
-import com.marginallyclever.core.node.NodeConnectorDouble;
+import com.marginallyclever.core.node.NodeConnectorInteger;
 import com.marginallyclever.core.turtle.Turtle;
 
 /**
@@ -13,7 +13,7 @@ import com.marginallyclever.core.turtle.Turtle;
  */
 public class Converter_Crosshatch extends ImageConverter {
 	// detail of scan.  lower number is more detail.  >0
-	private NodeConnectorDouble inputStepSize = new NodeConnectorDouble(Translator.get("Converter_Crosshatch.inputStepSize"),2.0);
+	private NodeConnectorInteger inputStepSize = new NodeConnectorInteger(Translator.get("Converter_Crosshatch.inputStepSize"),2);
 	
 	public Converter_Crosshatch() {
 		super();
