@@ -351,8 +351,8 @@ public class FirmwareSimulation {
 		if( exitSpeed  < MINIMUM_PLANNER_SPEED ) exitSpeed  = MINIMUM_PLANNER_SPEED;
 		
 		double accel = seg.acceleration;
-		double accelerateD = Math.ceil( estimateAccelerationDistance(entrySpeed, seg.nominalSpeed, accel));
-		double decelerateD = Math.floor( estimateAccelerationDistance(seg.nominalSpeed, exitSpeed, -accel));
+		double accelerateD = Math.max(0,Math.ceil( estimateAccelerationDistance(entrySpeed, seg.nominalSpeed, accel)));
+		double decelerateD = Math.max(0,Math.floor( estimateAccelerationDistance(seg.nominalSpeed, exitSpeed, -accel)));
 		double plateauD = seg.distance - accelerateD - decelerateD;
 		if( plateauD < 0 ) {
 			double half = Math.ceil(intersectionDistance(entrySpeed, exitSpeed, accel, seg.distance));
