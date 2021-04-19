@@ -162,9 +162,9 @@ public class DrivePlotterGUI implements ActionListener, PlotterListener {
 		gbc.weightx=1;
 			
 		jogInterior.add(buttonLeftIn = new JButton(Translator.get("DrivePlotterGUI.JogLeftIn")),gbc);
-		buttonLeftIn.addPropertyChangeListener(new PropertyChangeListener() {
+		buttonLeftIn.addActionListener(new ActionListener() {
 			@Override
-			public void propertyChange(PropertyChangeEvent evt) {
+			public void actionPerformed(ActionEvent e) {
 				plotter.jogLeftMotorIn();
 			}
 		});
@@ -174,9 +174,9 @@ public class DrivePlotterGUI implements ActionListener, PlotterListener {
 		
 		gbc.gridx=2;
 		jogInterior.add(buttonRightIn = new JButton(Translator.get("DrivePlotterGUI.JogRightIn")),gbc);
-		buttonRightIn.addPropertyChangeListener(new PropertyChangeListener() {
+		buttonRightIn.addActionListener(new ActionListener() {
 			@Override
-			public void propertyChange(PropertyChangeEvent evt) {
+			public void actionPerformed(ActionEvent e) {
 				plotter.jogRightMotorIn();
 			}
 		});
@@ -184,9 +184,9 @@ public class DrivePlotterGUI implements ActionListener, PlotterListener {
 		gbc.gridy++;
 		gbc.gridx=0;
 		jogInterior.add(buttonLeftOut = new JButton(Translator.get("DrivePlotterGUI.JogLeftOut")),gbc);
-		buttonLeftOut.addPropertyChangeListener(new PropertyChangeListener() {
+		buttonLeftOut.addActionListener(new ActionListener() {
 			@Override
-			public void propertyChange(PropertyChangeEvent evt) {
+			public void actionPerformed(ActionEvent e) {
 				plotter.jogLeftMotorOut();
 			}
 		});
@@ -196,9 +196,9 @@ public class DrivePlotterGUI implements ActionListener, PlotterListener {
 		
 		gbc.gridx=2;
 		jogInterior.add(buttonRightOut = new JButton(Translator.get("DrivePlotterGUI.JogRightOut")),gbc);
-		buttonRightOut.addPropertyChangeListener(new PropertyChangeListener() {
+		buttonRightOut.addActionListener(new ActionListener() {
 			@Override
-			public void propertyChange(PropertyChangeEvent evt) {
+			public void actionPerformed(ActionEvent e) {
 				plotter.jogRightMotorOut();
 			}
 		});
