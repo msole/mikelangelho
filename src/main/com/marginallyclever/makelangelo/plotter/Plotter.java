@@ -35,7 +35,6 @@ import com.marginallyclever.util.PreferencesHelper;
  * For more sophisticated behavior associate your Plotter with some buffering class.
  * 
  * @author Dan Royer
- * @since before 7.25.0
  */
 public abstract class Plotter implements Serializable, NetworkConnectionListener, PlotterModel {
 	/**
@@ -234,7 +233,6 @@ public abstract class Plotter implements Serializable, NetworkConnectionListener
 
 	
 	protected void loadPenConfig(Preferences prefs) {
-		prefs = prefs.node("Pen");
 		setPenDiameter(prefs.getDouble("diameter", getPenDiameter()));
 		
 		int r,g,b;
@@ -250,7 +248,6 @@ public abstract class Plotter implements Serializable, NetworkConnectionListener
 	}
 
 	protected void savePenConfig(Preferences prefs) {
-		prefs = prefs.node("Pen");
 		prefs.putDouble("diameter", getPenDiameter());
 
 		prefs.putInt("penDownColorR", penDownColor.getRed());
@@ -270,6 +267,8 @@ public abstract class Plotter implements Serializable, NetworkConnectionListener
 	public void saveConfig() {
 		Preferences topNode = PreferencesHelper.getPreferenceNode(PreferencesHelper.MakelangeloPreferenceKey.MACHINES);
 		Preferences myNode = topNode.node(nodeName);
+		
+		myNode.put("hardwareVersion", getVersion());
 		
 		myNode.putDouble("limit_top", limitTop);
 		myNode.putDouble("limit_bottom", limitBottom);
@@ -319,8 +318,6 @@ public abstract class Plotter implements Serializable, NetworkConnectionListener
 		nickname = myNode.get("Nickname", nickname);
 		
 		loadPenConfig(myNode);
-
-		//hardwareVersion = myNode.get("hardwareVersion", getVersion());
 	}
 
 	
@@ -852,7 +849,7 @@ public abstract class Plotter implements Serializable, NetworkConnectionListener
 						Log.message("Hardware version good");
 						hardwareVersionChecked = true;
 					} else {
-						Log.message("Hardware version bad");
+						Log.message("Hardware version bad.  expected '"+getVersion()+"', got '"+version+"'.");
 						// TODO die here if versions don't match?
 					}
 					justNow = true;
