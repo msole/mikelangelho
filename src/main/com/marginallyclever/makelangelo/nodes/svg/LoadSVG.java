@@ -300,20 +300,22 @@ public class LoadSVG extends TurtleGenerator implements LoadFile {
 	 * @param cy center position
 	 * @param rx radius on X
 	 * @param ry radius on Y
-	 * @param p0 radian start angle.
-	 * @param p1 radian end angle.
+	 * @param radianStart radian start angle.
+	 * @param radianEnd radian end angle.
 	 */
-	protected void arcTurtle(Turtle turtle,double cx,double cy,double rx,double ry,double p0,double p1) {
-		double steps=1;
+	protected void arcTurtle(Turtle turtle,double cx,double cy,double rx,double ry,double radianStart,double radianEnd) {
+		double steps=0;
+		double dRadians = radianEnd-radianStart;
+		
 		if(rx>0 && ry>0) {
 			double r = rx>ry?rx:ry;
-			double circ = Math.PI*r*2.0;  // radius to circumference 
-			steps = Math.ceil(circ/4.0);  // 1/4 circumference
-			steps = Math.max(steps,1);
+			// full circumference would be r*PI*2.  We have dRadians, instead.
+			steps = Math.floor(r*dRadians);
 		}
-		steps = steps/4;
+		steps = Math.max(steps,0);
+		
 		for(double p = 0;p<=steps;++p) {
-			double pFraction = ((p1-p0)*(p/steps) + p0);
+			double pFraction = p * dRadians / steps + radianStart;
 			double c = Math.cos(pFraction) * rx;
 			double s = Math.sin(pFraction) * ry;
 			turtle.moveTo(TX(cx+c), TY(cy+s));
@@ -332,10 +334,12 @@ public class LoadSVG extends TurtleGenerator implements LoadFile {
 				if(element.hasAttribute("cy")) cy = Double.parseDouble(element.getAttribute("cy"));
 				if(element.hasAttribute("r" )) r  = Double.parseDouble(element.getAttribute("r"));
 				turtle.jumpTo(TX(cx+r),TY(cy));
-				for(double i=1;i<40;++i) {  // hard coded 40?  gross!
-					double v = (Math.PI*2.0) * (i/40.0);
-					double s=r*Math.sin(v);
-					double c=r*Math.cos(v);
+				// steps = circumference
+				double steps = r * Math.PI*2.0;
+				for(double i=1;i<steps;++i) {  // hard coded 40?  gross!
+					double v = (Math.PI*2.0) * (i/steps);
+					double s = r*Math.sin(v);
+					double c = r*Math.cos(v);
 					turtle.moveTo(TX(cx+c),TY(cy+s));
 				}
 				turtle.moveTo(TX(cx+r),TY(cy));
