@@ -158,7 +158,6 @@ public class AllPlottersGUI {
 				Plotter p = panel.getNewPlotter();
 				p.saveConfig();
 				allPlotters.add(p);
-				
 				refreshBackendList(listBackend);
 				listOfNames.setModel(listBackend);
 				
@@ -190,7 +189,6 @@ public class AllPlottersGUI {
 		if(result==JOptionPane.OK_OPTION) {
 			panel.save();
 			p.saveConfig();
-			
 			refreshBackendList(listBackend);
 			listOfNames.setModel(listBackend);
 		}
@@ -213,7 +211,6 @@ public class AllPlottersGUI {
 
 			if(index!=-1) {
 				allPlotters.delete(index);
-				
 				refreshBackendList(listBackend);
 				listOfNames.setModel(listBackend);
 			}
