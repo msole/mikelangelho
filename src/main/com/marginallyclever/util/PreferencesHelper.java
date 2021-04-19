@@ -47,8 +47,7 @@ public final class PreferencesHelper {
 
 	/**
 	 * Machine preference node path, used to store things such as paper height and width, invert left and right motors,
-	 * etc.
-	 * See com.marginallyclever.makelangeloRobot.settings.MakelangeloRobotSettings
+	 * etc.  See {@link Plotter}
 	 */
 	private static final String MACHINES_PATH_NAME = "Machines";
 
