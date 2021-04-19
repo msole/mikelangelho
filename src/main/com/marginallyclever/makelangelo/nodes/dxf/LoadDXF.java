@@ -157,48 +157,6 @@ public class LoadDXF extends TurtleGenerator implements LoadFile {
 		return dx*dx+dy*dy;
 	}
 	
-	@Deprecated
-	protected Point getEntityStart(DXFEntity e) {
-		if (e.getType().equals(DXFConstants.ENTITY_TYPE_LINE)) {
-			DXFLine line = (DXFLine)e;
-			return line.getStartPoint();
-		} else if (e.getType().equals(DXFConstants.ENTITY_TYPE_SPLINE)) {
-			DXFPolyline line = DXFSplineConverter.toDXFPolyline((DXFSpline)e);
-			DXFVertex v = line.getVertex(0);
-			return new Point(v.getX(),v.getY(),v.getZ());
-		} else if (e.getType().equals(DXFConstants.ENTITY_TYPE_POLYLINE)
-				|| e.getType().equals(DXFConstants.ENTITY_TYPE_LWPOLYLINE)) {
-			DXFPolyline line = (DXFPolyline)e;
-			DXFVertex v = line.getVertex(0);
-			return new Point(v.getX(),v.getY(),v.getZ());
-		}
-		assert(false);
-		return null;
-	}
-
-	@Deprecated
-	protected Point getEntityEnd(DXFEntity e) {
-		if (e.getType().equals(DXFConstants.ENTITY_TYPE_LINE)) {
-			DXFLine line = (DXFLine)e;
-			return line.getEndPoint();
-		} else if (e.getType().equals(DXFConstants.ENTITY_TYPE_SPLINE)) {
-			DXFPolyline line = DXFSplineConverter.toDXFPolyline((DXFSpline)e);
-			int n=0;
-			if(!line.isClosed()) n=line.getVertexCount()-1;
-			DXFVertex v = line.getVertex(n);
-			return new Point(v.getX(),v.getY(),v.getZ());
-		} else if (e.getType().equals(DXFConstants.ENTITY_TYPE_POLYLINE)
-				|| e.getType().equals(DXFConstants.ENTITY_TYPE_LWPOLYLINE)) {
-			DXFPolyline line = (DXFPolyline)e;
-			int n=0;
-			if(!line.isClosed()) n=line.getVertexCount()-1;
-			DXFVertex v = line.getVertex(n);
-			return new Point(v.getX(),v.getY(),v.getZ());
-		}
-		assert(false);
-		return null;
-	}
-	
 	protected double TX(double x) {
 		return (x-imageCenterX);
 	}
