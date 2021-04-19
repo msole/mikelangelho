@@ -49,7 +49,12 @@ public class AllPlotters {
 		if(iNode==null) {
 			throw new InvalidParameterException("Plotter '"+configsAvailable[i]+"' could not be loaded.");
 		}
-		String typeName = iNode.get("hardwareVersion", "5");
+		String typeName = iNode.get("hardwareVersion", null);
+		if(typeName==null) {
+			topNode.remove(configsAvailable[i]);
+			throw new InvalidParameterException("Plotter '"+configsAvailable[i]+"' has no hardware version.");
+		}
+		
 		// search the services for the type of machine.
 		ServiceLoader<Plotter> slp = ServiceLoader.load(Plotter.class);
 		for( Plotter p : slp ) {
@@ -83,7 +88,7 @@ public class AllPlotters {
 	}
 
 	public void add(Plotter p) {
-		System.out.println("Adding "+(p.getName()+" "+p.getUID()));
+		Log.message("Adding "+(p.getName()+" "+p.getUID()));
 		Preferences topNode = PreferencesHelper.getPreferenceNode(PreferencesHelper.MakelangeloPreferenceKey.MACHINES);
 		try {
 			String [] names = topNode.childrenNames();
@@ -98,7 +103,9 @@ public class AllPlotters {
 					// bad number format
 				}
 			}
-			p.setNodeName(Integer.toString(biggestID+1));
+			String nodeName= Integer.toString(biggestID+1);
+			Log.message("node name="+nodeName);
+			p.setNodeName(nodeName);
 			p.saveConfig();
 			refreshPlotters();
 		} catch (BackingStoreException e) {
