@@ -281,4 +281,17 @@ public final class Translator {
 		// failed both, return 0 for the first option.
 		return 0;
 	}
+
+	public static String getFallback(String keyName) {
+		try {
+			return languages.get(currentLanguage).get(keyName);
+		} catch(NullPointerException e) {
+			try {
+				return languages.get("english").get(keyName);
+			} catch(NullPointerException e2) {
+				e2.printStackTrace();
+				return "Missing: "+keyName;
+			}
+		}
+	}
 }

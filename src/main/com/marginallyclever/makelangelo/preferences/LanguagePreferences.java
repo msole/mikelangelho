@@ -18,11 +18,11 @@ public class LanguagePreferences {
 		
 		languageList = Translator.getLanguageList();
 		int currentIndex = Translator.getCurrentLanguageIndex();
-		languageOptions = new SelectOneOfMany(Translator.get("LanguagePreferences.language"),languageList,currentIndex);
+		languageOptions = new SelectOneOfMany(Translator.getFallback("LanguagePreferences.language"),languageList,currentIndex);
 		
 		panel.add(languageOptions);
 		
-		panel.add(new SelectReadOnlyText(Translator.get("LanguagePreferences.notice")));
+		panel.add(new SelectReadOnlyText(Translator.getFallback("LanguagePreferences.notice")));
 		
 		panel.finish();
 
