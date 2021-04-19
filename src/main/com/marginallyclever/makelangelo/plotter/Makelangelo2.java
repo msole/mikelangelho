@@ -30,7 +30,7 @@ public class Makelangelo2 extends Plotter implements PlotterModel {
 	}
 	
 	/**
-	 * convert from belt length mm to cartesian position.
+	 * Convert from belt length mm to cartesian position.
 	 * @param beltL length of belt (mm)
 	 * @param beltR length of belt (mm)
 	 * @return cartesian coordinate 
@@ -200,10 +200,10 @@ public class Makelangelo2 extends Plotter implements PlotterModel {
 		// UNO
 		gl2.glColor3d(0, 0, 0.6);
 		gl2.glBegin(GL2.GL_QUADS);
-		gl2.glVertex2d(-4, 3);
-		gl2.glVertex2d(+4, 3);
-		gl2.glVertex2d(+4, -3);
-		gl2.glVertex2d(-4, -3);
+		gl2.glVertex2d(-40, 30);
+		gl2.glVertex2d(+40, 30);
+		gl2.glVertex2d(+40, -30);
+		gl2.glVertex2d(-40, -30);
 		gl2.glEnd();
 
 		gl2.glPopMatrix();
