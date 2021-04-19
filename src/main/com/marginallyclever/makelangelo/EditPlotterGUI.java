@@ -4,6 +4,7 @@ import com.marginallyclever.core.Translator;
 import com.marginallyclever.core.select.SelectDouble;
 import com.marginallyclever.core.select.SelectInteger;
 import com.marginallyclever.core.select.SelectPanel;
+import com.marginallyclever.core.select.SelectReadOnlyText;
 import com.marginallyclever.core.select.SelectString;
 import com.marginallyclever.makelangelo.plotter.Plotter;
 
@@ -41,6 +42,7 @@ public class EditPlotterGUI extends SelectPanel {
 		float w = (float)(myPlotter.getLimitRight() - myPlotter.getLimitLeft());
 		float h = (float)(myPlotter.getLimitTop() - myPlotter.getLimitBottom());
 		
+		add(new SelectReadOnlyText(myPlotter.getClass().getName()));
 		add(nickname = new SelectString(Translator.get("EditPlotterGUI.nickname"),myPlotter.getNickname()));
 		add(machineWidth = new SelectDouble(Translator.get("EditPlotterGUI.machineWidth"),w));
 		add(machineHeight = new SelectDouble(Translator.get("EditPlotterGUI.machineHeight"),h));
