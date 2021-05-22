@@ -485,6 +485,7 @@ public class LoadSVG extends TurtleGenerator implements LoadFile {
 						double length=0;
 						double oldx=x;
 						double oldy=y;
+						//approximate the length of the curve
 						for(double j=0;j<=1;j+=0.1) {
 					        double a = Math.pow((1.0 - j), 3.0);
 					        double b = 3.0 * j * Math.pow((1.0 - j), 2.0);
@@ -502,7 +503,9 @@ public class LoadSVG extends TurtleGenerator implements LoadFile {
 						double steps = (int)Math.ceil(Math.max(Math.min(length, 10),1));
 
 						
-						for(double j=0;j<1;j+=1.0/steps) {/*
+						for(double k=0;k<=steps;++k) {
+							double j= k/steps;
+							/*
 							// old method
 							double xa = p(x0,x1,j);
 							double ya = p(y0,y1,j);
