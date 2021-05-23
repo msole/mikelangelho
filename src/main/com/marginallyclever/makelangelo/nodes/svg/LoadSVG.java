@@ -2,6 +2,7 @@ package com.marginallyclever.makelangelo.nodes.svg;
 
 import java.io.IOException;
 import java.io.InputStream;
+
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.apache.batik.anim.dom.SAXSVGDocumentFactory;
@@ -28,6 +29,7 @@ import org.w3c.dom.svg.SVGPathSegMovetoAbs;
 import org.w3c.dom.svg.SVGPoint;
 import org.w3c.dom.svg.SVGPointList;
 
+import com.marginallyclever.core.Bezier;
 import com.marginallyclever.core.ColorRGB;
 import com.marginallyclever.core.Point2D;
 import com.marginallyclever.core.Translator;
@@ -466,76 +468,13 @@ public class LoadSVG extends TurtleGenerator implements LoadFile {
 						// x3,y3 is the fourth control point
 						double x3=TX( path.getX());
 						double y3=TY( path.getY());
-						/*
-						double d0 = distanceSquared(x0,y0,x,y);
-						double dN = distanceSquared(x3,y3,x,y);
 						
-						if(dN>d0) {
-							// the far end of the curve is closer to the current pen position.
-							// flip the curve.
-							double t;
-							
-							t = x3; x3=x0; x0=t;
-							t = x2; x2=x1; x1=t;
-							
-							t = y3; y3=y0; y0=t;
-							t = y2; y2=y1; y1=t;
-						}*/
-
-						double length=0;
-						double oldx=x;
-						double oldy=y;
-						//approximate the length of the curve
-						for(double j=0;j<=1;j+=0.1) {
-					        double a = Math.pow((1.0 - j), 3.0);
-					        double b = 3.0 * j * Math.pow((1.0 - j), 2.0);
-					        double c = 3.0 * Math.pow(j, 2.0) * (1.0 - j);
-					        double d = Math.pow(j, 3.0);
-					 
-					        double xabc = a * x0 + b * x1 + c * x2 + d * x3;
-					        double yabc = a * y0 + b * y1 + c * y2 + d * y3;
-					        
-					        length += Math.sqrt( Math.pow(xabc-oldx, 2) + Math.pow(yabc-oldy,2) );
-					        oldx=xabc;
-					        oldy=yabc;
+						Bezier b = new Bezier(x0,y0,x1,y1,x2,y2,x3,y3);
+						for( Point2D p : b.generateCurvePoints() ) {
+							turtle.moveTo(p.x, p.y);
+							x=p.x;
+							y=p.y;
 						}
-						
-						double steps = (int)Math.ceil(Math.max(Math.min(length, 10),1));
-
-						
-						for(double k=0;k<=steps;++k) {
-							double j= k/steps;
-							/*
-							// old method
-							double xa = p(x0,x1,j);
-							double ya = p(y0,y1,j);
-							double xb = p(x1,x2,j);
-							double yb = p(y1,y2,j);
-							double xc = p(x2,x3,j);
-							double yc = p(y2,y3,j);
-							
-							double xab = p(xa,xb,j);
-							double yab = p(ya,yb,j);
-							double xbc = p(xb,xc,j);
-							double ybc = p(yb,yc,j);
-							
-							xabc = p(xab,xbc,j);
-							yabc = p(yab,ybc,j);/*/
-					        double a = Math.pow((1.0 - j), 3.0);
-					        double b = 3.0 * j * Math.pow((1.0 - j), 2.0);
-					        double c = 3.0 * Math.pow(j, 2.0) * (1.0 - j);
-					        double d = Math.pow(j, 3.0);
-					 
-					        double xabc = a * x0 + b * x1 + c * x2 + d * x3;
-					        double yabc = a * y0 + b * y1 + c * y2 + d * y3;//*/
-							
-							//if(j<1 && distanceSquared(xabc,yabc,x,y)>toolMinimumStepSize*toolMinimumStepSize) {
-								x=xabc;
-								y=yabc;
-								turtle.moveTo(xabc,yabc);
-							//}
-						}
-						turtle.moveTo(x3,y3);
 					}
 					break; 
 				default:
@@ -547,11 +486,6 @@ public class LoadSVG extends TurtleGenerator implements LoadFile {
 			}
 		}
 	    return loadOK;
-	}
-	
-
-	protected double p(double a,double b,double fraction) {
-		return ( b - a ) * fraction + a;
 	}
 	
 
