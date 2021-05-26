@@ -591,8 +591,8 @@ public class DrivePlotterGUI implements ActionListener, PlotterListener {
 	}
 
 	@Override
-	public void firmwareVersionBad(Plotter r, long versionFound) {
-		(new DialogBadFirmwareVersion()).display(parentFrame, Long.toString(versionFound));
+	public void firmwareVersionBad(Plotter r,long versionExpected, long versionFound) {
+		(new DialogBadFirmwareVersion()).display(parentFrame, Long.toString(versionExpected), Long.toString(versionFound));
 	}
 
 	@Override

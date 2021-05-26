@@ -15,25 +15,6 @@ import com.marginallyclever.core.Translator;
 
 public class DialogBadFirmwareVersion {
 	/**
-	 * <p>
-	 * Uses {@link java.lang.StringBuilder#append(String)} to create an internationalization supported {@code String}
-	 * representing the About Message Dialog's HTML.
-	 * </p>
-	 * <p>
-	 * <p>
-	 * The summation of {@link String#length()} for each of the respective values retrieved with the
-	 * {@code "AboutHTMLBeforeVersionNumber"}, and {@code "AboutHTMLAfterVersionNumber"} {@link Translator} keys,
-	 * in conjunction with {@link Makelangelo#VERSION} is calculated for use with {@link java.lang.StringBuilder#StringBuilder(int)}.
-	 * </p>
-	 *
-	 * @return An HTML string used for the About Message Dialog.
-	 */
-	private String getAboutHtmlFromMultilingualString(String version) {
-		String message = Translator.get("firmwareVersionBadMessage");
-		return message.replace("%VERSION%", version);
-	}
-
-	/**
 	 * @param html String of valid HTML.
 	 * @return a
 	 */
@@ -66,8 +47,8 @@ public class DialogBadFirmwareVersion {
 	/**
 	 * Display the about dialog.
 	 */
-	public void display(Component parent,String version) {
-		final String aboutHtml = getAboutHtmlFromMultilingualString(version);
+	public void display(Component parent,String versionExpected, String versionFound) {
+		final String aboutHtml = Translator.get("firmwareVersionBadMessage",versionExpected,versionFound);
 		final JTextComponent bottomText = createHyperlinkListenableJEditorPane(aboutHtml);
 		JOptionPane.showMessageDialog(parent, bottomText, Translator.get("firmwareVersionBadTitle"), JOptionPane.ERROR_MESSAGE);
 	}

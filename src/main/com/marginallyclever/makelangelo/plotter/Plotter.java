@@ -129,7 +129,7 @@ public abstract class Plotter implements Serializable, NetworkConnectionListener
 	// Firmware check
 	private final String versionCheckStart = new String("Firmware v");
 	private boolean firmwareVersionChecked = false;
-	private final long expectedFirmwareVersion = 10; // must match the version in the the firmware EEPROM
+	private final long expectedFirmwareVersion = 11; // must match the version in the the firmware EEPROM
 	private boolean hardwareVersionChecked = false;
 	
 	/**
@@ -827,7 +827,7 @@ public abstract class Plotter implements Serializable, NetworkConnectionListener
 				sendLineToRobot("D10\n");
 			} else {
 				Log.message("Firmware bad");
-				notifyFirmwareVersionBad(versionFound);
+				notifyFirmwareVersionBad(expectedFirmwareVersion,versionFound);
 			}
 		}
 
@@ -940,9 +940,9 @@ public abstract class Plotter implements Serializable, NetworkConnectionListener
 	}
 
 	// Notify when unknown robot connected so that Makelangelo GUI can respond.
-	private void notifyFirmwareVersionBad(long versionFound) {
+	private void notifyFirmwareVersionBad(long versionExpected,long versionFound) {
 		for (PlotterListener listener : listeners) {
-			listener.firmwareVersionBad(this, versionFound);
+			listener.firmwareVersionBad(this, versionExpected,versionFound);
 		}
 	}
 

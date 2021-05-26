@@ -438,7 +438,7 @@ public class RobotController extends Node implements PlotterListener {
 	}
 
 	@Override
-	public void firmwareVersionBad(Plotter r, long versionFound) {}
+	public void firmwareVersionBad(Plotter r, long versionExpected, long versionFound) {}
 
 	@Override
 	public void connectionConfirmed(Plotter r) {

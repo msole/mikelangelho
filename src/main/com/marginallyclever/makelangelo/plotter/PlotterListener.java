@@ -20,7 +20,7 @@ public abstract interface PlotterListener extends PropertyChangeListener {
 	// called when live robot has detected an error in the transmission
 	public void lineError(Plotter r,int lineNumber);
 	// called when the firmware on the robot is detected as out of date
-	public void firmwareVersionBad(Plotter r,long versionFound);
+	public void firmwareVersionBad(Plotter r,long versionExpected,long versionFound);
 	// called when robot connection is confirmed.  connection is open to a valid robot with good hardware and firmware.
 	public void connectionConfirmed(Plotter r);
 }
