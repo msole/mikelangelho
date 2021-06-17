@@ -22,25 +22,21 @@ public class FirmwareSimulation {
 	public static final double MAX_ACCELERATION = 1250.0;  // mm/s/s
 	public static final double MIN_ACCELERATION = 0.01;  // mm/s/s
 	public static final double MINIMUM_PLANNER_SPEED = 0.05;  // mm/s
-	public static final int SEGMENTS_PER_SECOND = 8;
+	public static final int SEGMENTS_PER_SECOND = 40;
 	public static final double [] MAX_JERK = { 8, 8, 0.3 };
 	
 	// poseTo represents the desired destination. It could be null if there is none.  Roughly equivalent to Sixi2Live.poseSent.
 	public Vector3d poseTo;
 	// poseNow is the current position.  Roughly equivalent to Sixi2Live.poseReceived.
-	protected Vector3d poseNow;
+	private Vector3d poseNow;
 	
-	protected LinkedList<FirmwareSimulationSegment> queue = new LinkedList<FirmwareSimulationSegment>();
+	private LinkedList<FirmwareSimulationSegment> queue = new LinkedList<FirmwareSimulationSegment>();
 	
-	protected boolean readyForCommands;
-
-	protected double [] previousSpeedArray = { 0,0,0 };
-	protected double previousSafeSpeed = 0;
+	private double [] previousSpeedArray = { 0,0,0 };
+	private double previousSafeSpeed = 0;
 	
-	public FirmwareSimulation() {
-		readyForCommands = true;
-	}
 	
+	public FirmwareSimulation() {}
 /*
 	public void update(double dt) {
 		if(!queue.isEmpty()) {
@@ -71,7 +67,7 @@ public class FirmwareSimulation {
 	 * override this to change behavior of joints over time.
 	 * @param dt
 	 *//*
-	protected void updatePositions(MakelangeloFirmwareSimulationSegment seg) {
+	private void updatePositions(MakelangeloFirmwareSimulationSegment seg) {
 		if(poseNow==null) return;
 
 		double dt = (seg.now_s - seg.start_s);
@@ -116,7 +112,7 @@ public class FirmwareSimulation {
 	 * @param feedrate velocity (mm/s)
 	 * @param acceleration (mm/s/s)
 	 */
-	protected void addDestination2(final Vector3d to, double feedrate, double acceleration) {
+	private void addLine(final Vector3d to, double feedrate, double acceleration) {
 		Vector3d delta = new Vector3d();
 		delta.sub(to,poseNow);
 		double len = delta.length();
@@ -130,9 +126,9 @@ public class FirmwareSimulation {
 		Vector3d temp = new Vector3d(poseNow);
 		while(--segments>0) {
 			temp.add(delta);
-			addDestination(temp,feedrate,acceleration);
+			addSegment(temp,feedrate,acceleration);
 		}
-		addDestination(to,feedrate,acceleration);
+		addSegment(to,feedrate,acceleration);
 	}
 	
 	/**
@@ -141,7 +137,7 @@ public class FirmwareSimulation {
 	 * @param feedrate velocity (mm/s)
 	 * @param acceleration (mm/s/s)
 	 */
-	protected void addDestination(final Vector3d to, double feedrate, double acceleration) {
+	private void addSegment(final Vector3d to, double feedrate, double acceleration) {
 		poseTo=to;
 		
 		Vector3d start = (!queue.isEmpty()) ? queue.getLast().end : poseNow;
@@ -211,10 +207,10 @@ public class FirmwareSimulation {
 			// look at difference between this move and previous move
 			FirmwareSimulationSegment prev = queue.getLast();
 			if(prev.nominalSpeed > 1e-6) {				
-				vmax_junction = Math.min(next.nominalSpeed,prev.nominalSpeed);
 				limited=false;
 
 				double vFactor=0;
+				vmax_junction = Math.min(next.nominalSpeed,prev.nominalSpeed);
 				double smallerSpeedFactor = vmax_junction / prev.nominalSpeed;
 
 				for(int i=0;i<previousSpeedArray.length;++i) {
@@ -240,6 +236,8 @@ public class FirmwareSimulation {
 				    safeSpeed > vmax_junction_threshold ) {
 					vmax_junction = safeSpeed;
 				}
+			} else {
+				vmax_junction = safeSpeed;
 			}
 		} else {
 			vmax_junction = safeSpeed;
@@ -267,13 +265,13 @@ public class FirmwareSimulation {
 		recalculateAcceleration();
 	}
 	
-	protected void recalculateAcceleration() {
+	private void recalculateAcceleration() {
 		recalculateBackwards();
 		recalculateForwards();
 		recalculateTrapezoids();
 	}
 	
-	protected void recalculateBackwards() {
+	private void recalculateBackwards() {
 		FirmwareSimulationSegment current;
 		FirmwareSimulationSegment next = null;
 		Iterator<FirmwareSimulationSegment> ri = queue.descendingIterator();
@@ -284,7 +282,7 @@ public class FirmwareSimulation {
 		}
 	}
 	
-	protected void recalculateBackwardsBetween(FirmwareSimulationSegment current,FirmwareSimulationSegment next) {
+	private void recalculateBackwardsBetween(FirmwareSimulationSegment current,FirmwareSimulationSegment next) {
 		double top = current.entrySpeedMax;
 		if(current.entrySpeed != top || (next!=null && next.recalculate)) {
 			double newEntrySpeed = current.nominalLength 
@@ -295,7 +293,7 @@ public class FirmwareSimulation {
 		}
 	}
 	
-	protected void recalculateForwards() {
+	private void recalculateForwards() {
 		FirmwareSimulationSegment current;
 		FirmwareSimulationSegment prev = null;
 		Iterator<FirmwareSimulationSegment> ri = queue.iterator();
@@ -306,7 +304,7 @@ public class FirmwareSimulation {
 		}
 	}
 	
-	protected void recalculateForwardsBetween(FirmwareSimulationSegment prev,FirmwareSimulationSegment current) {
+	private void recalculateForwardsBetween(FirmwareSimulationSegment prev,FirmwareSimulationSegment current) {
 		if(prev==null) return;
 		if(!prev.nominalLength && prev.entrySpeed < current.entrySpeed) {
 			double newEntrySpeed = maxSpeedAllowed(-prev.acceleration, prev.entrySpeed, prev.distance);
@@ -317,7 +315,7 @@ public class FirmwareSimulation {
 		}
 	}
 	
-	protected void recalculateTrapezoids() {
+	private void recalculateTrapezoids() {
 		FirmwareSimulationSegment current=null;
 		
 		boolean nextDirty;
@@ -347,12 +345,12 @@ public class FirmwareSimulation {
 		}
 	}
 	
-	protected void recalculateTrapezoidSegment(FirmwareSimulationSegment seg, double entrySpeed, double exitSpeed) {
+	private void recalculateTrapezoidSegment(FirmwareSimulationSegment seg, double entrySpeed, double exitSpeed) {
 		if( entrySpeed < MINIMUM_PLANNER_SPEED ) entrySpeed = MINIMUM_PLANNER_SPEED;
 		if( exitSpeed  < MINIMUM_PLANNER_SPEED ) exitSpeed  = MINIMUM_PLANNER_SPEED;
 		
 		double accel = seg.acceleration;
-		double accelerateD = Math.max(0,Math.ceil( estimateAccelerationDistance(entrySpeed, seg.nominalSpeed, accel)));
+		double accelerateD = Math.max(0,Math.ceil ( estimateAccelerationDistance(entrySpeed, seg.nominalSpeed, accel)));
 		double decelerateD = Math.max(0,Math.floor( estimateAccelerationDistance(seg.nominalSpeed, exitSpeed, -accel)));
 		double plateauD = seg.distance - accelerateD - decelerateD;
 		if( plateauD < 0 ) {
@@ -366,11 +364,9 @@ public class FirmwareSimulation {
 		
 		double nominalT = plateauD/seg.nominalSpeed;
 		
-		// d = vt + 0.5att.  it's a quadratic, so t = -v +/- sqrt( v*v -2ad ) / a
-		double nA = maxSpeedAllowed(-accel,entrySpeed,accelerateD);
-		double nD = maxSpeedAllowed(-accel,exitSpeed, decelerateD);
-		double accelerateT = ( -entrySpeed + nA ) / accel;
-		double decelerateT = ( -exitSpeed  + nD ) / accel;
+		double cruiseSpeed = finalSpeed(entrySpeed,accel,accelerateD);
+		double accelerateT = ( cruiseSpeed-entrySpeed ) / accel;
+		double decelerateT = ( cruiseSpeed-exitSpeed ) / accel;
 		
 		seg.accelerateUntilT = accelerateT;
 		seg.decelerateAfterT = accelerateT + nominalT;
@@ -390,16 +386,23 @@ public class FirmwareSimulation {
 	 * @param targetVelocity
 	 * @param distance
 	*/
-	protected double maxSpeedAllowed( double acceleration, double targetVelocity, double distance ) {
-		return Math.sqrt( (targetVelocity*targetVelocity) - 2 * acceleration * distance );
+	@Deprecated
+	private double maxSpeedAllowed( double acceleration, double targetVelocity, double distance ) {
+		return Math.sqrt( maxSpeedAllowedSquared(acceleration,targetVelocity,distance) );
+	}
+	private double maxSpeedAllowedSquared( double acceleration, double targetVelocity, double distance ) {
+		return (targetVelocity*targetVelocity) - 2 * acceleration * distance;
+	}
+	private double finalSpeed(double startVelocity,double accel, double distance) {
+		return Math.sqrt(startVelocity*startVelocity + 2 * accel * distance);
 	}
 	
-	protected double estimateAccelerationDistance(final double initialRate, final double targetRate, final double accel) {
+	private double estimateAccelerationDistance(final double initialRate, final double targetRate, final double accel) {
 		if(accel == 0) return 0;
 		return ( (targetRate*targetRate) - (initialRate*initialRate) ) / (accel * 2.0);
 	}
 
-	protected double intersectionDistance(final double startRate, final double endRate, final double accel, final double distance) {
+	private double intersectionDistance(final double startRate, final double endRate, final double accel, final double distance) {
 		if(accel == 0) return 0;
 		return ( 2.0 * accel * distance - (startRate*startRate) + (endRate*endRate) ) / (4.0 * accel);
 	}
@@ -437,9 +440,9 @@ public class FirmwareSimulation {
 			if(m.isUp != isUp) {
 				// when pen changes move servo finger
 				isUp=m.isUp;
-				addDestination2(new Vector3d(lx,ly,isUp?zu:zd),fz,a);
+				addLine(new Vector3d(lx,ly,isUp?zu:zd),fz,a);
 			}
-			addDestination2(new Vector3d(m.x,m.y,isUp?zu:zd),isUp?fu:fd,a); 
+			addLine(new Vector3d(m.x,m.y,isUp?zu:zd),isUp?fu:fd,a); 
 			lx=m.x;
 			ly=m.y;
 			
